@@ -1,6 +1,6 @@
-# odontoxp
+## About
 
-This repository contains source code for the front-end and back-end of the EBApp.
+This GitLab repository contains source code for the front-end and back-end of the EBApp. The objective of this mobile application is to display scientific texts to authorized users.
 
 
 Versions:
