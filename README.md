@@ -1,7 +1,10 @@
 # odontoxp
 
+This repository contains source code for the front-end and back-end of the EBApp.
 
-Versões:
+
+Versions:
+
 -Ionic 4.1.1
 -npm 6.2.0
 -NodeJS 10.9.0
