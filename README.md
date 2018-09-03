@@ -19,9 +19,9 @@ Run the following commands in the Linux terminal to make sure you have the requi
 
 We used the following versions:
 
--npm 6.2.0
--NodeJS 10.9.0
--Cordova 8.0.0
+- npm 6.2.0
+- NodeJS 10.9.0
+- Cordova 8.0.0
 
 Log 29/08 10:00 - 12:14
  - Usaremos Ionic 4 com o estilo do 3
