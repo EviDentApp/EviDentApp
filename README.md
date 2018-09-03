@@ -2,7 +2,7 @@
 
 This GitLab repository contains source code for the front-end and back-end of the Evidence-based App (EBApp). The objective of the EBApp is to display scientific texts to authorized users. The texts are all related to dentistry topics.
 
-The code for this mobile application is available as open source. The application was developed using the Ionic Framework, specifically version 4.1.1.
+The development team is comprised of both undergraduate and graduate students from the University of São Paulo. The code for this mobile application is available as open source. The application was developed using the Ionic Framework, specifically version 4.1.1.
 
 # Pre-requisites
 
