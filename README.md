@@ -6,7 +6,7 @@ The code for this mobile application is available as open source. The applicatio
 
 # Pre-requisites
 
-Run the following commands in the Linux terminal to make sure you have the required software to run Ionic:
+Run the following commands in the Linux terminal to make sure you have the required software to install Ionic:
 
 <b>NodeJS:</b>
 > node -v
