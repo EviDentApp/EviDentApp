@@ -4,7 +4,7 @@ This GitLab repository contains source code for the front-end and back-end of th
 
 The code for this mobile application is available as open source. The application was developed using the Ionic Framework, specifically version 4.1.1.
 
-##Prerequisites
+# Pre-requisites
 
 Run the following commands in the Linux terminal to make sure you have the required software to run Ionic:
 
