@@ -44,7 +44,7 @@ Common project types are:
 - tabs
 - sidemenu
 
-<b>Important!</b> When running the command, a message may be prompted requiring user input:
+<b>Important!</b> When running the command, a message may prompt the user for input:
 
 - Integrate your new app with Cordova to target native iOS and Android? <b>yes</b>
 - Install the free Ionic Pro SDK and connect your app? <b>no</b>
