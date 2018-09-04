@@ -53,7 +53,7 @@ Common project types are:
 
 ## Run an Ionic app
 
-Run the following commands in the Linux terminal:
+Run the following commands in the Linux terminal, replacing PROJECT-DIRECTORY with its respective tag:
 
 > cd PROJECT-DIRECTORY
 
