@@ -51,7 +51,7 @@ Common project types are:
 
 ## Run an Ionic app
 
-> cd <project-folder
+Run the following command in the project directory:
 
 > ionic serve
 
