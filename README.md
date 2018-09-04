@@ -20,7 +20,7 @@ Run the following commands in the Linux terminal to make sure you have the requi
 <b>Cordova:</b>
 > cordova -v
 
-For documentation purposes, we used NodeJS 8.11.4, npm 6.2.0, and Cordova 8.0.0. In case you do not have any of the aformentioned software, the following subsections provide explanations on how to install them.
+For documentation purposes, we used NodeJS 8.11.4, npm 6.2.0, and Cordova 8.0.0. In case you do not have any of the aforementioned software, the following subsections provide explanations on how to install them.
 
 ### Install NodeJS and npm
 
