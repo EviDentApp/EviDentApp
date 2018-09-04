@@ -55,7 +55,7 @@ Common project types are:
 We strongly recommend using the Google Chrome web browser for running the Ionic app. Google Chrome can be downloaded from this website:
 > https://www.google.com/chrome/
 
-#Logs
+# Logs
 
 29th of August- 10:00 to 12:14
  - We decided to use Ionic 4.
