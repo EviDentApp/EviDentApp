@@ -52,6 +52,7 @@ Common project types are:
 ## Run an Ionic app
 
 > cd <project-folder>
+
 > ionic serve
 
 We strongly recommend using the Google Chrome web browser for running the Ionic app. Google Chrome can be downloaded from this website:
