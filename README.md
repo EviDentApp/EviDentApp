@@ -36,7 +36,9 @@ For documentation purposes, we used NodeJS 8.11.4, npm 6.2.0, and Cordova 8.0.0.
 
 ## Start an Ionic app
 
-> ionic start <project-name> <project-type> --type=angular
+Run the following command in the Linux terminal, replacing PROJECT-NAME and PROJECT-TYPE for their respective tags:
+
+> ionic start PROJECT-NAME PROJECT-TYPE --type=angular
 
 Common project types are:
 
@@ -51,7 +53,9 @@ Common project types are:
 
 ## Run an Ionic app
 
-Run the following command in the project directory:
+Run the following commands in the Linux terminal:
+
+> cd PROJECT-DIRECTORY
 
 > ionic serve
 
