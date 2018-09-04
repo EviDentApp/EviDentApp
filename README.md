@@ -55,7 +55,7 @@ Run the following command in the project directory:
 
 > ionic serve
 
-We strongly recommend using the Google Chrome web browser for running the Ionic app. Google Chrome can be downloaded from this website:
+We strongly recommend using the Google Chrome web browser for running an Ionic app. Google Chrome can be downloaded from this website:
 > https://www.google.com/chrome/
 
 # Logs
