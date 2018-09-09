@@ -30,6 +30,9 @@ For documentation purposes, we used NodeJS 8.11.4, npm 6.2.0, and Cordova 8.0.0.
 
 > sudo apt-get install nodejs
 
+* If you are using Debian 9, the following tutorial might be useful in case of trouble:
+> https://medium.com/collabcode/como-instalar-node-js-no-linux-corretamente-ubuntu-debian-elementary-os-729fb4c92f2d
+
 ### Install Cordova and Ionic
 
 > npm install -g ionic cordova
