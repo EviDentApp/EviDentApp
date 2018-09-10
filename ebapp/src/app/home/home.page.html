@@ -1,0 +1,25 @@
+<ion-header>
+
+  <ion-toolbar>
+    <ion-title>Image Med</ion-title>
+  </ion-toolbar>
+
+</ion-header>
+
+
+<ion-content class="page-content" padding>
+
+<ion-grid class="search-div">
+  <ion-row class="search-header">
+   
+  </ion-row>
+  <ion-row class="search-body">
+    <ion-list class="search-list">
+      <ion-button class="list-item" ion-item *ngFor="let item of list" (click)="itemTapped($event, item)">
+        {{item.name}}
+      </ion-button>
+    </ion-list>
+  </ion-row>
+</ion-grid>
+
+</ion-content>
