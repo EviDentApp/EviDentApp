@@ -1,25 +1,32 @@
 <ion-header>
-
   <ion-toolbar>
-    <ion-title>Ebapp</ion-title>
+    <ion-title class="toolbar-title">EBApp</ion-title>
   </ion-toolbar>
 
+  <ion-toolbar>
+    <ion-searchbar
+    [(ngModel)]="myInput"
+    [showCancelButton]="shouldShowCancel"
+    (ionInput)="filterList($event)"
+    (ionCancel)="onCancel($event)"
+    placeholder="Buscar Texto">
+    </ion-searchbar>
+  </ion-toolbar>
 </ion-header>
 
-
 <ion-content class="page-content" padding>
-  <ion-searchbar
-      [(ngModel)]="myInput"
-      [showCancelButton]="shouldShowCancel"
-      (ionInput)="filterList($event)"
-      (ionCancel)="onCancel($event)"
-      placeholder="Buscar Texto">
-    </ion-searchbar>
-
   <ion-list class="search-list">
     <ion-button class="list-item" ion-item *ngFor="let theme of themes" (click)="themeTapped($event, theme)">
       {{theme.name}}
     </ion-button>
   </ion-list>
+
+  <ion-card class="page-card">
+    <ion-img class="page-card-image" src="/assets/myImg.png"></ion-img>
+    <ion-card-content>
+      <ion-card-title class="page-card-title">Diagnósticos</ion-card-title>
+      <span class="page-card-subtitle">45 Artigos</span>
+    </ion-card-content>
+  </ion-card>
 
 </ion-content>

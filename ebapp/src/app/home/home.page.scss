@@ -1,1 +1,37 @@
+@import url('https://fonts.googleapis.com/css?family=Volkhov:400,700');
+@import url('https://fonts.googleapis.com/css?family=Amaranth:400,700');
 
+.toolbar-title {
+    text-align: center;
+    font-weight: bold;
+    font-size: 30px;
+    font-family: 'Amaranth', sans-serif;
+    text-shadow: 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000, 1px 1px #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000;
+}
+
+.page-content {
+    background-color: #e5e5e5;
+}
+
+/*************
+   PAGE CARD
+**************/
+
+.page-card {
+    border-radius: 10px;
+    background-color: #f7f7f7;
+}
+
+.page-card-image {
+    height: 30vh;
+}
+
+.page-card-title {
+    font-family: 'Amaranth', sans-serif;
+    font-weight: bold;
+    color: black;
+}
+
+.page-card-subtitle {
+    font-family: 'Amaranth', sans-serif;
+}
