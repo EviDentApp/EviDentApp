@@ -7,7 +7,7 @@ import { RequisitionsService } from '../requisitions.service';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-  list: string[];
+  themes: string[];
   constructor(private requisition: RequisitionsService) {
   }
 
@@ -20,13 +20,21 @@ export class HomePage {
         const response = (data as any);
         const objeto_retorno = JSON.parse(response._body);
         console.log(response._body)
-        this.list = objeto_retorno.temas;
+        this.themes = objeto_retorno.themes;
 
       },
       error => {
         console.log("O meu nome é erro");
       }
     );
+  }
+  filterList(keyword: any) {
+    let val = keyword.target.value;
+    console.log(val)
+  }
+
+  themeTapped(event, theme) {
+    console.log(theme)
   }
 
 

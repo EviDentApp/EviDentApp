@@ -14,7 +14,8 @@ const routes: Routes = [
   {
     path: 'list',
     loadChildren: './list/list.module#ListPageModule'
-  }
+  },
+  { path: 'textByThemes', loadChildren: './text-by-themes/text-by-themes.module#TextByThemesPageModule' }
 ];
 
 @NgModule({
