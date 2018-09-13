@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RequisitionsService } from '../requisitions.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -8,7 +9,9 @@ import { RequisitionsService } from '../requisitions.service';
 })
 export class HomePage {
   themes: string[];
-  constructor(private requisition: RequisitionsService) {
+  constructor(
+    private requisition: RequisitionsService,
+    private router: Router) {
   }
 
   ngOnInit() {
@@ -34,7 +37,7 @@ export class HomePage {
   }
 
   themeTapped(event, theme) {
-    console.log(theme)
+    this.router.navigate(['textByThemes', { id: theme.id, theme: theme.name }])
   }
 
 

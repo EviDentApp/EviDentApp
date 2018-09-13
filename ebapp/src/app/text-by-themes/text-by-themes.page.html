@@ -1,9 +1,20 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>textByThemes</ion-title>
+    <ion-title>{{ theme }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
+
 <ion-content padding>
+
+  <ion-card *ngFor="let text of texts" (click)="goToDetail($event, text)">
+
+    <ion-item>
+      <h2>{{ text.title }}</h2>
+    </ion-item>
+
+    <ion-img [src]="text.image"></ion-img>
+
+  </ion-card>
 
 </ion-content>

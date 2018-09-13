@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{text_title}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-card *ngIf="detail">
+
+    <ion-item>
+      <h2>{{ detail.title }}</h2>
+    </ion-item>
+
+    <ion-img [src]="detail.image"></ion-img>
+
+    <ion-item>
+      <p>{{ detail.abstract }}</p>
+    </ion-item>
+
+    <ion-item>
+        <ion-button (click)="goToMethodology($event, metodology_id)">Metodologia</ion-button>
+    </ion-item>
+    
+    <ion-item>
+        <ion-button href="{{detail.paper_link}}">Link para Artigo</ion-button>
+    </ion-item>
+
+  </ion-card>
+
+</ion-content>
