@@ -38,6 +38,4 @@ export class HomePage {
   themeTapped(event, theme) {
     this.router.navigate(['textByThemes', { id: theme.id, theme: theme.name }])
   }
-
-
 }

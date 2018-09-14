@@ -1,28 +1,55 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title class="toolbar-title">EBApp</ion-title>
+    <ion-title class="toolbar-title">Dentist</ion-title>
   </ion-toolbar>
 
   <ion-toolbar>
     <ion-searchbar [(ngModel)]="myInput" [showCancelButton]="shouldShowCancel" (ionInput)="filterList($event)"
-      (ionCancel)="onCancel($event)" placeholder="Buscar Texto">
+      (ionCancel)="onCancel($event)" placeholder="Procurar por texto">
     </ion-searchbar>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="page-content" padding>
-  <ion-list class="search-list">
-    <ion-button class="list-item" ion-item *ngFor="let theme of themes" (click)="themeTapped($event, theme)">
+  <ion-list class="list">
+    <!-- Developers Team (For functionalities purposes) -->
+    <ion-button class="list-item" shape="round" ion-item *ngFor="let theme of themes" (click)="themeTapped($event, theme)">
       {{theme.name}}
+      <ion-img src="assets/img/estetica.png"></ion-img>
     </ion-button>
+    <!-- Designers Team (For testing purposes) -->
+    <ion-grid>
+      <ion-row>
+          <ion-button class="list-button" expand="full" size="large" shape="round" ion-item>
+              <ion-img class="list-button-img" src="assets/img/diagnostico.png"></ion-img>
+             <span class="list-button-text">Diagnóstico</span>
+            </ion-button>        
+      </ion-row>
+      <ion-row>
+          <ion-button class="list-button" expand="full" size="large" shape="round" ion-item>
+              <ion-img class="list-button-img" src="assets/img/estetica.png"></ion-img>
+              <span class="list-button-text">Estética</span>
+            </ion-button>        
+      </ion-row>
+      <ion-row>
+          <ion-button class="list-button" expand="full" size="large" shape="round" ion-item>
+              <ion-img class="list-button-img" src="assets/img/habitos.png"></ion-img>
+              <span class="list-button-text">Hábitos</span>
+            </ion-button>        
+      </ion-row>
+      <ion-row>
+          <ion-button class="list-button" expand="full" size="large" shape="round" ion-item>
+              <ion-img class="list-button-img" src="assets/img/prevencao.png"></ion-img>
+              <span class="list-button-text">Prevenção</span>
+            </ion-button>        
+      </ion-row>
+      <ion-row>
+          <ion-button class="list-button" expand="full" size="large" shape="round" ion-item>
+              <ion-img class="list-button-img" src="assets/img/sismatologia.png"></ion-img>
+              <span class="list-button-text">Sismatologia</span>
+            </ion-button>        
+      </ion-row>
+    </ion-grid>
+
   </ion-list>
-
-  <ion-card class="page-card">
-    <ion-img class="page-card-image" src="/assets/myImg.png"></ion-img>
-    <ion-card-content>
-      <ion-card-title class="page-card-title">Diagnósticos</ion-card-title>
-      <span class="page-card-subtitle">45 Artigos</span>
-    </ion-card-content>
-  </ion-card>
-
-</ion-content>
+</ion-content>  
