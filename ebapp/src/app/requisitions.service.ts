@@ -19,12 +19,16 @@ export class RequisitionsService {
                           "id": ''
                         }
 
+  private bodyMethodologyDetail = {
+                                  "key": '123',
+                                  "id": ''
+  }
+
   constructor(public http: Http) {
-    console.log('Hello requisitions');
   }
 
   themesGetList () {
-    return this.http.post (this.endpoint + "/themes/list", this.bodyThemesList);
+    return this.http.post(this.endpoint + "/themes/list", this.bodyThemesList);
   }
 
   textGetList(theme='', keyword='') {
@@ -34,7 +38,13 @@ export class RequisitionsService {
   }
 
   textGetDetail(text_id) {
-    this.bodyTextDetail.id = text_id
-    return this.http.post(this.endpoint + "/text/detail", this.bodyTextDetail)
+    this.bodyTextDetail.id = text_id;
+    return this.http.post(this.endpoint + "/text/detail", this.bodyTextDetail);
+  }
+
+  methodologyGetDetail(metho_id) {
+    this.bodyMethodologyDetail.id = metho_id;
+    //console.log(metho_id);
+    return this.http.post(this.endpoint + "/methodology/detail", this.bodyMethodologyDetail);
   }
 }

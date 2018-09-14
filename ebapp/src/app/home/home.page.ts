@@ -22,12 +22,11 @@ export class HomePage {
       data => {
         const response = (data as any);
         const objeto_retorno = JSON.parse(response._body);
-        console.log(response._body)
         this.themes = objeto_retorno.themes;
 
       },
       error => {
-        console.log("O meu nome é erro");
+        console.log(error);
       }
     );
   }

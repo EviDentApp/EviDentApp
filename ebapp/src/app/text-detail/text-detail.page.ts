@@ -1,5 +1,5 @@
 import { Component, OnInit, APP_INITIALIZER } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { RequisitionsService } from '../requisitions.service';
 
 @Component({
@@ -14,16 +14,16 @@ export class TextDetailPage implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private requisition: RequisitionsService
+    private requisition: RequisitionsService,
+    private router: Router
   ) {
     this.text_id = this.route.snapshot.paramMap.get('text_id');
     this.text_title = this.route.snapshot.paramMap.get('text_title');
     this.initialize(this.text_id)
 
-   }
+  }
 
   ngOnInit() {
-    console.log("Estou aqui")
   }
 
   initialize(text_id) {
@@ -31,13 +31,16 @@ export class TextDetailPage implements OnInit {
       data => {
         const response = (data as any);
         const returned_object = JSON.parse(response._body);
-        console.log(response._body)
         this.detail = returned_object.text;
       },
       error => {
-        console.log("O meu nome é erro");
+        console.log(error);
       }
     );
+  }
+
+  goToMethodology(event, methodology_id) {
+    this.router.navigate(['methodologyDetail', { metho_id: methodology_id }]);
   }
 
 }

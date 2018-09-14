@@ -16,7 +16,8 @@ const routes: Routes = [
     loadChildren: './list/list.module#ListPageModule'
   },
   { path: 'textByThemes', loadChildren: './text-by-themes/text-by-themes.module#TextByThemesPageModule' },
-  { path: 'textDetail', loadChildren: './text-detail/text-detail.module#TextDetailPageModule' }
+  { path: 'textDetail', loadChildren: './text-detail/text-detail.module#TextDetailPageModule' },
+  { path: 'methodologyDetail', loadChildren: './methodology-detail/methodology-detail.module#MethodologyDetailPageModule' }
 ];
 
 @NgModule({

@@ -22,8 +22,6 @@ export class TextByThemesPage implements OnInit {
   ngOnInit() {
     this.theme = this.route.snapshot.paramMap.get('theme');
     this.id = this.route.snapshot.paramMap.get('id');
-    console.log(this.theme);
-    console.log(this.id);
     this.initialize(this.id, '');
   }
 
@@ -32,11 +30,10 @@ export class TextByThemesPage implements OnInit {
       data => {
         const response = (data as any);
         const returned_object = JSON.parse(response._body);
-        console.log(response._body)
         this.texts = returned_object.texts;
       },
       error => {
-        console.log("O meu nome é erro");
+        console.log(error);
       }
     );
   }

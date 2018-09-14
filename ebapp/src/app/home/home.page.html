@@ -4,12 +4,8 @@
   </ion-toolbar>
 
   <ion-toolbar>
-    <ion-searchbar
-    [(ngModel)]="myInput"
-    [showCancelButton]="shouldShowCancel"
-    (ionInput)="filterList($event)"
-    (ionCancel)="onCancel($event)"
-    placeholder="Buscar Texto">
+    <ion-searchbar [(ngModel)]="myInput" [showCancelButton]="shouldShowCancel" (ionInput)="filterList($event)"
+      (ionCancel)="onCancel($event)" placeholder="Buscar Texto">
     </ion-searchbar>
   </ion-toolbar>
 </ion-header>
