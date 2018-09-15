@@ -1,8 +1,8 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title class="toolbar-title">Dentist</ion-title>
+    <ion-title class="toolbar-title">Dentist App</ion-title>
   </ion-toolbar>
-
+  
   <ion-toolbar>
     <ion-searchbar [(ngModel)]="myInput" [showCancelButton]="shouldShowCancel" (ionInput)="filterList($event)"
       (ionCancel)="onCancel($event)" placeholder="Procurar por texto">
@@ -20,36 +20,58 @@
     <!-- Designers Team (For testing purposes) -->
     <ion-grid>
       <ion-row>
+        <ion-col>
           <ion-button class="list-button" expand="full" size="large" shape="round" ion-item>
-              <ion-img class="list-button-img" src="assets/img/diagnostico.png"></ion-img>
-             <span class="list-button-text">Diagnóstico</span>
-            </ion-button>        
+            <ion-img class="list-button-img" src="assets/img/diagnostico.png"></ion-img>
+            <span class="list-button-text">Diagnóstico</span>
+          </ion-button>
+        </ion-col>        
       </ion-row>
       <ion-row>
-          <ion-button class="list-button" expand="full" size="large" shape="round" ion-item>
+        <ion-col>
+          <div>
+            <ion-button class="list-button" expand="full" size="large" shape="round" ion-item>
               <ion-img class="list-button-img" src="assets/img/estetica.png"></ion-img>
               <span class="list-button-text">Estética</span>
-            </ion-button>        
+            </ion-button>      
+          </div>
+        </ion-col>        
       </ion-row>
       <ion-row>
+        <ion-col>
           <ion-button class="list-button" expand="full" size="large" shape="round" ion-item>
-              <ion-img class="list-button-img" src="assets/img/habitos.png"></ion-img>
-              <span class="list-button-text">Hábitos</span>
-            </ion-button>        
+            <ion-img class="list-button-img" src="assets/img/habitos.png"></ion-img>
+            <span class="list-button-text">Hábitos</span>
+          </ion-button>
+        </ion-col>        
       </ion-row>
       <ion-row>
+        <ion-col>
           <ion-button class="list-button" expand="full" size="large" shape="round" ion-item>
-              <ion-img class="list-button-img" src="assets/img/prevencao.png"></ion-img>
-              <span class="list-button-text">Prevenção</span>
-            </ion-button>        
+            <ion-img class="list-button-img" src="assets/img/prevencao.png"></ion-img>
+            <span class="list-button-text">Prevenção</span>
+          </ion-button>  
+        </ion-col>      
       </ion-row>
       <ion-row>
+        <ion-col>
           <ion-button class="list-button" expand="full" size="large" shape="round" ion-item>
-              <ion-img class="list-button-img" src="assets/img/sismatologia.png"></ion-img>
-              <span class="list-button-text">Sismatologia</span>
-            </ion-button>        
+            <ion-img class="list-button-img" src="assets/img/sismatologia.png"></ion-img>
+            <span class="list-button-text">Sismatologia</span>
+          </ion-button> 
+        </ion-col>       
       </ion-row>
     </ion-grid>
-
   </ion-list>
+  
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button>
+      <ion-icon name="arrow-dropleft"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="start">
+      <ion-fab-button><ion-icon name="logo-facebook"></ion-icon></ion-fab-button>
+      <ion-fab-button><ion-icon name="calendar"></ion-icon></ion-fab-button>
+      <ion-fab-button><ion-icon name="list"></ion-icon></ion-fab-button>
+    </ion-fab-list>
+  </ion-fab>
 </ion-content>  

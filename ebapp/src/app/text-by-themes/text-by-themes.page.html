@@ -1,20 +1,34 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>{{ theme }}</ion-title>
+    <ion-title class="toolbar-title">{{theme}}</ion-title>
   </ion-toolbar>
+  
+  <ion-toolbar>
+    <ion-searchbar [(ngModel)]="myInput" [showCancelButton]="shouldShowCancel" (ionInput)="filterList($event)"
+    (ionCancel)="onCancel($event)" placeholder="Procurar por texto">
+  </ion-searchbar>
+</ion-toolbar>
 </ion-header>
 
 
 <ion-content padding>
-
+  
+  <!-- Developers Team (For functionalities purposes) -->
   <ion-card *ngFor="let text of texts" (click)="goToDetail($event, text)">
-
     <ion-item>
       <h2>{{ text.title }}</h2>
     </ion-item>
-
     <ion-img [src]="text.image"></ion-img>
-
   </ion-card>
-
+  <!-- Designers Team (For testing purposes) -->
+  <ion-card class="card">
+    <ion-img src="https://www.orthodonticslimited.com/wp-content/uploads/2016/08/woman-about-to-brush-teeth.jpg"></ion-img>
+    <div class="card-text">
+      <span class="card-text-title">A importância da escovação</span>
+    </div>
+    <ion-card-content style="background-color: #f2f2f2;">
+      <p>Author: Gabriela Date: 25/03/2018</p>
+    </ion-card-content>
+  </ion-card>
+  
 </ion-content>

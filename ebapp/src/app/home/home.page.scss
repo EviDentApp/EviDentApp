@@ -6,16 +6,15 @@
     font-weight: bold;
     font-size: 30px;
     font-family: 'Patua One', cursive;
+    text-shadow: 3px 0 0 #000, -3px 0 0 #000, 0 3px 0 #000, 0 -3px 0 #000, 1px 1px #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000;
 }
 
 .list-button {
-    border-radius: 50px;
     --background: #008EE0;
-    width: 400px;
 }
 
 .list-button-img {
-    width: 13%;
+    width: 13.5%;
     height: auto;
 }
 
@@ -24,4 +23,13 @@
     font-family: 'Catamaran', sans-serif;
     font-weight: bold;
     margin-left: 10px;
+}
+
+ion-fab-button {
+   --background: #0079BF;
+}
+
+ion-icon {
+    font-size: 30px;
+    color: white;
 }
