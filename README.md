@@ -65,6 +65,17 @@ Run the following commands in the Linux terminal, replacing PROJECT-DIRECTORY wi
 We strongly recommend using the Google Chrome web browser for running an Ionic app. Google Chrome can be downloaded from this website:
 > https://www.google.com/chrome/
 
+## Run an Ionic app with docker
+
+Run the following command in the Dockerfile directory to build the container and image:
+
+> sudo docker build -t ionic .
+
+Run the following the command in the Dockerfile directory to run the image, replacing LOCAL-DIRECTORY with the complete location of the ionic source files:
+
+> sudo docker run -p 8100:8100 -v LOCAL-DIRECTORY:/app ionic
+
+
 # Logs
 
 29th of August- 10:00 to 12:14
