@@ -2,7 +2,7 @@
   <ion-toolbar>
     <ion-title class="toolbar-title">Dentist</ion-title>
   </ion-toolbar>
-  
+
   <ion-toolbar>
     <ion-searchbar [(ngModel)]="myInput" [showCancelButton]="shouldShowCancel" (ionInput)="filterList($event)"
       (ionCancel)="onCancel($event)" placeholder="Procurar por texto">
@@ -10,9 +10,11 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="page-content" padding>
-  <ion-list class="list">
+<ng-container *ngIf="myInput;else themesList">
+  <ion-content padding>
+  
     <!-- Developers Team (For functionalities purposes) -->
+<<<<<<< HEAD
     <ion-button class="list-item" ion-item *ngFor="let theme of themes" (click)="themeTapped($event, theme)">
       {{theme.name}}
       <ion-img src="assets/img/estetica.png"></ion-img>
@@ -95,3 +97,90 @@
     </ion-grid>
   </div>
 </ion-content>  
+=======
+    <ion-card *ngFor="let text of texts" (click)="goToDetail($event, text)">
+      <ion-item>
+        <h2>{{ text.title }}</h2>
+      </ion-item>
+      <ion-img [src]="text.image"></ion-img>
+    </ion-card>
+    <!-- Designers Team (For testing purposes) -->
+
+    
+  </ion-content>
+</ng-container>
+
+<ng-template #themesList>
+  <ion-content class="page-content" padding>
+    <ion-list class="list">
+      <!-- Developers Team (For functionalities purposes) -->
+      <ion-button class="list-item" shape="round" ion-item *ngFor="let theme of themes" (click)="themeTapped($event, theme)">
+        {{theme.name}}
+        <ion-img src="assets/img/estetica.png"></ion-img>
+      </ion-button>
+      <!-- Designers Team (For testing purposes) -->
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <ion-button class="list-button" expand="full" size="large" shape="round" ion-item>
+              <ion-img class="list-button-img" src="assets/img/diagnostico.png"></ion-img>
+              <span class="list-button-text">Diagnóstico</span>
+            </ion-button>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <div>
+              <ion-button class="list-button" expand="full" size="large" shape="round" ion-item>
+                <ion-img class="list-button-img" src="assets/img/estetica.png"></ion-img>
+                <span class="list-button-text">Estética</span>
+              </ion-button>
+            </div>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-button class="list-button" expand="full" size="large" shape="round" ion-item>
+              <ion-img class="list-button-img" src="assets/img/habitos.png"></ion-img>
+              <span class="list-button-text">Hábitos</span>
+            </ion-button>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-button class="list-button" expand="full" size="large" shape="round" ion-item>
+              <ion-img class="list-button-img" src="assets/img/prevencao.png"></ion-img>
+              <span class="list-button-text">Prevenção</span>
+            </ion-button>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-button class="list-button" expand="full" size="large" shape="round" ion-item>
+              <ion-img class="list-button-img" src="assets/img/sismatologia.png"></ion-img>
+              <span class="list-button-text">Sismatologia</span>
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-list>
+
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+      <ion-fab-button>
+        <ion-icon name="arrow-dropleft"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-list side="start">
+        <ion-fab-button>
+          <ion-icon name="logo-facebook"></ion-icon>
+        </ion-fab-button>
+        <ion-fab-button>
+          <ion-icon name="calendar"></ion-icon>
+        </ion-fab-button>
+        <ion-fab-button>
+          <ion-icon name="list"></ion-icon>
+        </ion-fab-button>
+      </ion-fab-list>
+    </ion-fab>
+  </ion-content>
+</ng-template>
+>>>>>>> e0241e51a843a16536f29b64fe367049f6e27d80

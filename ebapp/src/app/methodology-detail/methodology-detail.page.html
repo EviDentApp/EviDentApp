@@ -1,12 +1,14 @@
 <ion-header *ngIf="methodology">
   <ion-toolbar>
-    <ion-title>{{ methodology.name }}</ion-title>
+    <ion-title>Detalhes da Metodologia</ion-title>
   </ion-toolbar>
 </ion-header>
 <ion-content padding>
 
   <ion-card *ngIf="methodology">
-
+    <ion-item>
+      <h2>{{methodology.name}}</h2>
+    </ion-item>
     <ion-item>
       <p>{{ methodology.text }}</p>
     </ion-item>

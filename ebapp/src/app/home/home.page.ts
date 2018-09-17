@@ -8,7 +8,10 @@ import { Router } from '@angular/router';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-  themes: string[];
+  public themes: string[];
+  public keyword: string;
+  public texts: string[];
+
   constructor(
     private requisition: RequisitionsService,
     private router: Router) {
@@ -31,11 +34,24 @@ export class HomePage {
     );
   }
   filterList(keyword: any) {
-    let val = keyword.target.value;
-    console.log(val)
+    this.keyword = keyword.target.value;
+    this.requisition.textGetList ('', this.keyword).subscribe (
+      data => {
+        const response = (data as any);
+        const returned_object = JSON.parse(response._body);
+        this.texts = returned_object.texts;
+        
+      },
+      error => {
+        console.log(error);
+      }
+    );
   }
 
   themeTapped(event, theme) {
     this.router.navigate(['textByThemes', { id: theme.id, theme: theme.name }])
+  }
+  goToDetail(event, text) {
+    this.router.navigate(['textDetail', { text_id: text.id, text_title: text.title }])
   }
 }
