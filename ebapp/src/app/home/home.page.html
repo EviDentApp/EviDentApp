@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title class="toolbar-title">Dentist App</ion-title>
+    <ion-title class="toolbar-title">Dentist</ion-title>
   </ion-toolbar>
   
   <ion-toolbar>
@@ -13,7 +13,7 @@
 <ion-content class="page-content" padding>
   <ion-list class="list">
     <!-- Developers Team (For functionalities purposes) -->
-    <ion-button class="list-item" shape="round" ion-item *ngFor="let theme of themes" (click)="themeTapped($event, theme)">
+    <ion-button class="list-item" ion-item *ngFor="let theme of themes" (click)="themeTapped($event, theme)">
       {{theme.name}}
       <ion-img src="assets/img/estetica.png"></ion-img>
     </ion-button>
@@ -21,7 +21,7 @@
     <ion-grid>
       <ion-row>
         <ion-col>
-          <ion-button class="list-button" expand="full" size="large" shape="round" ion-item>
+          <ion-button class="list-button" expand="full" size="large" style="border-color: #008EE0;" ion-item>
             <ion-img class="list-button-img" src="assets/img/diagnostico.png"></ion-img>
             <span class="list-button-text">Diagnóstico</span>
           </ion-button>
@@ -30,7 +30,7 @@
       <ion-row>
         <ion-col>
           <div>
-            <ion-button class="list-button" expand="full" size="large" shape="round" ion-item>
+            <ion-button class="list-button" expand="full" size="large" style="border-color: #891009;" ion-item>
               <ion-img class="list-button-img" src="assets/img/estetica.png"></ion-img>
               <span class="list-button-text">Estética</span>
             </ion-button>      
@@ -39,7 +39,7 @@
       </ion-row>
       <ion-row>
         <ion-col>
-          <ion-button class="list-button" expand="full" size="large" shape="round" ion-item>
+          <ion-button class="list-button" expand="full" size="large" style="border-color: #E09900;" ion-item>
             <ion-img class="list-button-img" src="assets/img/habitos.png"></ion-img>
             <span class="list-button-text">Hábitos</span>
           </ion-button>
@@ -47,7 +47,7 @@
       </ion-row>
       <ion-row>
         <ion-col>
-          <ion-button class="list-button" expand="full" size="large" shape="round" ion-item>
+          <ion-button class="list-button" expand="full" size="large" style="border-color: #00600C;" ion-item>
             <ion-img class="list-button-img" src="assets/img/prevencao.png"></ion-img>
             <span class="list-button-text">Prevenção</span>
           </ion-button>  
@@ -55,7 +55,7 @@
       </ion-row>
       <ion-row>
         <ion-col>
-          <ion-button class="list-button" expand="full" size="large" shape="round" ion-item>
+          <ion-button class="list-button" expand="full" size="large" style="border-color: #6C5147;" ion-item>
             <ion-img class="list-button-img" src="assets/img/sismatologia.png"></ion-img>
             <span class="list-button-text">Sismatologia</span>
           </ion-button> 
@@ -63,15 +63,35 @@
       </ion-row>
     </ion-grid>
   </ion-list>
-  
-  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button>
-      <ion-icon name="arrow-dropleft"></ion-icon>
-    </ion-fab-button>
-    <ion-fab-list side="start">
-      <ion-fab-button><ion-icon name="logo-facebook"></ion-icon></ion-fab-button>
-      <ion-fab-button><ion-icon name="calendar"></ion-icon></ion-fab-button>
-      <ion-fab-button><ion-icon name="list"></ion-icon></ion-fab-button>
-    </ion-fab-list>
-  </ion-fab>
+
+  <div class="footer">
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-row>
+            <ion-icon name="logo-facebook" style="color: black;"></ion-icon>
+          </ion-row>
+          <ion-row>
+            <span class="footer-text">Facebook</span>
+          </ion-row>
+        </ion-col>
+        <ion-col>
+          <ion-row>
+            <ion-icon name="calendar" style="color: black;"></ion-icon>
+          </ion-row>
+          <ion-row>
+            <span>Calendário</span>
+          </ion-row>
+        </ion-col>
+        <ion-col>
+          <ion-row>
+            <ion-icon name="list" style="color: black;"></ion-icon>
+          </ion-row>
+          <ion-row>
+            <span>Catálogo</span>
+          </ion-row>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
 </ion-content>  
