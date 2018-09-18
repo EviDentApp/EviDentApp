@@ -1,14 +1,12 @@
 @import url('https://fonts.googleapis.com/css?family=Patua+One');
 @import url('https://fonts.googleapis.com/css?family=Catamaran:400,800');
 
-ion-toolbar {
-    --background: #000000;  
-}
 
 .toolbar-title {
     text-align: center;
     font-size: 30px;
     font-family: 'Patua One', cursive;
+    text-shadow: 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000, 1px 1px #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000;
 }
 
 .list-button {
@@ -31,6 +29,18 @@ ion-toolbar {
     text-shadow: 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000, 1px 1px #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000;
 }
 
+.list-button-footer {
+    --background: #c5dff9 ;
+    flex-direction: column; 
+    font-family: 'Catamaran', sans-serif;
+    font-weight: bold;
+    text-shadow: 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000, 1px 1px #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000;
+}
+
+.list-button-footer-text {
+    text-shadow: 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000, 1px 1px #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000;
+}
+
 .footer {
     background-color: #ededed;
 }
@@ -39,10 +49,11 @@ ion-toolbar {
     text-align: center;
 }
 
-ion-fab-button {
-   --background: #000000;
-}
+.row-footer {
+   margin: 0px !important;
+   padding: 0px !important;
 
+}
 ion-icon {
     font-size: 30px;
     color: white;

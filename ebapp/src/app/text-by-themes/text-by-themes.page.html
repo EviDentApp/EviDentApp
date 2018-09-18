@@ -14,10 +14,10 @@
   <ion-content padding>
 
     <ion-card *ngFor="let text of texts" (click)="goToDetail($event, text)">
-      <ion-item>
-        <h2>{{ text.title }}</h2>
-      </ion-item>
       <ion-img [src]="text.image"></ion-img>
+      <ion-item>
+          <h2>{{ text.title }}</h2>
+        </ion-item>
     </ion-card>
   </ion-content>
 </ng-container>
@@ -25,10 +25,17 @@
 <ng-template #newTextList>
   <ion-content padding>
     <ion-card *ngFor="let text of texts" (click)="goToDetail($event, text)">
-      <ion-item>
-        <h2>{{ text.title }}</h2>
-      </ion-item>
       <ion-img [src]="text.image"></ion-img>
+      <ion-item>
+          <h2>{{ text.title }}</h2>
+        </ion-item>
     </ion-card>
   </ion-content>
 </ng-template>
+
+
+<style>
+  ion-toolbar {
+    --ion-toolbar-background-color:#891009;
+  }
+ </style>
