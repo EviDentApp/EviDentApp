@@ -18,7 +18,8 @@ import { HttpModule } from '@angular/http';
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
-    HttpModule
+    HttpModule,
+    RouterModule.forRoot([])
   ],
   providers: [
     StatusBar,
