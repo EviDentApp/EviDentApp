@@ -1,7 +1,7 @@
 image: thompsnm/nodejs-chrome
 
 before_script:
-  - cd ./ebapp
+  - cd ebapp
   - npm install -g ionic cordova
   - npm ci
 
