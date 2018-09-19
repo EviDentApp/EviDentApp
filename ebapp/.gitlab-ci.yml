@@ -1,8 +1,0 @@
-image: thompsnm/nodejs-chrome
-
-test:
-  script:
-    - cd ebapp
-    - npm install -g ionic cordova
-    - npm ci
-    - npm run test-headless
