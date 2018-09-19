@@ -30,7 +30,7 @@
 }
 
 .list-button-footer {
-    --background: #c5dff9 ;
+    --background: #d6d6d6 ;
     flex-direction: column; 
     font-family: 'Catamaran', sans-serif;
     font-weight: bold;
@@ -38,6 +38,7 @@
 }
 
 .list-button-footer-text {
+    font-size: 80%;
     text-shadow: 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000, 1px 1px #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000;
 }
 
@@ -54,6 +55,7 @@
    padding: 0px !important;
 
 }
+
 ion-icon {
     font-size: 30px;
     color: white;

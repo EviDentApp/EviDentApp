@@ -1,31 +1,35 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Detalhe</ion-title>
+    <ion-title class="toolbar-title">Texto</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
-
-  <ion-card *ngIf="detail">
-
-    <ion-item>
-      <h2>{{ detail.title }}</h2>
-    </ion-item>
-
+  <ion-grid>
     <ion-img [src]="detail.image"></ion-img>
-
-    <ion-item>
-      <p>{{ detail.abstract }}</p>
-    </ion-item>
-
-    <ion-item>
-        <ion-button (click)="goToMethodology($event, detail.methodology)">Metodologia</ion-button>
-    </ion-item>
-    
-    <ion-item>
-        <ion-button href="{{detail.paper_link}}">Link para Artigo</ion-button>
-    </ion-item>
-
-  </ion-card>
-
+    <h2>{{ detail.title }}</h2>
+    <p>{{ detail.abstract }}</p>
+  </ion-grid>
 </ion-content>
+
+<ion-footer>
+  <ion-row>
+      <ion-col>
+          <ion-button class="list-button-footer" expand="full" size="large" href="{{detail.paper_link}}">
+              <span class="list-button-footer-text">Artigo</span>
+          </ion-button>
+      </ion-col>
+      <ion-col>
+          <ion-button class="list-button-footer"expand="full" size="large" color="primary" (click)="goToMethodology($event, detail.methodology)"> 
+            <span class="list-button-footer-text">Metodologias</span>
+          </ion-button>
+        </ion-col>
+  </ion-row>
+</ion-footer>
+
+
+<style>
+  ion-toolbar {
+    --ion-toolbar-background-color:#891009;
+  }
+</style>

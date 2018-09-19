@@ -1,18 +1,18 @@
 <ion-header *ngIf="methodology">
   <ion-toolbar>
-    <ion-title>Detalhes da Metodologia</ion-title>
+    <ion-title class="toolbar-title">Detalhes da Metodologia</ion-title>
   </ion-toolbar>
 </ion-header>
 <ion-content padding>
 
-  <ion-card *ngIf="methodology">
-    <ion-item>
-      <h2>{{methodology.name}}</h2>
-    </ion-item>
-    <ion-item>
-      <p>{{ methodology.text }}</p>
-    </ion-item>
-
-  </ion-card>
-
+  <ion-grid>
+    <h2>{{methodology.name}}</h2>
+    <p>{{ methodology.text }}</p>
+  </ion-grid>
 </ion-content>
+
+<style>
+  ion-toolbar {
+    --ion-toolbar-background-color:#891009;
+  }
+</style>

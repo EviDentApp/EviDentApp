@@ -25,9 +25,10 @@
 <ng-template #newTextList>
   <ion-content padding>
     <ion-card *ngFor="let text of texts" (click)="goToDetail($event, text)">
-      <ion-img [src]="text.image"></ion-img>
+      <ion-img class="card-image" [src]="text.image"></ion-img>
       <ion-item>
-          <h2>{{ text.title }}</h2>
+          <span class="card-text">{{ text.title }}</span>
+          <ion-icon class="card-thermometer" name="thermometer"></ion-icon>
         </ion-item>
     </ion-card>
   </ion-content>
@@ -37,5 +38,16 @@
 <style>
   ion-toolbar {
     --ion-toolbar-background-color:#891009;
+  }
+
+  .card-image {
+    border-bottom: 4px #891009 solid;  
+  }
+
+  /* Atenção equipe de desenvolvimento, mudar o atributo color 
+  do card-thermometer para red, yellow ou green de acordo com a importância do texto. */
+  .card-thermometer {
+    font-size: 10vh;
+    color: red;
   }
  </style>
