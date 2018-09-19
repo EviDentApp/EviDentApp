@@ -1,0 +1,9 @@
+image: thompsnm/nodejs-chrome
+
+before_script:
+  - npm install -g ionic cordova
+  - npm ci
+
+test:
+  script:
+    - npm run test-headless
