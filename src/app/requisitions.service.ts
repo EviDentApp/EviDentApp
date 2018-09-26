@@ -10,7 +10,7 @@ export class RequisitionsService {
   private bodyThemesList = { "key": '123' }
   private bodyTextList = {
                           "key": '123',
-                          "theme": '',
+                          "theme": "",
                           "keyword": ''
                         }
 

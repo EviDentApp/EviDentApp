@@ -34,12 +34,13 @@ export class HomePage {
   }
   filterList(keyword: any) {
     this.keyword = keyword.target.value;
-    this.requisition.textGetList('', this.keyword).subscribe(
+    console.log(this.keyword)
+    this.requisition.textGetList("", this.keyword).subscribe(
       data => {
         const response = (data as any);
         const returned_object = JSON.parse(response._body);
         this.texts = returned_object.texts;
-
+        console.log(this.texts)
       },
       error => {
         console.log(error);
