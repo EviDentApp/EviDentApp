@@ -24,9 +24,8 @@ export class HomePage {
     this.requisition.themesGetList().subscribe(
       data => {
         const response = (data as any);
-        const objeto_retorno = JSON.parse(response._body);
-        this.themes = objeto_retorno.themes;
-
+        const returned_object = JSON.parse(response._body);
+        this.themes = returned_object.themes;
       },
       error => {
         console.log(error);
@@ -35,12 +34,12 @@ export class HomePage {
   }
   filterList(keyword: any) {
     this.keyword = keyword.target.value;
-    this.requisition.textGetList ('', this.keyword).subscribe (
+    this.requisition.textGetList('', this.keyword).subscribe(
       data => {
         const response = (data as any);
         const returned_object = JSON.parse(response._body);
         this.texts = returned_object.texts;
-        
+
       },
       error => {
         console.log(error);
@@ -49,9 +48,9 @@ export class HomePage {
   }
 
   themeTapped(event, theme) {
-    this.router.navigate(['textByThemes', { id: theme.id, theme: theme.name }])
+    this.router.navigate(['textByThemes', { id: theme._id, theme: theme.name }])
   }
   goToDetail(event, text) {
-    this.router.navigate(['textDetail', { text_id: text.id, text_title: text.title }])
+    this.router.navigate(['textDetail', { text_id: text._id, text_title: text.title }])
   }
 }

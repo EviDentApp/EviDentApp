@@ -24,8 +24,6 @@ export class TextByThemesPage implements OnInit {
     this.theme = this.route.snapshot.paramMap.get('theme');
     this.id = this.route.snapshot.paramMap.get('id');
     this.initialize(this.id, '');
-    console.log (this.id)
-    console.log(this.texts)
   }
 
   initialize(theme, keyword) {
@@ -34,6 +32,7 @@ export class TextByThemesPage implements OnInit {
         const response = (data as any);
         const returned_object = JSON.parse(response._body);
         this.texts = returned_object.texts;
+        console.log(this.texts[0].url_image)
       },
       error => {
         console.log(error);
@@ -48,7 +47,6 @@ export class TextByThemesPage implements OnInit {
         const response = (data as any);
         const returned_object = JSON.parse(response._body);
         this.texts = returned_object.texts;
-        
       },
       error => {
         console.log(error);
@@ -57,6 +55,6 @@ export class TextByThemesPage implements OnInit {
   }
 
   goToDetail(event, text) {
-    this.router.navigate(['textDetail', { text_id: text.id, text_title: text.title }])
+    this.router.navigate(['textDetail', { text_id: text._id, text_title: text.title }])
   }
 }

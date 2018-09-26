@@ -6,7 +6,7 @@ import { Http } from '@angular/http'
 })
 export class RequisitionsService {
  
-  private endpoint = "https://ebapp.herokuapp.com" 
+  private endpoint = "http://localhost:5000" 
   private bodyThemesList = { "key": '123' }
   private bodyTextList = {
                           "key": '123',
@@ -16,12 +16,12 @@ export class RequisitionsService {
 
   private bodyTextDetail = {
                           "key": '123',
-                          "id": ''
+                          "_id": 0
                         }
 
   private bodyMethodologyDetail = {
                                   "key": '123',
-                                  "id": ''
+                                  "_id": 0
   }
 
   constructor(public http: Http) {
@@ -38,13 +38,12 @@ export class RequisitionsService {
   }
 
   textGetDetail(text_id) {
-    this.bodyTextDetail.id = text_id;
+    this.bodyTextDetail._id = Number(text_id);
     return this.http.post(this.endpoint + "/text/detail", this.bodyTextDetail);
   }
 
   methodologyGetDetail(metho_id) {
-    this.bodyMethodologyDetail.id = metho_id;
-    //console.log(metho_id);
+    this.bodyMethodologyDetail._id = Number(metho_id);
     return this.http.post(this.endpoint + "/methodology/detail", this.bodyMethodologyDetail);
   }
 }

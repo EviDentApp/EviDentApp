@@ -15,11 +15,10 @@ export class MethodologyDetailPage implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private requisition: RequisitionsService
-  ) {
-    this.metho_id = this.route.snapshot.paramMap.get('metho_id');
-  }
+  ) { }
 
   ngOnInit() {
+    this.metho_id = this.route.snapshot.paramMap.get('metho_id');
     this.initialize(this.metho_id);
   }
 

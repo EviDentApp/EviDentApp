@@ -16,7 +16,7 @@
 <ng-container *ngIf="myInput;else newTextList">
   <ion-content padding>
     <ion-card *ngFor="let text of texts" (click)="goToDetail($event, text)">
-      <ion-img class="card-image" [src]="text.image"></ion-img>
+      <ion-img class="card-image" [src]="text.url_image"></ion-img>
       <ion-item>
           <span class="card-text">{{ text.title }}</span>
           <ion-icon class="card-thermometer" name="thermometer"></ion-icon>
@@ -28,7 +28,7 @@
 <ng-template #newTextList>
   <ion-content padding>
     <ion-card *ngFor="let text of texts" (click)="goToDetail($event, text)">
-      <ion-img class="card-image" [src]="text.image"></ion-img>
+      <ion-img class="card-image" [src]="text.url_image"></ion-img>
       <ion-item>
           <span class="card-text">{{ text.title }}</span>
           <ion-icon class="card-thermometer" name="thermometer"></ion-icon>
