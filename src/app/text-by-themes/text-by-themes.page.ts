@@ -10,7 +10,8 @@ import { LoadingController } from '@ionic/angular';
 })
 export class TextByThemesPage implements OnInit {
 
-  public theme: string;
+  public name: string;
+  public color: string;
   public id: string;
   public texts: any;
   public keyword: string;
@@ -23,7 +24,8 @@ export class TextByThemesPage implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.theme = this.route.snapshot.paramMap.get('theme');
+    this.name = this.route.snapshot.paramMap.get('name');
+    this.color = this.route.snapshot.paramMap.get('color');
     this.id = this.route.snapshot.paramMap.get('id');
     this.initialize(this.id, '');
   }
@@ -63,6 +65,6 @@ export class TextByThemesPage implements OnInit {
   }
 
   goToDetail(event, text) {
-    this.router.navigate(['textDetail', { text_id: text._id, text_title: text.title }])
+    this.router.navigate(['textDetail', { text_id: text.id, text_title: text.title }]);
   }
 }

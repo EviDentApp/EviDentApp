@@ -25,3 +25,22 @@ ion-item {
     height: 20vh;
     width: 100vw;
 }
+
+.container {
+    position: relative;
+}
+
+.thermometer {
+    height: 18px;
+    width: 100%;
+    background-color: lightgray;
+    border-radius: 5px;
+}
+
+.thermometer-level {
+    height: 18px;
+    width: 50%;
+    border-radius: 5px;
+    position: absolute;
+    z-index: 10;
+}

@@ -55,7 +55,6 @@ export class HomePage {
         const response = (data as any);
         const returned_object = JSON.parse(response._body);
         this.texts = returned_object.texts;
-        console.log(this.texts)
       },
       error => {
         console.log(error);
@@ -65,7 +64,7 @@ export class HomePage {
   }
 
   themeTapped(event, theme) {
-    this.router.navigate(['textByThemes', { id: theme._id, theme: theme.name }])
+    this.router.navigate(['textByThemes', { id: theme._id, name: theme.name, color: theme.color}])
   }
   goToDetail(event, text) {
     this.router.navigate(['textDetail', { text_id: text._id, text_title: text.title }])
