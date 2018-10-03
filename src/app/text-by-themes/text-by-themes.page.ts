@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RequisitionsService } from '../requisitions.service';
+import { LoadingController } from '@ionic/angular';
 
 @Component({
   selector: 'app-text-by-themes',
@@ -17,7 +18,8 @@ export class TextByThemesPage implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private requisition: RequisitionsService,
-    private router: Router
+    private router: Router,
+    private loadCtrl: LoadingController
   ) { }
 
   ngOnInit() {
@@ -26,18 +28,24 @@ export class TextByThemesPage implements OnInit {
     this.initialize(this.id, '');
   }
 
-  initialize(theme, keyword) {
-    this.requisition.textGetList(theme, keyword).subscribe(
-      data => {
-        const response = (data as any);
-        const returned_object = JSON.parse(response._body);
-        this.texts = returned_object.texts;
-        console.log(this.texts[0].url_image)
-      },
-      error => {
-        console.log(error);
-      }
-    );
+  async initialize(theme, keyword) {
+    const loading = await this.loadCtrl.create({
+      message: "Loading"
+    });
+    loading.present().then(() => {
+      this.requisition.textGetList(theme, keyword).subscribe(
+        data => {
+          const response = (data as any);
+          const returned_object = JSON.parse(response._body);
+          this.texts = returned_object.texts;
+          console.log(this.texts[0].url_image)
+        },
+        error => {
+          console.log(error);
+        }
+      );
+      loading.dismiss();
+    }); 
   }
 
   filterList(keyword: any) {

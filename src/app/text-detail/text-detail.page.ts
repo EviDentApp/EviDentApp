@@ -1,6 +1,7 @@
 import { Component, OnInit, APP_INITIALIZER } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RequisitionsService } from '../requisitions.service';
+import { LoadingController } from '@ionic/angular';
 
 @Component({
   selector: 'app-text-detail',
@@ -15,7 +16,8 @@ export class TextDetailPage implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private requisition: RequisitionsService,
-    private router: Router
+    private router: Router,
+    private loadCtrl: LoadingController
   ) { }
 
   ngOnInit() {
@@ -24,17 +26,23 @@ export class TextDetailPage implements OnInit {
     this.initialize(this.text_id)
   }
 
-  initialize(text_id) {
-    this.requisition.textGetDetail(text_id).subscribe(
-      data => {
-        const response = (data as any);
-        const returned_object = JSON.parse(response._body);
-        this.detail = returned_object.text;
-      },
-      error => {
-        console.log(error);
-      }
-    );
+  async initialize(text_id) {
+    const loading = await this.loadCtrl.create( {
+      message: "Loading"
+    });
+    loading.present().then(() => {
+      this.requisition.textGetDetail(text_id).subscribe(
+        data => {
+          const response = (data as any);
+          const returned_object = JSON.parse(response._body);
+          this.detail = returned_object.text;
+        },
+        error => {
+          console.log(error);
+        }
+      );  
+      loading.dismiss();  
+    });
   }
 
   goToMethodology(event, methodology_id) {

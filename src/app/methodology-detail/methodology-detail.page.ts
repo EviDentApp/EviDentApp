@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, LoadChildren } from '@angular/router';
 import { RequisitionsService } from '../requisitions.service';
+import { LoadingController } from '@ionic/angular';
 
 @Component({
   selector: 'app-methodology-detail',
@@ -14,7 +15,8 @@ export class MethodologyDetailPage implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private requisition: RequisitionsService
+    private requisition: RequisitionsService,
+    private loadCtrl: LoadingController
   ) { }
 
   ngOnInit() {
@@ -22,16 +24,22 @@ export class MethodologyDetailPage implements OnInit {
     this.initialize(this.metho_id);
   }
 
-  initialize(metho_id) {
-    this.requisition.methodologyGetDetail(metho_id).subscribe(
-      data => {
-        const response = (data as any);
-        const returned_object = JSON.parse(response._body);
-        this.methodology = returned_object.methodology;
-      },
-      error => {
-        console.log(error);
-      }
-    );
+  async initialize(metho_id) {
+    const loading = await this.loadCtrl.create({
+      message: "Loading"
+    });
+    loading.present().then(() => {
+      this.requisition.methodologyGetDetail(metho_id).subscribe(
+        data => {
+          const response = (data as any);
+          const returned_object = JSON.parse(response._body);
+          this.methodology = returned_object.methodology;
+        },
+        error => {
+          console.log(error);
+        }
+      );
+      loading.dismiss();
+    });
   }
 }
