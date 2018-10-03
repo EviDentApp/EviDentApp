@@ -50,7 +50,7 @@ export class HomePage {
   }
 
   themeTapped(event, theme) {
-    this.router.navigate(['textByThemes', { id: theme.id, name: theme.name, color: theme.color}])
+    this.router.navigate(['textByThemes', { id: theme._id, name: theme.name, color: theme.color}])
   }
   goToDetail(event, text) {
     this.router.navigate(['textDetail', { text_id: text._id, text_title: text.title }])

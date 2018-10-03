@@ -5,23 +5,23 @@
     </ion-buttons>
     <ion-title class="toolbar-title">{{name}}</ion-title>
   </ion-toolbar>
-
-  <ion-toolbar>
+  
+  <ion-toolbar [ngStyle]="{'--ion-toolbar-background-color': color}">
     <ion-searchbar [(ngModel)]="myInput" [showCancelButton]="shouldShowCancel" (ionInput)="filterList($event)"
-      (ionCancel)="onCancel($event)" placeholder="Procurar por texto">
-    </ion-searchbar>
-  </ion-toolbar>
+    (ionCancel)="onCancel($event)" placeholder="Procurar por texto">
+  </ion-searchbar>
+</ion-toolbar>
 </ion-header>
 
 <ng-container *ngIf="myInput;else newTextList">
   <ion-content padding>
     <ion-card *ngFor="let text of texts" (click)="goToDetail($event, text)">
       <ion-item>
-          <span class="card-text">{{text.title}}</span>
-          <ion-icon class="card-thermometer" name="thermometer"></ion-icon>
-        </ion-item>
+        <span class="card-text">{{text.title}}</span>
+        <ion-icon class="card-thermometer" name="thermometer"></ion-icon>
+      </ion-item>
     </ion-card>
-    </ion-content>
+  </ion-content>
 </ng-container>
 
 <ng-template #newTextList>
@@ -29,9 +29,22 @@
     <ion-card *ngFor="let text of texts" (click)="goToDetail($event, text)">
       <ion-img class="card-image" [src]="text.url_image"></ion-img>
       <ion-item>
-          <span class="card-text">{{text.title}}</span>
-          <ion-icon class="card-thermometer" name="thermometer"></ion-icon>
-        </ion-item>
+        <ion-grid class="container">
+          <ion-row>
+            <ion-col>      
+              <span class="card-text">{{text.title}}</span>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>        
+              <div class="thermometer">
+                <div class="thermometer-level" [ngStyle]="{'background-color': color}"></div>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
     </ion-card>
   </ion-content>
 </ng-template>
+
