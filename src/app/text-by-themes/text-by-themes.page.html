@@ -1,9 +1,9 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar [ngStyle]="{'--ion-toolbar-background-color': color}">
     <ion-buttons>
       <ion-back-button></ion-back-button>
     </ion-buttons>
-    <ion-title class="toolbar-title">{{theme}}</ion-title>
+    <ion-title class="toolbar-title">{{name}}</ion-title>
   </ion-toolbar>
 
   <ion-toolbar>
@@ -16,9 +16,8 @@
 <ng-container *ngIf="myInput;else newTextList">
   <ion-content padding>
     <ion-card *ngFor="let text of texts" (click)="goToDetail($event, text)">
-      <ion-img class="card-image" [src]="text.image"></ion-img>
       <ion-item>
-          <span class="card-text">{{ text.title }}</span>
+          <span class="card-text">{{text.title}}</span>
           <ion-icon class="card-thermometer" name="thermometer"></ion-icon>
         </ion-item>
     </ion-card>
@@ -30,27 +29,9 @@
     <ion-card *ngFor="let text of texts" (click)="goToDetail($event, text)">
       <ion-img class="card-image" [src]="text.image"></ion-img>
       <ion-item>
-          <span class="card-text">{{ text.title }}</span>
+          <span class="card-text">{{text.title}}</span>
           <ion-icon class="card-thermometer" name="thermometer"></ion-icon>
         </ion-item>
     </ion-card>
   </ion-content>
 </ng-template>
-
-
-<style>
-  ion-toolbar {
-    --ion-toolbar-background-color:#891009;
-  }
-
-  .card-image {
-    border-bottom: 4px #891009 solid;  
-  }
-
-  /* Atenção equipe de desenvolvimento, mudar o atributo color 
-  do card-thermometer para red, yellow ou green de acordo com a importância do texto. */
-  .card-thermometer {
-    font-size: 10vh;
-    color: red;
-  }
- </style>

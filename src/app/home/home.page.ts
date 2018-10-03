@@ -20,19 +20,21 @@ export class HomePage {
   ngOnInit() {
     this.initialize();
   }
+
   initialize() {
     this.requisition.themesGetList().subscribe(
       data => {
         const response = (data as any);
         const objeto_retorno = JSON.parse(response._body);
         this.themes = objeto_retorno.themes;
-
+        console.log(objeto_retorno)
       },
       error => {
         console.log(error);
       }
     );
   }
+  
   filterList(keyword: any) {
     this.keyword = keyword.target.value;
     this.requisition.textGetList ('', this.keyword).subscribe (
@@ -40,7 +42,6 @@ export class HomePage {
         const response = (data as any);
         const returned_object = JSON.parse(response._body);
         this.texts = returned_object.texts;
-        
       },
       error => {
         console.log(error);
@@ -49,7 +50,7 @@ export class HomePage {
   }
 
   themeTapped(event, theme) {
-    this.router.navigate(['textByThemes', { id: theme.id, theme: theme.name }])
+    this.router.navigate(['textByThemes', { id: theme.id, name: theme.name, color: theme.color}])
   }
   goToDetail(event, text) {
     this.router.navigate(['textDetail', { text_id: text.id, text_title: text.title }])

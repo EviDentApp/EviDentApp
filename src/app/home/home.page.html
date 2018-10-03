@@ -16,7 +16,7 @@
         <ion-grid>
           <ion-row>
             <ion-col>
-              <ion-button class="list-button" expand="full" size="large" style="border-color: #008EE0;" ion-item *ngFor="let theme of themes" (click)="themeTapped($event, theme)">
+              <ion-button class="list-button" expand="full" size="large" ion-item *ngFor="let theme of themes" [ngStyle]="{'border-color': theme.color}" (click)="themeTapped($event, theme)">
                 <ion-img class="list-button-img" src="assets/img/diagnostico.png"></ion-img>
                 <span class="list-button-text">{{theme.name}}</span>
               </ion-button>
@@ -33,7 +33,7 @@
       <ion-grid>
         <ion-row>
           <ion-col>
-            <ion-button class="list-button" expand="full" size="large" style="border-color: #008EE0;" ion-item *ngFor="let theme of themes" (click)="themeTapped($event, theme)">
+            <ion-button class="list-button" expand="full" size="large" ion-item *ngFor="let theme of themes" [ngStyle]="{'border-color': theme.color}" (click)="themeTapped($event, theme)">
               <ion-img class="list-button-img" src="assets/img/diagnostico.png"></ion-img>
               <span class="list-button-text">{{theme.name}}</span>
             </ion-button>
@@ -53,15 +53,8 @@
           <ion-col>
               <ion-button class="list-button-footer"expand="full" size="large" color="primary"> 
                 <span class="list-button-footer-text">Calendário</span>
-              </ion-button>
-              
+              </ion-button>            
             </ion-col>
-  
-          <ion-col>
-              <ion-button class="list-button-footer" expand="full" size="large" color="primary">
-                  <span class="list-button-footer-text">Catálogo</span>
-                </ion-button>
-              </ion-col>
-      </ion-row>
+        </ion-row>
   </ion-footer>
 </ng-template>
