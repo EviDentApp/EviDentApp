@@ -4,15 +4,15 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content padding *ngIf="detail">
   <ion-grid>
-    <ion-img [src]="detail.image"></ion-img>
+    <ion-img [src]="detail.url_image"></ion-img>
     <h2>{{ detail.title }}</h2>
     <p>{{ detail.abstract }}</p>
   </ion-grid>
 </ion-content>
 
-<ion-footer>
+<ion-footer *ngIf="detail">
   <ion-row>
       <ion-col>
           <ion-button class="list-button-footer" expand="full" size="large" href="{{detail.paper_link}}">
@@ -20,7 +20,7 @@
           </ion-button>
       </ion-col>
       <ion-col>
-          <ion-button class="list-button-footer"expand="full" size="large" color="primary" (click)="goToMethodology($event, detail.methodology)"> 
+          <ion-button class="list-button-footer"expand="full" size="large" color="primary" (click)="goToMethodology($event, detail.methodologies[0])"> 
             <span class="list-button-footer-text">Metodologias</span>
           </ion-button>
         </ion-col>

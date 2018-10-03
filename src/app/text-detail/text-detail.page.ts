@@ -16,13 +16,12 @@ export class TextDetailPage implements OnInit {
     private route: ActivatedRoute,
     private requisition: RequisitionsService,
     private router: Router
-  ) {
+  ) { }
+
+  ngOnInit() {
     this.text_id = this.route.snapshot.paramMap.get('text_id');
     this.text_title = this.route.snapshot.paramMap.get('text_title');
     this.initialize(this.text_id)
-  }
-
-  ngOnInit() {
   }
 
   initialize(text_id) {
@@ -41,5 +40,4 @@ export class TextDetailPage implements OnInit {
   goToMethodology(event, methodology_id) {
     this.router.navigate(['methodologyDetail', { metho_id: methodology_id }]);
   }
-
 }

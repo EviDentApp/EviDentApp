@@ -34,6 +34,7 @@ export class TextByThemesPage implements OnInit {
         const response = (data as any);
         const returned_object = JSON.parse(response._body);
         this.texts = returned_object.texts;
+        console.log(this.texts[0].url_image)
       },
       error => {
         console.log(error);
@@ -48,7 +49,6 @@ export class TextByThemesPage implements OnInit {
         const response = (data as any);
         const returned_object = JSON.parse(response._body);
         this.texts = returned_object.texts;
-        
       },
       error => {
         console.log(error);

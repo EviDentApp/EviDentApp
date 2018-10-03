@@ -12,19 +12,14 @@
 
 <ng-container *ngIf="myInput;else themesList">
   <ion-content padding>
-    <ion-list class="list">
-        <ion-grid>
-          <ion-row>
-            <ion-col>
-              <ion-button class="list-button" expand="full" size="large" ion-item *ngFor="let theme of themes" [ngStyle]="{'border-color': theme.color}" (click)="themeTapped($event, theme)">
-                <ion-img class="list-button-img" src="assets/img/diagnostico.png"></ion-img>
-                <span class="list-button-text">{{theme.name}}</span>
-              </ion-button>
-            </ion-col>
-          </ion-row>
-        </ion-grid>
-      </ion-list>    
-  </ion-content>
+    <ion-card *ngFor="let text of texts" (click)="goToDetail($event, text)">
+      <ion-img class="card-image" [src]="text.url_image"></ion-img>
+      <ion-item>
+          <span class="card-text">{{ text.title }}</span>
+          <ion-icon class="card-thermometer" name="thermometer"></ion-icon>
+        </ion-item>
+    </ion-card>
+  </ion-content>  
 </ng-container>
 
 <ng-template #themesList>
