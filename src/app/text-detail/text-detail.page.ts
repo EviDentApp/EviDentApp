@@ -2,6 +2,7 @@ import { Component, OnInit, APP_INITIALIZER } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RequisitionsService } from '../requisitions.service';
 import { LoadingController } from '@ionic/angular';
+import { UtilService } from '../util.service';
 
 @Component({
   selector: 'app-text-detail',
@@ -14,6 +15,7 @@ export class TextDetailPage implements OnInit {
   public text_title: string;
 
   constructor(
+    private utilFunctions: UtilService,
     private route: ActivatedRoute,
     private requisition: RequisitionsService,
     private router: Router,
@@ -27,6 +29,7 @@ export class TextDetailPage implements OnInit {
   }
 
   async initialize(text_id) {
+    console.log(text_id)
     const loading = await this.loadCtrl.create( {
       message: "Loading"
     });
@@ -36,9 +39,11 @@ export class TextDetailPage implements OnInit {
           const response = (data as any);
           const returned_object = JSON.parse(response._body);
           this.detail = returned_object.text;
+          console.log(returned_object.text)
         },
         error => {
           console.log(error);
+          this.utilFunctions.presentAlert(error);
         }
       );  
       loading.dismiss();  

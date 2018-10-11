@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { RequisitionsService } from '../requisitions.service';
 import { Router } from '@angular/router';
 import { LoadingController, AlertController } from '@ionic/angular';
+import { UtilService } from '../util.service';
 
 @Component({
   selector: 'app-home',
@@ -15,6 +16,7 @@ export class HomePage {
   public loading: any;
 
   constructor(
+    private utilFunctions: UtilService,
     private requisition: RequisitionsService,
     private router: Router,
     private loadingCtrl: LoadingController,
@@ -40,7 +42,7 @@ export class HomePage {
         },
         error => {
           console.log(error);
-          this.presentAlert(error);
+          this.utilFunctions.presentAlert(error);
         }
       );
       loading.dismiss();
@@ -78,12 +80,5 @@ export class HomePage {
   async dismissLoading() {
     return await this.loading.dismiss();
   }
-  async presentAlert(messageText) {
-    const alert = await this.alertCtrl.create({
-      header: "Atenção",
-      message: messageText,
-      buttons: ['Ok']
-    });
-    await alert.present();
-  }
+
 }

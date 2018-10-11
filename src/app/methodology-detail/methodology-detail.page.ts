@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, LoadChildren } from '@angular/router';
 import { RequisitionsService } from '../requisitions.service';
 import { LoadingController } from '@ionic/angular';
+import { UtilService } from '../util.service';
 
 @Component({
   selector: 'app-methodology-detail',
@@ -14,6 +15,7 @@ export class MethodologyDetailPage implements OnInit {
   public methodology: any;
 
   constructor(
+    private utilFunctions: UtilService,
     private route: ActivatedRoute,
     private requisition: RequisitionsService,
     private loadCtrl: LoadingController
@@ -37,6 +39,7 @@ export class MethodologyDetailPage implements OnInit {
         },
         error => {
           console.log(error);
+          this.utilFunctions.presentAlert(error);
         }
       );
       loading.dismiss();

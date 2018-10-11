@@ -6,7 +6,7 @@ import { Http } from '@angular/http'
 })
 export class RequisitionsService {
  
-  private endpoint = "https://ebapp.herokuapp.com" 
+  private endpoint = "http://localhost:5000" 
   private bodyThemesList = { "key": '123' }
   private bodyTextList = {
                           "key": '123',

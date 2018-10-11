@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RequisitionsService } from '../requisitions.service';
 import { LoadingController } from '@ionic/angular';
+import { UtilService } from '../util.service';
 
 @Component({
   selector: 'app-text-by-themes',
@@ -17,6 +18,7 @@ export class TextByThemesPage implements OnInit {
   public keyword: string;
 
   constructor(
+    private utilFunctions: UtilService,
     private route: ActivatedRoute,
     private requisition: RequisitionsService,
     private router: Router,
@@ -44,6 +46,7 @@ export class TextByThemesPage implements OnInit {
         },
         error => {
           console.log(error);
+          this.utilFunctions.presentAlert(error);
         }
       );
       loading.dismiss();
@@ -65,6 +68,7 @@ export class TextByThemesPage implements OnInit {
   }
 
   goToDetail(event, text) {
-    this.router.navigate(['textDetail', { text_id: text.id, text_title: text.title }]);
+    console.log(text._id, text.title)
+    this.router.navigate(['textDetail', { text_id: text._id, text_title: text.title }]);
   }
 }
