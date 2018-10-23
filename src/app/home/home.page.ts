@@ -10,7 +10,7 @@ import { UtilService } from '../util.service';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-  public themes: string[];
+  public themes: {};
   public keyword: string;
   public texts: string[];
   public loading: any;
@@ -38,7 +38,7 @@ export class HomePage {
           const response = (data as any);
           const returned_object = JSON.parse(response._body);
           this.themes = returned_object.themes;
-          console.log(this.themes)
+          console.log(this.themes[0]['_id']['$oid'])
         },
         error => {
           console.log(error);
@@ -66,7 +66,8 @@ export class HomePage {
   }
 
   themeTapped(event, theme) {
-    this.router.navigate(['textByThemes', { id: theme._id, name: theme.name, color: theme.color}])
+    console.log(theme['_id']['$oid'])
+    this.router.navigate(['textByThemes', { id: theme['_id']['$oid'], name: theme.name, color: theme.color}])
   }
   goToDetail(event, text) {
     this.router.navigate(['textDetail', { text_id: text._id, text_title: text.title }])

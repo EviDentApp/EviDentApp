@@ -22,7 +22,7 @@ export class TextByThemesPage implements OnInit {
     private route: ActivatedRoute,
     private requisition: RequisitionsService,
     private router: Router,
-    private loadCtrl: LoadingController
+    private loadCtrl: LoadingController,
   ) { }
 
   ngOnInit() {
@@ -42,7 +42,7 @@ export class TextByThemesPage implements OnInit {
           const response = (data as any);
           const returned_object = JSON.parse(response._body);
           this.texts = returned_object.texts;
-          console.log(this.texts[0].url_image)
+          console.log(this.texts[0])
         },
         error => {
           console.log(error);
@@ -55,7 +55,7 @@ export class TextByThemesPage implements OnInit {
 
   filterList(keyword: any) {
     this.keyword = keyword.target.value;
-    this.requisition.textGetList (this.id, this.keyword).subscribe (
+    this.requisition.textGetList (this.id, this.keyword).subscribe(
       data => {
         const response = (data as any);
         const returned_object = JSON.parse(response._body);
@@ -68,7 +68,7 @@ export class TextByThemesPage implements OnInit {
   }
 
   goToDetail(event, text) {
-    console.log(text._id, text.title)
-    this.router.navigate(['textDetail', { text_id: text._id, text_title: text.title }]);
+    console.log(text['_id']['$oid'])
+    this.router.navigate(['textDetail', { text_id: text['_id']['$oid'], text_title: text.title }]);
   }
 }

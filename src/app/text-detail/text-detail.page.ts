@@ -29,7 +29,6 @@ export class TextDetailPage implements OnInit {
   }
 
   async initialize(text_id) {
-    console.log(text_id)
     const loading = await this.loadCtrl.create( {
       message: "Loading"
     });
@@ -39,7 +38,7 @@ export class TextDetailPage implements OnInit {
           const response = (data as any);
           const returned_object = JSON.parse(response._body);
           this.detail = returned_object.text;
-          console.log(returned_object.text)
+          console.log(returned_object)
         },
         error => {
           console.log(error);
@@ -51,6 +50,7 @@ export class TextDetailPage implements OnInit {
   }
 
   goToMethodology(event, methodology_id) {
+    console.log(methodology_id)
     this.router.navigate(['methodologyDetail', { metho_id: methodology_id }]);
   }
 }

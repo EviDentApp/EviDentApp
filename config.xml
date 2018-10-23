@@ -86,4 +86,5 @@
         <variable name="APP_ID" value="539663199837684" />
         <variable name="APP_NAME" value="Ebapp" />
     </plugin>
+    <engine name="android" spec="7.0.0" />
 </widget>

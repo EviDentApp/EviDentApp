@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http'
+import { HTTP } from '@ionic-native/http/ngx';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RequisitionsService {
  
-  private endpoint = "http://localhost:5000" 
+  private endpoint = "https://ebapp.herokuapp.com" 
   private bodyThemesList = { "key": '123' }
   private bodyTextList = {
                           "key": '123',
@@ -24,11 +25,12 @@ export class RequisitionsService {
                                   "_id": 0
   }
 
-  constructor(public http: Http) {
+  constructor(public http: Http,
+              ) {
   }
 
   themesGetList () {
-    
+    //eturn this.httpNative.post(this.endpoint + "/themes/list", this.bodyThemesList, {})
     return this.http.post(this.endpoint + "/themes/list", this.bodyThemesList);
   }
 
@@ -39,12 +41,12 @@ export class RequisitionsService {
   }
 
   textGetDetail(text_id) {
-    this.bodyTextDetail._id = Number(text_id);
+    this.bodyTextDetail._id = text_id;
     return this.http.post(this.endpoint + "/text/detail", this.bodyTextDetail);
   }
 
   methodologyGetDetail(metho_id) {
-    this.bodyMethodologyDetail._id = Number(metho_id);
+    this.bodyMethodologyDetail._id = metho_id;
     return this.http.post(this.endpoint + "/methodology/detail", this.bodyMethodologyDetail);
   }
 }
