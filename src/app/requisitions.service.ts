@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http'
-import { HTTP } from '@ionic-native/http/ngx';
 
 @Injectable({
   providedIn: 'root'

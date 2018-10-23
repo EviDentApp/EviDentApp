@@ -8,8 +8,7 @@ export class UtilService {
 
   constructor(
     private alertCtrl: AlertController
-  ) {
-   }
+  ) {}
 
   async presentAlert(messageText) {
     const alert = await this.alertCtrl.create({
