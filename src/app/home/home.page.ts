@@ -70,7 +70,7 @@ export class HomePage {
     this.router.navigate(['textByThemes', { id: theme['_id']['$oid'], name: theme.name, color: theme.color}])
   }
   goToDetail(event, text) {
-    this.router.navigate(['textDetail', { text_id: text._id, text_title: text.title }])
+    this.router.navigate(['textDetail', { text_id: text['_id']['$oid'], text_title: text.title }])
   }
 
   async presentLoading() {
