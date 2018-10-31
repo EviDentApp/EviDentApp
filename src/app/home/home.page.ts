@@ -81,5 +81,11 @@ export class HomePage {
   async dismissLoading() {
     return await this.loading.dismiss();
   }
-
+  doRefresh(event){
+    this.initialize();
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      event.target.complete();
+    }, 1000);
+  }
 }

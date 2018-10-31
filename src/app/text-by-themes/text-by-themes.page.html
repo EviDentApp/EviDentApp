@@ -5,12 +5,12 @@
     </ion-buttons>
     <ion-title class="toolbar-title">{{name}}</ion-title>
   </ion-toolbar>
-  
+
   <ion-toolbar [ngStyle]="{'--ion-toolbar-background-color': color}">
     <ion-searchbar [(ngModel)]="myInput" [showCancelButton]="shouldShowCancel" (ionInput)="filterList($event)"
-    (ionCancel)="onCancel($event)" placeholder="Procurar por texto">
-  </ion-searchbar>
-</ion-toolbar>
+      (ionCancel)="onCancel($event)" placeholder="Procurar por texto">
+    </ion-searchbar>
+  </ion-toolbar>
 </ion-header>
 
 <ng-container *ngIf="myInput;else newTextList">
@@ -26,17 +26,21 @@
 
 <ng-template #newTextList>
   <ion-content padding>
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+      <ion-refresher-content>
+      </ion-refresher-content>
+    </ion-refresher>
     <ion-card *ngFor="let text of texts" (click)="goToDetail($event, text)">
       <ion-img class="card-image" [src]="text.url_image"></ion-img>
       <ion-item>
         <ion-grid class="container">
           <ion-row>
-            <ion-col>      
+            <ion-col>
               <span class="card-text">{{text.title}}</span>
             </ion-col>
           </ion-row>
           <ion-row>
-            <ion-col>        
+            <ion-col>
               <div class="thermometer">
                 <div class="thermometer-level" [ngStyle]="{'background-color': color}"></div>
               </div>
@@ -47,4 +51,3 @@
     </ion-card>
   </ion-content>
 </ng-template>
-

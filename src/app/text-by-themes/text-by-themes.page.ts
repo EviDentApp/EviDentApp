@@ -72,4 +72,12 @@ export class TextByThemesPage implements OnInit {
     console.log(text['_id']['$oid'])
     this.router.navigate(['textDetail', { text_id: text['_id']['$oid'], text_title: text.title }]);
   }
+
+  doRefresh(event){
+    this.initialize(this.id, '');
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      event.target.complete();
+    }, 1000);
+  }
 }
