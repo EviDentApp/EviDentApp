@@ -3,6 +3,7 @@ import { ActivatedRoute, LoadChildren } from '@angular/router';
 import { RequisitionsService } from '../requisitions.service';
 import { LoadingController } from '@ionic/angular';
 import { UtilService } from '../util.service';
+import { GoogleAnalytics } from '@ionic-native/google-analytics/ngx';
 
 @Component({
   selector: 'app-methodology-detail',
@@ -18,8 +19,16 @@ export class MethodologyDetailPage implements OnInit {
     private utilFunctions: UtilService,
     private route: ActivatedRoute,
     private requisition: RequisitionsService,
-    private loadCtrl: LoadingController
-  ) { }
+    private loadCtrl: LoadingController,
+    private ga: GoogleAnalytics
+  ) {
+    this.ga.startTrackerWithId('UA-128523572-1')
+      .then(() => {
+        console.log('Google analytics is ready now');
+        this.ga.trackView('Methodology Detail');
+      })
+      .catch(e => console.log('Error starting GoogleAnalytics', e));
+   }
 
   ngOnInit() {
     this.metho_id = this.route.snapshot.paramMap.get('metho_id');

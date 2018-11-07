@@ -5,14 +5,14 @@
 
   <ion-toolbar>
     <ion-searchbar [(ngModel)]="myInput" [showCancelButton]="shouldShowCancel" (ionInput)="filterList($event)"
-      (ionCancel)="onCancel($event)" placeholder="Procurar por texto">
+      (ionCancel)="onCancel($event)" placeholder="Procurar por textos">
     </ion-searchbar>
   </ion-toolbar>
 </ion-header>
 
 
 <ng-container *ngIf="!(myInput);else themesList">
-  <ion-content class="page-content" padding>
+  <ion-content class="page-content" padding *ngIf="themes">
     <ion-refresher (ionRefresh)="doRefresh($event)">
       <ion-refresher-content>
       </ion-refresher-content>

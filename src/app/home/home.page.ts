@@ -3,6 +3,7 @@ import { RequisitionsService } from '../requisitions.service';
 import { Router } from '@angular/router';
 import { LoadingController, AlertController } from '@ionic/angular';
 import { UtilService } from '../util.service';
+import { GoogleAnalytics } from '@ionic-native/google-analytics/ngx';
 
 @Component({
   selector: 'app-home',
@@ -20,8 +21,8 @@ export class HomePage {
     private requisition: RequisitionsService,
     private router: Router,
     private loadingCtrl: LoadingController,
-    private alertCtrl: AlertController) {
-  }
+    private alertCtrl: AlertController,
+    private ga: GoogleAnalytics) {}
 
   ngOnInit() {
     this.initialize();
@@ -67,7 +68,7 @@ export class HomePage {
 
   themeTapped(event, theme) {
     console.log(theme['_id']['$oid'])
-    this.router.navigate(['textByThemes', { id: theme['_id']['$oid'], name: theme.name, color: theme.color}])
+    this.router.navigate(['textByThemes', { id: theme['_id']['$oid'], name: theme.name, color: theme.color }])
   }
   goToDetail(event, text) {
     this.router.navigate(['textDetail', { text_id: text['_id']['$oid'], text_title: text.title }])
@@ -77,11 +78,11 @@ export class HomePage {
     this.loading = await this.loadingCtrl.create();
     return await this.loading.present();
   }
-  
+
   async dismissLoading() {
     return await this.loading.dismiss();
   }
-  doRefresh(event){
+  doRefresh(event) {
     this.initialize();
     setTimeout(() => {
       console.log('Async operation has ended');

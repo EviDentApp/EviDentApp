@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { RequisitionsService } from '../requisitions.service';
 import { LoadingController } from '@ionic/angular';
 import { UtilService } from '../util.service';
+import { GoogleAnalytics } from '@ionic-native/google-analytics/ngx';
 
 @Component({
   selector: 'app-text-detail',
@@ -19,12 +20,21 @@ export class TextDetailPage implements OnInit {
     private route: ActivatedRoute,
     private requisition: RequisitionsService,
     private router: Router,
-    private loadCtrl: LoadingController
+    private loadCtrl: LoadingController,
+    private ga: GoogleAnalytics
   ) { }
 
   ngOnInit() {
     this.text_id = this.route.snapshot.paramMap.get('text_id');
     this.text_title = this.route.snapshot.paramMap.get('text_title');
+    this.ga.startTrackerWithId('UA-128523572-1')
+      .then(() => {
+        let name = "Text Detail: " + this.text_title
+        console.log('Google analytics is ready now');
+        this.ga.trackView(name);
+
+      })
+      .catch(e => console.log('Error starting GoogleAnalytics', e));
     this.initialize(this.text_id)
   }
 

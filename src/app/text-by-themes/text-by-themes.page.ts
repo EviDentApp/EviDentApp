@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { RequisitionsService } from '../requisitions.service';
 import { LoadingController } from '@ionic/angular';
 import { UtilService } from '../util.service';
+import { GoogleAnalytics } from '@ionic-native/google-analytics/ngx';
 
 @Component({
   selector: 'app-text-by-themes',
@@ -23,7 +24,16 @@ export class TextByThemesPage implements OnInit {
     private requisition: RequisitionsService,
     private router: Router,
     private loadCtrl: LoadingController,
-  ) { }
+    private ga: GoogleAnalytics
+  ) {
+    this.ga.startTrackerWithId('UA-128523572-1')
+      .then(() => {
+        console.log('Google analytics is ready now');
+        this.ga.trackView('List of Texts by theme');
+
+      })
+      .catch(e => console.log('Error starting GoogleAnalytics', e));
+   }
 
   ngOnInit() {
     this.name = this.route.snapshot.paramMap.get('name');

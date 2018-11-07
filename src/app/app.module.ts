@@ -10,6 +10,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { RequisitionsService } from './requisitions.service';
 import { HttpModule } from '@angular/http';
+import { GoogleAnalytics } from '@ionic-native/google-analytics/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -25,7 +26,8 @@ import { HttpModule } from '@angular/http';
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    RequisitionsService
+    RequisitionsService,
+    GoogleAnalytics
   ],
   bootstrap: [AppComponent]
 })
