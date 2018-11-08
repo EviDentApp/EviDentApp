@@ -8,8 +8,4 @@ describe('EbappGuard', () => {
       providers: [EbappGuard]
     });
   });
-
-  it('should ...', inject([EbappGuard], (guard: EbappGuard) => {
-    expect(guard).toBeTruthy();
-  }));
 });
