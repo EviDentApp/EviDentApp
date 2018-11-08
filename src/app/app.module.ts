@@ -12,6 +12,7 @@ import { RequisitionsService } from './requisitions.service';
 import { HttpModule } from '@angular/http';
 import { GoogleAnalytics } from '@ionic-native/google-analytics/ngx';
 
+import { IonicStorageModule } from '@ionic/storage'
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -20,7 +21,8 @@ import { GoogleAnalytics } from '@ionic-native/google-analytics/ngx';
     IonicModule.forRoot(),
     AppRoutingModule,
     HttpModule,
-    RouterModule.forRoot([])
+    RouterModule.forRoot([]),
+    IonicStorageModule.forRoot()
   ],
   providers: [
     StatusBar,
