@@ -1,31 +1,40 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>intro</ion-title>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-title>Introdução</ion-title>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
-
+    
     <ion-slides pager="true">
         <ion-slide class="step-one">
-            <!--<ion-img src="/assets/slides/step1.svg"></ion-img>! -->
-            <h1>Heading</h1>
-            <p>Text</p>
+            <ion-img src="/assets/img/estetica.png"></ion-img>
+            <h2>Bem-vindo!</h2>
+            <p>Este aplicativo facilita a visualização de textos científicos baseados em odontologia. Para adicionar textos, temas e metodologias um site foi criado.</p>
         </ion-slide>
-    
+        
         <ion-slide class="step-two">
-            <!--<ion-img src="/assets/slides/step2.svg"></ion-img> -->
-            <h1>Heading</h1>
-            <p>Text</p>
+            <ion-img src="/assets/img/sismatologia.png"></ion-img>
+            <h1>E você?</h1>
+            <p>Gostaríamos de conhecer um pouco sobre você antes de acessar o aplicativo. Diga qual é a sua idade e qual é o seu sexo.</p>
         </ion-slide>
-    
+        
         <ion-slide class="step-three">
-            <!--<ion-img src="/assets/slides/step3.svg"></ion-img>  -->
-            <h1>Heading</h1>
-            <p>Text</p>
-    
-            <ion-button (click)="finish()">FINISH TUTORIAL!</ion-button>
+            <ion-img src="/assets/img/sismatologia.png"></ion-img>
+            <ion-item>
+                <ion-label>Gênero</ion-label>
+                <ion-select placeholder="Selecionar" [(ngModel)]="gender">
+                    <ion-select-option value="female">Mulher</ion-select-option>
+                    <ion-select-option value="male">Homem</ion-select-option>
+                </ion-select>
+            </ion-item>
+            
+            <ion-item>
+                <ion-label>Idade</ion-label>
+                <ion-input placeholder="Anos" [(ngModel)]="age"></ion-input>
+            </ion-item>
+            
+            <ion-button (click)="finish()">Ir para o aplicativo</ion-button>
         </ion-slide>
     </ion-slides>
-
 </ion-content>

@@ -1,26 +1,21 @@
 ion-slide {
-    height: 150vh;
+    height: 88vh;
     flex-direction: column;
 }
 
 ion-img {
-    max-width: 50vw;
-    max-height: 50vh;
+    width: 150px;
+    height: auto;
     overflow: hidden;
+    margin-bottom: 5vh;
 }
 
-
-.step-one {
-    background: var(--ion-color-primary);
-    color: var(--ion-color-primary-contrast);
+ion-slide {
+    background: #fff;
+    color: #000;
 }
 
-.step-two {
-    background: var(--ion-color-success);
-    color: var(--ion-color-success-contrast);
-}
-
-.step-three {
-    background: var(--ion-color-dark);
-    color: var(--ion-color-dark-contrast);
+ion-item {
+    padding: 5px 20vw;
+    width: 100% !important;
 }
