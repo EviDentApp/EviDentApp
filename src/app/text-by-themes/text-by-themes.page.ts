@@ -52,7 +52,6 @@ export class TextByThemesPage implements OnInit {
           const response = (data as any);
           const returned_object = JSON.parse(response._body);
           this.texts = returned_object.texts;
-          console.log(this.texts[0])
         },
         error => {
           console.log(error);
@@ -70,7 +69,6 @@ export class TextByThemesPage implements OnInit {
         const response = (data as any);
         const returned_object = JSON.parse(response._body);
         this.texts = returned_object.texts;
-        console.log(this.texts[0])
       },
       error => {
         console.log(error);
@@ -79,15 +77,14 @@ export class TextByThemesPage implements OnInit {
   }
 
   goToDetail(event, text) {
-    console.log(text['_id']['$oid'])
     this.router.navigate(['textDetail', { text_id: text['_id']['$oid'], text_title: text.title }]);
   }
 
   doRefresh(event){
     this.initialize(this.id, '');
     setTimeout(() => {
-      console.log('Async operation has ended');
+      console.log('Refresh done.');
       event.target.complete();
-    }, 1000);
+    }, 750);
   }
 }

@@ -20,9 +20,7 @@ export class HomePage {
     private utilFunctions: UtilService,
     private requisition: RequisitionsService,
     private router: Router,
-    private loadingCtrl: LoadingController,
-    private alertCtrl: AlertController,
-    private ga: GoogleAnalytics) {}
+    private loadingCtrl: LoadingController) {}
 
   ngOnInit() {
     this.initialize();
@@ -39,7 +37,6 @@ export class HomePage {
           const response = (data as any);
           const returned_object = JSON.parse(response._body);
           this.themes = returned_object.themes;
-          console.log(this.themes[0]['_id']['$oid'])
         },
         error => {
           console.log(error);
@@ -52,7 +49,6 @@ export class HomePage {
 
   filterList(keyword: any) {
     this.keyword = keyword.target.value;
-    console.log(this.keyword)
     this.requisition.textGetList("", this.keyword).subscribe(
       data => {
         const response = (data as any);
@@ -67,8 +63,7 @@ export class HomePage {
   }
 
   themeTapped(event, theme) {
-    console.log(theme['_id']['$oid'])
-    this.router.navigate(['textByThemes', { id: theme['_id']['$oid'], name: theme.name, color: theme.color }])
+    this.router.navigate(['textByThemes', { id: theme['_id']['$oid'], name: theme.name }])
   }
   goToDetail(event, text) {
     this.router.navigate(['textDetail', { text_id: text['_id']['$oid'], text_title: text.title }])
@@ -85,8 +80,8 @@ export class HomePage {
   doRefresh(event) {
     this.initialize();
     setTimeout(() => {
-      console.log('Async operation has ended');
+      console.log('Refresh done');
       event.target.complete();
-    }, 1000);
+    }, 750);
   }
 }

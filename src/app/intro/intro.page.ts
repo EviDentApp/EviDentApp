@@ -20,7 +20,7 @@ export class IntroPage implements OnInit {
   }
 
   async finish() {
-    await this.storage.set('tutorialComplete', false);
+    await this.storage.set('tutorialComplete', true);
     await this.storage.set('gender', this.gender);
     await this.storage.set('age', this.age);
 

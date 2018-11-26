@@ -8,11 +8,6 @@ const routes: Routes = [
     loadChildren: './home/home.module#HomePageModule',
     canActivate: [EbappGuard]
   },
-  
-  {
-    path: 'list',
-    loadChildren: './list/list.module#ListPageModule'
-  },
   { path: 'textByThemes', loadChildren: './text-by-themes/text-by-themes.module#TextByThemesPageModule' },
   { path: 'textDetail', loadChildren: './text-detail/text-detail.module#TextDetailPageModule' },
   { path: 'methodologyDetail', loadChildren: './methodology-detail/methodology-detail.module#MethodologyDetailPageModule' },

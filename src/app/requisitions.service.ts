@@ -1,31 +1,32 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http'
+import { UtilService } from './util.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RequisitionsService {
- 
-  private endpoint = "https://ebapp.herokuapp.com" 
-  private bodyThemesList = { "key": '123' }
-  private bodyTextList = {
-                          "key": '123',
+  public key = this.utilFunctions.apiKey
+  public endpoint = "https://ebapp.herokuapp.com" 
+  public bodyThemesList = { "key": this.key }
+  public bodyTextList = {
+                          "key": this.key,
                           "theme": "",
                           "keyword": ''
                         }
 
-  private bodyTextDetail = {
-                          "key": '123',
+  public bodyTextDetail = {
+                          "key": this.key,
                           "_id": 0
                         }
 
-  private bodyMethodologyDetail = {
-                                  "key": '123',
+  public bodyMethodologyDetail = {
+                                  "key": this.key,
                                   "_id": 0
   }
 
   constructor(public http: Http,
-              ) {
+              public utilFunctions: UtilService) {
   }
 
   themesGetList () {

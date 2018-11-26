@@ -36,7 +36,6 @@ export class MethodologyDetailPage implements OnInit {
   }
 
   async initialize(metho_id) {
-    console.log(metho_id)
     const loading = await this.loadCtrl.create({
       message: "Loading"
     });
@@ -46,7 +45,6 @@ export class MethodologyDetailPage implements OnInit {
           const response = (data as any);
           const returned_object = JSON.parse(response._body);
           this.methodology = returned_object.methodologies;
-          console.log(returned_object)
         },
         error => {
           console.log(error);

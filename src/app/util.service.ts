@@ -5,7 +5,7 @@ import { AlertController } from '@ionic/angular';
   providedIn: 'root'
 })
 export class UtilService {
-
+  public apiKey = '123'
   constructor(
     private alertCtrl: AlertController
   ) {}
