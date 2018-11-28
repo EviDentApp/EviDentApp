@@ -26,7 +26,7 @@ export class TextByThemesPage implements OnInit {
     private loadCtrl: LoadingController,
     private ga: GoogleAnalytics
   ) {
-    this.ga.startTrackerWithId('UA-128523572-1')
+    this.ga.startTrackerWithId('UA-130013750-1')
       .then(() => {
         console.log('Google analytics is ready now');
         this.ga.trackView('List of Texts by theme');

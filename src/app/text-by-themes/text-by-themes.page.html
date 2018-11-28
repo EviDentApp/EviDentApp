@@ -1,9 +1,10 @@
 <ion-header>
-  <ion-toolbar [ngStyle]="{'--ion-toolbar-background-color': color}">
+  <ion-toolbar>
     <ion-buttons>
       <ion-back-button></ion-back-button>
+      <ion-title class="toolbar-title">{{name}}</ion-title>
     </ion-buttons>
-    <ion-title class="toolbar-title">{{name}}</ion-title>
+   
   </ion-toolbar>
 
   <ion-toolbar [ngStyle]="{'--ion-toolbar-background-color': color}">
