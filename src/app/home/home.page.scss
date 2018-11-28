@@ -1,30 +1,43 @@
 @import url('https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,700');
 
-
 .toolbar-title {
-    color: black;
     text-align: left;
-    margin-left: 10vw;
     font-size: 30px;
     font-family: 'IBM Plex Sans', sans-serif;
 }
 
+ion-grid {
+    margin: 0px;
+    --ion-grid-padding: 0px;
+}
+
+.list-header {
+    text-align: center;
+}
+
 .list-button {
-    --background: #e2e2e2;
-    border-left: 10px solid;
+    --background: #ECECEC;
+    --border-width: 3px;
+    --border-style: solid;
+    --border-radius: 20px;
+    --box-shadow: 0px;
+    --padding-top: 32px;
+    --padding-bottom: 32px;
+    text-transform: none;
 }
 
 .list-button-img {
-    position: absolute;
-    left: 8vw;
-    width: 10vw;
+    width: 30px;
     height: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .list-button-text {
+    font-size: 17px;
     color: black;
-    position: absolute;
-    left: 21vw;
+    text-align: center;
     font-family: 'IBM Plex Sans', sans-serif;
 }
 
@@ -50,6 +63,5 @@
 .row-footer {
    margin: 0px !important;
    padding: 0px !important;
-
 }
 
