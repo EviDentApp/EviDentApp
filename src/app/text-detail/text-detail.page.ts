@@ -27,7 +27,7 @@ export class TextDetailPage implements OnInit {
   ngOnInit() {
     this.text_id = this.route.snapshot.paramMap.get('text_id');
     this.text_title = this.route.snapshot.paramMap.get('text_title');
-    this.ga.startTrackerWithId('UA-128523572-1')
+    this.ga.startTrackerWithId('UA-130013750-1')
       .then(() => {
         let name = "Text Detail: " + this.text_title
         console.log('Google analytics is ready now');

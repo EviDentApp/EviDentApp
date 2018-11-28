@@ -3,7 +3,7 @@
     <name>ebapp</name>
     <description>An awesome Ionic/Cordova app.</description>
     <author email="hi@ionicframework" href="http://ionicframework.com/">Ionic Framework Team</author>
-    <content src="index.html" />
+    <content original-src="index.html" src="http://172.25.3.143:8100" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
@@ -90,6 +90,7 @@
         <variable name="GMS_VERSION" value="11.0.1" />
     </plugin>
     <plugin name="cordova-sqlite-storage" spec="^2.5.1" />
+    <allow-navigation href="http://172.25.3.143:8100" sessionid="36ac8599" />
     <engine name="android" spec="7.0.0" />
     <engine name="browser" spec="5.0.4" />
 </widget>
