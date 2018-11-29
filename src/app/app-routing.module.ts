@@ -11,7 +11,8 @@ const routes: Routes = [
   { path: 'textByThemes', loadChildren: './text-by-themes/text-by-themes.module#TextByThemesPageModule' },
   { path: 'textDetail', loadChildren: './text-detail/text-detail.module#TextDetailPageModule' },
   { path: 'methodologyDetail', loadChildren: './methodology-detail/methodology-detail.module#MethodologyDetailPageModule' },
-  { path: 'intro', loadChildren: './intro/intro.module#IntroPageModule' }
+  { path: 'intro', loadChildren: './intro/intro.module#IntroPageModule' },
+  { path: 'methodologyText', loadChildren: './methodology-text/methodology-text.module#MethodologyTextPageModule' }
   
 ];
 

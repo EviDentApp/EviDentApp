@@ -59,7 +59,7 @@ export class TextDetailPage implements OnInit {
     });
   }
 
-  goToMethodology(event, methodology_id) {
-    this.router.navigate(['methodologyDetail', { metho_id: methodology_id }]);
+  goToMethodology(event, methodologies_id) {
+    this.router.navigate(['methodologyDetail', { metho_id: methodologies_id }]);
   }
 }
