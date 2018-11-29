@@ -14,6 +14,8 @@ export class TextDetailPage implements OnInit {
   public detail: any;
   public text_id: string;
   public text_title: string;
+  public relevance: string;
+  public relevance_color: string;
 
   constructor(
     private utilFunctions: UtilService,
@@ -39,7 +41,7 @@ export class TextDetailPage implements OnInit {
   }
 
   async initialize(text_id) {
-    const loading = await this.loadCtrl.create( {
+    const loading = await this.loadCtrl.create({
       message: "Loading"
     });
     loading.present().then(() => {
@@ -48,18 +50,47 @@ export class TextDetailPage implements OnInit {
           const response = (data as any);
           const returned_object = JSON.parse(response._body);
           this.detail = returned_object.text;
-          console.log(returned_object)
+          console.log(this.detail)
+          this.mapRelevance(this.detail.study_relevance)
+          console.log(this.relevance)
+          console.log(this.relevance_color)
+
         },
         error => {
           console.log(error);
           this.utilFunctions.presentAlert(error);
         }
-      );  
-      loading.dismiss();  
+      );
+      loading.dismiss();
     });
   }
 
   goToMethodology(event, methodology_id) {
     this.router.navigate(['methodologyDetail', { metho_id: methodology_id }]);
+  }
+
+  mapRelevance(id) {
+    console.log("entrei")
+    console.log(typeof id)
+    switch (id) {
+      case '1': {
+        console.log("entrei 1")
+        this.relevance = 'Melhor evidência disponível e possível';
+        this.relevance_color = '#D1EDCE';
+        break;
+      }
+      case '2': {
+         console.log("entrei 1")
+        this.relevance = 'Melhor evidência disponível e possível';
+        this.relevance_color = '#D1EDCE';
+        break;
+      }
+      case '3': {
+        console.log("entrei 1")
+        this.relevance = 'Melhor evidência disponível e possível';
+        this.relevance_color = '#D1EDCE';
+        break;
+      }
+    }
   }
 }

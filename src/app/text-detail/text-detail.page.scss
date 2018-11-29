@@ -7,7 +7,16 @@
 }
 
 .list-button-footer {
-    --background: #d6d6d6 ;
+    --background: #ECECEC;
+    --border-width: 3px;
+    --border-style: solid;
+    --border-radius: 20px;
+    --box-shadow: 0px;
+    --padding-top: 32px;
+    --padding-bottom: 32px;
+    --border-color: #565656;
+    font-size: 17px;
+    text-transform: none;
     flex-direction: column; 
     font-family: 'IBM Plex Sans', sans-serif;
 }
