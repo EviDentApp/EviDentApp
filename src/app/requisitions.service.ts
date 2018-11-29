@@ -25,6 +25,10 @@ export class RequisitionsService {
                                   "_id": 0
   }
 
+  public bodyMethodologyArray = {"key": this.key,
+                                 methodologies_list: []
+  }
+
   constructor(public http: Http,
               public utilFunctions: UtilService) {
   }
@@ -48,5 +52,9 @@ export class RequisitionsService {
   methodologyGetDetail(metho_id) {
     this.bodyMethodologyDetail._id = metho_id;
     return this.http.post(this.endpoint + "/methodology/detail", this.bodyMethodologyDetail);
+  }
+  methodologiesGetArray(metho_array) {
+    this.bodyMethodologyArray.methodologies_list = metho_array;
+    return this.http.post(this.endpoint + "/methodologies/selected", this.bodyMethodologyArray);
   }
 }

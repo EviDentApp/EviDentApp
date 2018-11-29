@@ -1,16 +1,15 @@
 <ion-header>
   <ion-toolbar>
-      <ion-buttons>
-          <ion-back-button></ion-back-button>
-          <ion-title class="toolbar-title">Metodologia</ion-title>
-        </ion-buttons>
-        
+    <ion-buttons>
+      <ion-back-button></ion-back-button>
+      <ion-title class="toolbar-title">Metodologias</ion-title>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
-<ion-content padding *ngIf="methodology">
-  <ion-grid>
-    <h2>{{ methodology.name }}</h2>
-    <p>{{ methodology.text }}</p>
-  </ion-grid>
+<ion-content *ngFor="let methodology of methodologies">
+  <ion-card (click)="goToMethodologyText($event, methodology.name, methodology.text)">
+    <ion-card-header>
+      <ion-card-title>{{methodology.name}}</ion-card-title>
+    </ion-card-header>
+  </ion-card>
 </ion-content>
-
