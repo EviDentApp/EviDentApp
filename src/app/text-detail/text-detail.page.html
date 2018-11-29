@@ -15,8 +15,7 @@
     <div [ngStyle]="{'background-color': relevance_color}">
       <span>Nível de evidência: {{relevance}}</span>
     </div>
-  
-    <p>{{ detail.abstract }}</p>
+    <p [innerHtml]="detail.abstract"></p>
   </ion-grid>
 </ion-content>
 

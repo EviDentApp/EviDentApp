@@ -7,7 +7,7 @@
 <ion-content padding *ngIf="methodologyName">
     <ion-grid>
       <h2>{{ methodologyName }}</h2>
-      <p>{{ methodologyText }}</p>
+      <p [innerHtml]="methodologyText"></p>
     </ion-grid>
   </ion-content>
   
