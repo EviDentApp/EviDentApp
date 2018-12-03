@@ -7,15 +7,9 @@
 }
 
 .list-button-footer {
-    --background: #ECECEC;
-    --border-width: 3px;
-    --border-style: solid;
-    --border-radius: 20px;
-    --box-shadow: 0px;
-    --padding-top: 32px;
-    --padding-bottom: 32px;
-    --border-color: #565656;
-    font-size: 17px;
+    --background: #e5e5e5;
+    --box-shadow: 5px;
+    font-size: 20px;
     text-transform: none;
     flex-direction: column; 
     font-family: 'IBM Plex Sans', sans-serif;
@@ -24,4 +18,8 @@
 .list-button-footer-text {
     color: black;
     font-size: 80%;
+}
+
+ion-footer {
+    background-color: #f9f9f9;
 }
