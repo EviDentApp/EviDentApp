@@ -23,17 +23,8 @@ export class TextByThemesPage implements OnInit {
     private route: ActivatedRoute,
     private requisition: RequisitionsService,
     private router: Router,
-    private loadCtrl: LoadingController,
-    private ga: GoogleAnalytics
-  ) {
-    this.ga.startTrackerWithId('UA-130013750-1')
-      .then(() => {
-        console.log('Google analytics is ready now');
-        this.ga.trackView('List of Texts by theme');
-
-      })
-      .catch(e => console.log('Error starting GoogleAnalytics', e));
-   }
+    private loadCtrl: LoadingController
+  ) {}
 
   ngOnInit() {
     this.name = this.route.snapshot.paramMap.get('name');

@@ -62,4 +62,18 @@ export class TextDetailPage implements OnInit {
   goToMethodology(event, methodologies_id) {
     this.router.navigate(['methodologyDetail', { metho_id: methodologies_id }]);
   }
+
+  addEvent(event, title) {
+    console.log("Entrei")
+    console.log(title)
+    this.ga.startTrackerWithId('UA-130013750-1')
+      .then(() => {
+        console.log('Google analytics is ready now');
+        this.ga.trackEvent(title, "click");
+      })
+      .catch(e => console.log('Error starting GoogleAnalytics', e));
+    this.initialize(this.text_id)
+    return false
+
+  }
 }

@@ -19,7 +19,7 @@
 <ion-footer *ngIf="detail">
   <ion-row>
       <ion-col>
-          <ion-button class="list-button-footer" expand="full" size="large" href="{{detail.paper_link}}">
+          <ion-button class="list-button-footer" expand="full" size="large" href="{{detail.paper_link}}" (click)="addEvent($event, detail.title);">
               <span class="list-button-footer-text">Artigo</span>
           </ion-button>
       </ion-col>
