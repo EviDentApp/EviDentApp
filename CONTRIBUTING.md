@@ -19,8 +19,10 @@ Consider discussing with your team the changes you have made and why they are im
 We appreciate the use of best pratices in code writting, using guidelines as <a href="https://angular.io/guide/styleguide">Angular Styleguide</a>.
 
 
-# Libraries
+# Plugins
 Included plugins can be installed with the following command in the root directory of the project
 
-    > -npm install 
+    $ -npm install 
 
+# It Tracks and reports website traffic using the google analytics plugin which can be added using the following command in the root directory of the project.
+    $ ionic cordova plugin add cordova-plugin-google-analytics
