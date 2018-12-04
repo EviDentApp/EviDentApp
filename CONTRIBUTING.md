@@ -24,5 +24,6 @@ Included plugins can be installed with the following command in the root directo
 
     $ -npm install 
 
-# It Tracks and reports website traffic using the google analytics plugin which can be added using the following command in the root directory of the project.
+# Tracking 
+It Tracks and reports website traffic using the google analytics plugin which can be added using the following command in the root directory of the project.
     $ ionic cordova plugin add cordova-plugin-google-analytics
