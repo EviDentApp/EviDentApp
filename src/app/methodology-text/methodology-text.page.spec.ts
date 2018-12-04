@@ -6,22 +6,4 @@ import { MethodologyTextPage } from './methodology-text.page';
 describe('MethodologyTextPage', () => {
   let component: MethodologyTextPage;
   let fixture: ComponentFixture<MethodologyTextPage>;
-
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ MethodologyTextPage ],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA],
-    })
-    .compileComponents();
-  }));
-
-  beforeEach(() => {
-    fixture = TestBed.createComponent(MethodologyTextPage);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
 });
