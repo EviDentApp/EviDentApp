@@ -21,11 +21,10 @@ export class MethodologyDetailPage implements OnInit {
     private requisition: RequisitionsService,
     private loadCtrl: LoadingController,
     private router: Router,
-    private ga: GoogleAnalytics
+    private ga: GoogleAnalytics,
     ) {
     this.ga.startTrackerWithId('UA-130013750-1')
       .then(() => {
-        console.log('Google analytics is ready now');
         this.ga.trackView('Methodology Detail');
       })
       .catch(e => console.log('Error starting GoogleAnalytics', e));
@@ -48,7 +47,6 @@ export class MethodologyDetailPage implements OnInit {
           const response = (data as any);
           const returned_object = JSON.parse(response._body);
           this.methodologies = returned_object.methodologies
-        
         },
         error => {
           console.log(error);
@@ -59,9 +57,7 @@ export class MethodologyDetailPage implements OnInit {
     });
 
   }
-  goToMethodologyText(event, methoName, methoText){
-    console.log(methoText)
-    this.router.navigate(['methodologyText', { MeName: methoName, meText: methoText }]);
-  
+  goToMethodologyText(event, methoName, methoText, methoThermometer){
+    this.router.navigate(['methodologyText', { methoName: methoName, methoText: methoText, methoThermometer: methoThermometer}]);
   }
 }

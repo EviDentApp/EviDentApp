@@ -4,7 +4,6 @@
           <ion-back-button></ion-back-button>
           <ion-title class="toolbar-title">Texto</ion-title>
         </ion-buttons>
-    
   </ion-toolbar>
 </ion-header>
 
@@ -13,7 +12,7 @@
     <ion-img [src]="detail.url_image"></ion-img>
     <h2>{{ detail.title }}</h2>
     <div [ngStyle]="{'background-color': relevance_color}">
-      <span>Nível de evidência: {{relevance}}</span>
+      <span>Nível de relevância: {{relevance}}</span>
     </div>
     <p [innerHtml]="detail.abstract"></p>
   </ion-grid>

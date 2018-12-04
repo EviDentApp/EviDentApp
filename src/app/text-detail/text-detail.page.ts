@@ -50,11 +50,7 @@ export class TextDetailPage implements OnInit {
           const response = (data as any);
           const returned_object = JSON.parse(response._body);
           this.detail = returned_object.text;
-          console.log(this.detail)
           this.mapRelevance(this.detail.study_relevance)
-          console.log(this.relevance)
-          console.log(this.relevance_color)
-
         },
         error => {
           console.log(error);
@@ -72,23 +68,21 @@ export class TextDetailPage implements OnInit {
   mapRelevance(id) {
     console.log("entrei")
     console.log(typeof id)
+    console.log(id)
     switch (id) {
       case '1': {
-        console.log("entrei 1")
         this.relevance = 'Melhor evidência disponível e possível';
         this.relevance_color = '#D1EDCE';
         break;
       }
       case '2': {
-         console.log("entrei 1")
-        this.relevance = 'Melhor evidência disponível e possível';
-        this.relevance_color = '#D1EDCE';
+        this.relevance = 'Melhor evidência disponível mas não possível';
+        this.relevance_color = '#edecce';
         break;
       }
       case '3': {
-        console.log("entrei 1")
-        this.relevance = 'Melhor evidência disponível e possível';
-        this.relevance_color = '#D1EDCE';
+        this.relevance = 'Existem evidências de maior nível disponíveis';
+        this.relevance_color = '#edcece';
         break;
       }
     }

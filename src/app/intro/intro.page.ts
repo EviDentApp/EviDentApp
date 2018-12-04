@@ -26,7 +26,6 @@ export class IntroPage implements OnInit {
 
     this.ga.startTrackerWithId('UA-128523572-1')
     .then(() => {
-      console.log('Google analytics is ready now');
       this.ga.trackEvent("lead", "input", "age", this.age, false);
       this.ga.trackEvent("gender", "input", this.gender, 1, false);
     })

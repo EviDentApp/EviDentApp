@@ -42,7 +42,6 @@ export class HomePage {
           this.themes = returned_object.themes;
         },
         error => {
-          console.log(error);
           this.utilFunctions.presentAlert(error);
         }
       );
@@ -83,7 +82,6 @@ export class HomePage {
   doRefresh(event) {
     this.initialize();
     setTimeout(() => {
-      console.log('Refresh done');
       event.target.complete();
     }, 750);
   }

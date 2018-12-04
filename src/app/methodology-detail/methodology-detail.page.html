@@ -6,10 +6,14 @@
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
-<ion-content *ngFor="let methodology of methodologies">
-  <ion-card (click)="goToMethodologyText($event, methodology.name, methodology.text)">
-    <ion-card-header>
-      <ion-card-title>{{methodology.name}}</ion-card-title>
-    </ion-card-header>
-  </ion-card>
+<ion-content>
+    <ion-list>
+      <ion-item color="light" detail="true" lines="full" *ngFor="let methodology of methodologies"  (click)="goToMethodologyText($event, methodology.name, methodology.text, methodology.thermometer)">
+        <ion-label>
+
+       {{methodology.name}}
+      </ion-label>
+
+    </ion-item>
+  </ion-list>
 </ion-content>

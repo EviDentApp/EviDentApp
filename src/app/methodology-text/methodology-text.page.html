@@ -1,12 +1,18 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Metodologia</ion-title>
+        <ion-buttons>
+          <ion-back-button></ion-back-button>
+          <ion-title class="toolbar-title">Metodologia</ion-title>
+       </ion-buttons>
   </ion-toolbar>
 </ion-header>
-
 <ion-content padding *ngIf="methodologyName">
     <ion-grid>
       <h2>{{ methodologyName }}</h2>
+      <div [ngStyle]="{'background-color': thermometer_color}">
+          <span>{{thermometer}}</span>
+      </div>
+
       <p [innerHtml]="methodologyText"></p>
     </ion-grid>
   </ion-content>
