@@ -22,7 +22,7 @@ We appreciate the use of best pratices in code writting, using guidelines as <a 
 # Plugins
 Included plugins can be installed with the following command in the root directory of the project
 
-    $ -npm install 
+    $ npm install 
 
 # Tracking 
 It Tracks and reports website traffic using the google analytics plugin which can be added using the following command in the root directory of the project.
