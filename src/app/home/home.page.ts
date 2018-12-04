@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { LoadingController, AlertController } from '@ionic/angular';
 import { UtilService } from '../util.service';
 import { GoogleAnalytics } from '@ionic-native/google-analytics/ngx';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-home',
@@ -18,9 +19,11 @@ export class HomePage {
 
   constructor(
     private utilFunctions: UtilService,
+    private sanitizer: DomSanitizer,
     private requisition: RequisitionsService,
     private router: Router,
-    private loadingCtrl: LoadingController) {}
+    private loadingCtrl: LoadingController) {
+    }
 
   ngOnInit() {
     this.initialize();
@@ -39,7 +42,6 @@ export class HomePage {
           this.themes = returned_object.themes;
         },
         error => {
-          console.log(error);
           this.utilFunctions.presentAlert(error);
         }
       );
@@ -80,7 +82,6 @@ export class HomePage {
   doRefresh(event) {
     this.initialize();
     setTimeout(() => {
-      console.log('Refresh done');
       event.target.complete();
     }, 750);
   }

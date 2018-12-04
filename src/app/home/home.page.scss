@@ -6,10 +6,16 @@
     font-family: 'IBM Plex Sans', sans-serif;
 }
 
+ion-searchbar {
+    --background: white;
+}
+
 ion-grid {
     margin: 0px;
     --ion-grid-padding: 0px;
 }
+
+
 
 .list-header {
     text-align: center;

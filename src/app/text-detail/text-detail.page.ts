@@ -14,6 +14,8 @@ export class TextDetailPage implements OnInit {
   public detail: any;
   public text_id: string;
   public text_title: string;
+  public relevance: string;
+  public relevance_color: string;
 
   constructor(
     private utilFunctions: UtilService,
@@ -39,7 +41,7 @@ export class TextDetailPage implements OnInit {
   }
 
   async initialize(text_id) {
-    const loading = await this.loadCtrl.create( {
+    const loading = await this.loadCtrl.create({
       message: "Loading"
     });
     loading.present().then(() => {
@@ -48,14 +50,14 @@ export class TextDetailPage implements OnInit {
           const response = (data as any);
           const returned_object = JSON.parse(response._body);
           this.detail = returned_object.text;
-          console.log(returned_object)
+          this.mapRelevance(this.detail.study_relevance)
         },
         error => {
           console.log(error);
           this.utilFunctions.presentAlert(error);
         }
-      );  
-      loading.dismiss();  
+      );
+      loading.dismiss();
     });
   }
 
@@ -74,6 +76,28 @@ export class TextDetailPage implements OnInit {
       .catch(e => console.log('Error starting GoogleAnalytics', e));
     this.initialize(this.text_id)
     return false
+  }
 
+  mapRelevance(id) {
+    console.log("entrei")
+    console.log(typeof id)
+    console.log(id)
+    switch (id) {
+      case '1': {
+        this.relevance = 'Melhor evidência disponível e possível';
+        this.relevance_color = '#D1EDCE';
+        break;
+      }
+      case '2': {
+        this.relevance = 'Melhor evidência disponível mas não possível';
+        this.relevance_color = '#edecce';
+        break;
+      }
+      case '3': {
+        this.relevance = 'Existem evidências de maior nível disponíveis';
+        this.relevance_color = '#edcece';
+        break;
+      }
+    }
   }
 }
