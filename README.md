@@ -37,22 +37,13 @@ For documentation purposes, we used NodeJS 8.11.4, npm 6.2.0, and Cordova 8.0.0.
 
 > npm install -g ionic cordova
 
-## Start an Ionic app
+## Install dependencies
 
-Run the following command in the Linux terminal, replacing PROJECT-NAME and PROJECT-TYPE for their respective tags:
+Run the following commands in the Linux terminal, replacing PROJECT-DIRECTORY with its respective tag:
 
-> ionic start PROJECT-NAME PROJECT-TYPE --type=angular
+> cd PROJECT-DIRECTORY
 
-Common project types are:
-
-- blank
-- tabs
-- sidemenu
-
-<b>Important!</b> When running the command, a message may prompt the user for input:
-
-- Integrate your new app with Cordova to target native iOS and Android? <b>yes</b>
-- Install the free Ionic Pro SDK and connect your app? <b>no</b>
+> npm install
 
 ## Run an Ionic app
 
@@ -76,11 +67,6 @@ Run the following the command in the Dockerfile directory to run the image, repl
 > sudo docker run -p 8100:8100 -v LOCAL-DIRECTORY:/app ionic
 
 
-# Logs
+# License
 
-29th of August- 10:00 to 12:14
- - We decided to use Ionic 4.
- - Tabs will be used in order to offer portability in our app.
- - GitLab repository created.
- - Preliminary version of the login page created.
- - Created an Ionic project 3 times.
+Logotype made by Eucalyp from www.flaticon.com (Licensed by CC 3.0 BY).
