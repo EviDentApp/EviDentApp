@@ -29,10 +29,10 @@ export class IntroPage implements OnInit {
       this.ga.trackEvent("lead", "input", "age", this.age, false);
       this.ga.trackEvent("gender", "input", this.gender, 1, false);
     })
-    .catch(e => console.log('Error starting GoogleAnalytics', e));
-
-    this.router.navigateByUrl('/');
+    .catch(e => console.log('Error starting GoogleAnalytics', e));  
     */
+    this.router.navigateByUrl('/');
+  
   }
 
 }

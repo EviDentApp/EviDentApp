@@ -75,7 +75,7 @@ export class TextDetailPage implements OnInit {
       })
       .catch(e => console.log('Error starting GoogleAnalytics', e));
     this.initialize(this.text_id)
-    return false
+    
   }
 
   mapRelevance(id) {
