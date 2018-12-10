@@ -7,7 +7,7 @@ import { UtilService } from './util.service';
 })
 export class RequisitionsService {
   public key = this.utilFunctions.apiKey
-  public endpoint = "https://ebapp.herokuapp.com" 
+  public endpoint = "http://evident.tk" 
   public bodyThemesList = { "key": this.key }
   public bodyTextList = {
                           "key": this.key,
@@ -35,6 +35,7 @@ export class RequisitionsService {
 
   themesGetList () {
     //eturn this.httpNative.post(this.endpoint + "/themes/list", this.bodyThemesList, {})
+    console.log("Requisitei")
     return this.http.post(this.endpoint + "/themes/list", this.bodyThemesList);
   }
 

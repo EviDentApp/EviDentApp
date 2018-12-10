@@ -40,8 +40,9 @@ export class HomePage {
           const response = (data as any);
           const returned_object = JSON.parse(response._body);
           this.themes = returned_object.themes;
+          console.log(data)
         },
-        error => {
+        error => {  
           this.utilFunctions.presentAlert(error);
         }
       );

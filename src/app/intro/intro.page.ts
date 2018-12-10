@@ -23,15 +23,16 @@ export class IntroPage implements OnInit {
     await this.storage.set('tutorialComplete', true);
     await this.storage.set('gender', this.gender);
     await this.storage.set('age', this.age);
-
+    /*
     this.ga.startTrackerWithId('UA-128523572-1')
     .then(() => {
       this.ga.trackEvent("lead", "input", "age", this.age, false);
       this.ga.trackEvent("gender", "input", this.gender, 1, false);
     })
-    .catch(e => console.log('Error starting GoogleAnalytics', e));
-
+    .catch(e => console.log('Error starting GoogleAnalytics', e));  
+    */
     this.router.navigateByUrl('/');
+  
   }
 
 }
