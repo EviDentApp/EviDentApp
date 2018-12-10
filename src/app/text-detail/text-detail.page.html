@@ -12,7 +12,7 @@
     <ion-img [src]="detail.url_image"></ion-img>
     <h2>{{ detail.title }}</h2>
     <div [ngStyle]="{'background-color': relevance_color}">
-      <span>Nível de relevância: {{relevance}}</span>
+      <span>{{relevance}}</span>
     </div>
     <p [innerHtml]="detail.abstract"></p>
   </ion-grid>
