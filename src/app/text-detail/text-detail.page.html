@@ -14,10 +14,15 @@
     <div [ngStyle]="{'background-color': relevance_color}">
       <span>{{relevance}}</span>
     </div>
+    <ion-slides pager="true">
+      <ion-slide *ngFor = "let img of detail.images">
+          <ion-img [src]="img"></ion-img>
+          <h2> Teste </h2>
+      </ion-slide>     
+    </ion-slides>
     <p [innerHtml]="detail.abstract"></p>
   </ion-grid>
 </ion-content>
-
 <ion-footer *ngIf="detail">
   <ion-row>
       <ion-col>
