@@ -58,4 +58,9 @@ export class RequisitionsService {
     this.bodyMethodologyArray.methodologies_list = metho_array;
     return this.http.post(this.endpoint + "/methodologies/selected", this.bodyMethodologyArray);
   }
+
+  slideGetList(text_id) {
+    var slideshow = this.http.get(this.endpoint + "/slideshow?text_id="+ text_id)
+    return slideshow
+  }
 }

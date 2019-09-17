@@ -50,11 +50,21 @@ export class TextDetailPage implements OnInit {
           const response = (data as any);
           const returned_object = JSON.parse(response._body);
           this.detail = returned_object.text;
-          this.detail.images = ["https://rockcontent.com/wp-content/uploads/2019/04/Como-fazer-um-teste-de-SEO-para-contratar-um-analista-da-area.png",
-        "https://rockcontent.com/wp-content/uploads/2019/04/Como-fazer-um-teste-de-SEO-para-contratar-um-analista-da-area.png"]
         
-
           this.mapRelevance(this.detail.study_relevance)
+          this.requisition.slideGetList(text_id).subscribe(
+            data => {
+              const response = (data as any);
+              this.detail.slideshow = JSON.parse(response._body).slides;
+
+              console.info(this.detail.slideshow);
+            },
+            error => {
+              console.log(error);
+              this.utilFunctions.presentAlert(error);
+            }
+          );
+    
         },
         error => {
           console.log(error);

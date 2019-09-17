@@ -15,8 +15,8 @@
       <span>{{relevance}}</span>
     </div>
     <ion-slides pager="true">
-      <ion-slide *ngFor = "let img of detail.images">
-          <ion-img [src]="img"></ion-img>
+      <ion-slide *ngFor = "let slide of detail.slideshow">
+          <ion-img [src]="slide.url_image"></ion-img>
           <h2> Teste </h2>
       </ion-slide>     
     </ion-slides>
