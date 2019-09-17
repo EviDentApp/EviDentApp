@@ -16,9 +16,11 @@
     </div>
     <ion-slides pager="true">
       <ion-slide *ngFor = "let slide of detail.slideshow">
+        <div>
           <ion-img [src]="slide.url_image"></ion-img>
-          <h2> Teste </h2>
-      </ion-slide>     
+          <p>{{slide.description}}</p>
+        </div>
+       </ion-slide>     
     </ion-slides>
     <p [innerHtml]="detail.abstract"></p>
   </ion-grid>
