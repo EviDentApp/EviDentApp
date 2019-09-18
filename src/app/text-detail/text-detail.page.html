@@ -18,11 +18,10 @@
       <ion-slide *ngFor = "let slide of detail.slideshow">
         <div>
           <ion-img [src]="slide.url_image"></ion-img>
-          <p>{{slide.description}}</p>
         </div>
        </ion-slide>     
     </ion-slides>
-    <p [innerHtml]="detail.abstract"></p>
+    <div class="ql-editor" [innerHtml]="detail.abstract"></div>
   </ion-grid>
 </ion-content>
 <ion-footer *ngIf="detail">
