@@ -79,17 +79,20 @@ export class TextDetailPage implements OnInit {
     this.router.navigate(['methodologyDetail', { metho_id: methodologies_id }]);
   }
 
-  addEvent(event, title) {
-    console.log("Entrei")
-    console.log(title)
-    this.ga.startTrackerWithId('UA-130013750-1')
-      .then(() => {
-        console.log('Google analytics is ready now');
-        this.ga.trackEvent(title, "click");
-      })
-      .catch(e => console.log('Error starting GoogleAnalytics', e));
-    this.initialize(this.text_id)
-    
+  async addEvent(event, title) {
+    //this.initialize(this.text_id);
+    //this.ga.startTrackerWithId('UA-130013750-1')
+    try {
+      await this.ga.startTrackerWithId('UA-148652262-1');
+      await this.ga.addCustomDimension(1, '1998');
+      await this.ga.addCustomDimension(2, 'RO');
+      await this.ga.addCustomDimension(3, title);
+      await this.ga.trackMetric(1, 1);
+      alert('sucesso');
+    }
+    catch (e) {
+      alert(e);
+    }
   }
 
   mapRelevance(id) {
