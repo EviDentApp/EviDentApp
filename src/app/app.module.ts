@@ -12,6 +12,7 @@ import { RequisitionsService } from './requisitions.service';
 import { HttpModule } from '@angular/http';
 import { GoogleAnalytics } from '@ionic-native/google-analytics/ngx';
 
+import { Facebook } from '@ionic-native/facebook/ngx';
 import { IonicStorageModule } from '@ionic/storage'
 @NgModule({
   declarations: [AppComponent],
@@ -29,7 +30,8 @@ import { IonicStorageModule } from '@ionic/storage'
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     RequisitionsService,
-    GoogleAnalytics
+    GoogleAnalytics,
+    Facebook
   ],
   bootstrap: [AppComponent]
 })

@@ -30,8 +30,12 @@
             </ion-item>
             
             <ion-item>
-                <ion-label>Idade</ion-label>
-                <ion-input placeholder="18" [(ngModel)]="age" type="number"></ion-input>
+                    <button ion-button icon-right (click)="login()">
+                        Login with
+                        <ion-icon name="logo-facebook"></ion-icon>
+                    </button>
+                <!-- <ion-label>Idade</ion-label> -->
+                <!-- <ion-input placeholder="18" [(ngModel)]="age" type="number"></ion-input> -->
             </ion-item>
             
             <ion-button (click)="finish()">Ir para o aplicativo</ion-button>
