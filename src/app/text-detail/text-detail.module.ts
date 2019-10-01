@@ -6,6 +6,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { TextDetailPage } from './text-detail.page';
+import { QuillModule } from 'ngx-quill';
 
 const routes: Routes = [
   {
@@ -19,6 +20,7 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
+    QuillModule.forRoot(),
     RouterModule.forChild(routes)
   ],
   declarations: [TextDetailPage]

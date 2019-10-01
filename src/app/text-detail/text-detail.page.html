@@ -15,6 +15,7 @@
       <span>{{relevance}}</span>
     </div>
     <br>
+    <quill-view-html [content]="detail.abstract_intro" theme="snow"></quill-view-html>
     <ion-slides pager="true">
       <ion-slide *ngFor = "let slide of detail.slideshow">
         <div>
@@ -24,7 +25,7 @@
         </div>
        </ion-slide>     
     </ion-slides>
-    <div class="ql-editor" [innerHtml]="detail.abstract"></div>
+        <quill-view-html [content]="detail.abstract" theme="snow"></quill-view-html>
   </ion-grid>
 </ion-content>
 <ion-footer *ngIf="detail">
