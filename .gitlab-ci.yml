@@ -3,5 +3,6 @@ image: thompsnm/nodejs-chrome
 test:
   script:
     - npm install -g ionic cordova
+    - npm install
     - npm ci
     - npm run test-headless
