@@ -12,7 +12,8 @@ const routes: Routes = [
   { path: 'textDetail', loadChildren: './text-detail/text-detail.module#TextDetailPageModule' },
   { path: 'methodologyDetail', loadChildren: './methodology-detail/methodology-detail.module#MethodologyDetailPageModule' },
   { path: 'intro', loadChildren: './intro/intro.module#IntroPageModule' },
-  { path: 'methodologyText', loadChildren: './methodology-text/methodology-text.module#MethodologyTextPageModule' }
+  { path: 'methodologyText', loadChildren: './methodology-text/methodology-text.module#MethodologyTextPageModule' },
+  { path: 'login', loadChildren: './login/login.module#LoginPageModule' }
   
 ];
 

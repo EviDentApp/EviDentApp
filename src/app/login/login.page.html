@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>login</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content padding>
+  <ion-item>
+  <form  #form="ngForm" (ngSubmit)="login(form)">
+    <ion-item>
+      <ion-input name="email" type="email" placeholder="your@email.com" ngModel required></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input name="password" type="password" placeholder="Password" ngModel required></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-button type="submit" [disabled]="form.invalid">Login</ion-button>
+      <ion-button (click)="register()">Cadastro</ion-button>
+    </ion-item>
+  </form>
+  </ion-item>
+  <ion-item>
+    <button ion-button icon-right (click)="login_facebook()">
+      Login with
+      <ion-icon name="logo-facebook"></ion-icon>
+    </button>
+  </ion-item>
+  <ion-item>
+    <button ion-button icon-right (click)="login_google()">
+      Login with
+      <ion-icon name="logo-google"></ion-icon>
+    </button>
+  </ion-item>
+</ion-content>
+
+
+            

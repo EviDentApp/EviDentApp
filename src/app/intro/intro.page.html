@@ -21,23 +21,6 @@
         
         <ion-slide class="step-three">
             <ion-img src="/assets/img/sismatologia.png"></ion-img>
-            <ion-item>
-                <ion-label>Sexo</ion-label>
-                <ion-select placeholder="Selecionar" [(ngModel)]="gender">
-                    <ion-select-option value="female">Mulher</ion-select-option>
-                    <ion-select-option value="male">Homem</ion-select-option>
-                </ion-select>
-            </ion-item>
-            
-            <ion-item>
-                    <button ion-button icon-right (click)="login_facebook()">
-                        Login with
-                        <ion-icon name="logo-facebook"></ion-icon>
-                    </button>
-                <!-- <ion-label>Idade</ion-label> -->
-                <!-- <ion-input placeholder="18" [(ngModel)]="age" type="number"></ion-input> -->
-            </ion-item>
-            
             <ion-button (click)="finish()">Ir para o aplicativo</ion-button>
         </ion-slide>
     </ion-slides>

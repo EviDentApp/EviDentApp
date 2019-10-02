@@ -64,4 +64,9 @@ export class RequisitionsService {
     var slideshow = this.http.get(this.endpoint + "/slideshow?text_id="+ text_id)
     return slideshow
   }
+
+  dentistGetByFacebook(facebook_id) {
+    var res = this.http.get(this.endpoint + "/dentists/?facebook_id="+ facebook_id)
+    return res
+  }
 }
