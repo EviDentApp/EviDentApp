@@ -13,7 +13,8 @@ const routes: Routes = [
   { path: 'methodologyDetail', loadChildren: './methodology-detail/methodology-detail.module#MethodologyDetailPageModule' },
   { path: 'intro', loadChildren: './intro/intro.module#IntroPageModule' },
   { path: 'methodologyText', loadChildren: './methodology-text/methodology-text.module#MethodologyTextPageModule' },
-  { path: 'login', loadChildren: './login/login.module#LoginPageModule' }
+  { path: 'login', loadChildren: './login/login.module#LoginPageModule' },
+  { path: 'register', loadChildren: './register/register.module#RegisterPageModule' }
   
 ];
 

@@ -31,13 +31,16 @@ export class LoginPage implements OnInit {
               const response = (data as any);
               const returned_object = JSON.parse(response._body);
               if(returned_object.error == undefined) {
-                this.storage.set('userId', returned_object.id);
+                this.storage.set('user', JSON.stringify(returned_object));
                 this.storage.set('isLoggedIn', true);
                 this.router.navigateByUrl('/home');
               }
               else {
-                this.getFacebookDetail(res.authResponse.userID)
-                //redirecionar para página de cadastro 
+                this.getFacebookDetail(res.authResponse.userID).then(user => {
+                  this.router.navigate(['/register', user]);
+                }).catch(e => {
+                  alert('erro', e);
+                })
               }              
             },
             error => {
@@ -52,14 +55,13 @@ export class LoginPage implements OnInit {
       .catch(e => console.log('Error logging into Facebook', e));
   }
 
-  getFacebookDetail(userid) {
-    this.fb.api("/"+userid+"/?fields=email,name,gender,birthday",["public_profile"])
-      .then(res => {
-        console.log(res);
-      })
-      .catch(e => {
-        console.log(e);
-      });
+  async getFacebookDetail(userid) {
+    let response = await this.fb.api("/"+userid+"/?fields=email,name,gender,birthday,education,address",
+                                     ["public_profile"]);
+    if (!response.error)
+      return response.data;
+    else
+      throw response.error;
   }
 
   logout_facebook() {
