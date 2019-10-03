@@ -37,9 +37,11 @@ export class LoginPage implements OnInit {
               }
               else {
                 this.getFacebookDetail(res.authResponse.userID).then(user => {
-                  this.router.navigate(['/register', user]);
+                  this.storage.set('facebookData', JSON.stringify(user)).then(() => {
+                    this.router.navigateByUrl('/register');
+                  });
                 }).catch(e => {
-                  alert('erro', e);
+                  alert('erro no facebook ' + e);
                 })
               }              
             },
@@ -58,10 +60,11 @@ export class LoginPage implements OnInit {
   async getFacebookDetail(userid) {
     let response = await this.fb.api("/"+userid+"/?fields=email,name,gender,birthday,education,address",
                                      ["public_profile"]);
-    if (!response.error)
-      return response.data;
+    if (response.error)
+      throw response.error;  
     else
-      throw response.error;
+      return response;
+      
   }
 
   logout_facebook() {

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Storage } from '@ionic/storage';
 
 
 @Component({
@@ -9,11 +9,11 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class RegisterPage implements OnInit {
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private storage: Storage) { }
 
   ngOnInit() {
-    this.route.params.subscribe(params => {
-      alert(params['user']);
+    this.storage.get('facebookData').then(user => {
+      alert('usuario -- ' + user);
     });
   }
 
