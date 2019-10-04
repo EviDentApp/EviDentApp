@@ -1,17 +1,18 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>login</ion-title>
+    <ion-title>EviDent</ion-title>
   </ion-toolbar>
 </ion-header>
 <ion-content padding>
+  <h1>Login</h1>
   <form #form="ngForm" (ngSubmit)="login(form)">
     <ion-item>
-      <ion-label position="floating">Email</ion-label>
+      <ion-label position="floating">E-mail</ion-label>
       <ion-input ngModel type="email" name="email"></ion-input>
     </ion-item>
   
     <ion-item>
-      <ion-label position="floating">Password</ion-label>
+      <ion-label position="floating">Senha</ion-label>
       <ion-input ngModel type="password" name="password"></ion-input>
     </ion-item>
   
@@ -19,42 +20,14 @@
 
   </form>
   <ion-button color="light" icon-right (click)="login_facebook()">
-      Login with
+      Entrar com
     <ion-icon name="logo-facebook"></ion-icon>
   </ion-button>
   <ion-button icon-right color="light" (click)="login_google()">
-      Login with
+      Entrar com
     <ion-icon name="logo-google"></ion-icon>
   </ion-button>
 
-  <p text-center>Don't have a account?</p>
-  <ion-button expand="full" color="danger">Register</ion-button>
+  <p text-center>Não possui uma conta?</p>
+  <ion-button expand="full" color="danger" (click)="register()">Cadastro</ion-button>
 </ion-content>
-
-<!-- <ion-content padding>
-  <ion-item>
-  <form  #form="ngForm" (ngSubmit)="login(form)">
-    <ion-item>
-      <ion-input name="email" type="email" placeholder="your@email.com" ngModel required></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-input name="password" type="password" placeholder="Password" ngModel required></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-button type="submit" [disabled]="form.invalid">Login</ion-button>
-      <ion-button (click)="register()">Cadastro</ion-button>
-    </ion-item>
-  </form>
-  </ion-item>
-  <ion-item>
-    <button ion-button icon-right (click)="login_facebook()">
-      Login with
-      <ion-icon name="logo-facebook"></ion-icon>
-    </button>
-  </ion-item>
-  <ion-item>
-  </ion-item>
-</ion-content> -->
-
-
-            
