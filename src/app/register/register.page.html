@@ -8,5 +8,47 @@
 </ion-header>
 
 <ion-content padding>
+    <form #form="ngForm" (ngSubmit)="register()">
+      <ion-item>
+        <ion-label position="floating">Nome</ion-label>
+        <ion-input [(ngModel)]="name" type="text" name="name"></ion-input>
+      </ion-item>
+    
+      <ion-item *ngIf="show_password">
+        <ion-label position="floating">E-mail</ion-label>
+        <ion-input [(ngModel)]="email" type="email" name="email"></ion-input>
+      </ion-item>
 
+      <ion-item *ngIf="show_password">
+        <ion-label position="floating">Senha</ion-label>
+        <ion-input [(ngModel)]="email_password" type="password" name="email_password"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Ano de nascimento</ion-label>
+        <ion-input [(ngModel)]="birth_year" type="number" name="birth_year"></ion-input>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label position="floating">Gênero</ion-label>
+        <ion-select [(ngModel)]="gender" name="gender">
+            <ion-select-option value="F">Feminino</ion-select-option>
+            <ion-select-option value="M">Masculino</ion-select-option>
+        </ion-select>      
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Ano de formação</ion-label>
+        <ion-input [(ngModel)]="grade_year" type="number" name="grade_year"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Estado em que se formou</ion-label>
+        <ion-select [(ngModel)]="grade_state" name="grade_state">
+            <ion-select-option *ngFor="let state of states" [value]="state.id">{{state.name}}</ion-select-option>
+        </ion-select>      
+      </ion-item>
+  
+      <ion-button type="submit" expand="full" color="primary">Cadastrar</ion-button>
+    </form>
 </ion-content>
