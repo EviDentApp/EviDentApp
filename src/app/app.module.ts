@@ -11,6 +11,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { RequisitionsService } from './requisitions.service';
 import { HttpModule } from '@angular/http';
 import { GoogleAnalytics } from '@ionic-native/google-analytics/ngx';
+import { AnalyticsService } from './analytics.service';
 
 import { Facebook } from '@ionic-native/facebook/ngx';
 import { IonicStorageModule } from '@ionic/storage'
@@ -31,7 +32,8 @@ import { IonicStorageModule } from '@ionic/storage'
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     RequisitionsService,
     GoogleAnalytics,
-    Facebook
+    Facebook,
+    AnalyticsService,
   ],
   bootstrap: [AppComponent]
 })

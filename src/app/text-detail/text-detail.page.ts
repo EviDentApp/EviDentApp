@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { RequisitionsService } from '../requisitions.service';
 import { LoadingController } from '@ionic/angular';
 import { UtilService } from '../util.service';
-import { GoogleAnalytics } from '@ionic-native/google-analytics/ngx';
+import { AnalyticsService } from '../analytics.service';
 
 @Component({
   selector: 'app-text-detail',
@@ -23,23 +23,13 @@ export class TextDetailPage implements OnInit {
     private requisition: RequisitionsService,
     private router: Router,
     private loadCtrl: LoadingController,
-    private ga: GoogleAnalytics
+    private ga: AnalyticsService,
   ) { }
 
   ngOnInit() {
     this.text_id = this.route.snapshot.paramMap.get('text_id');
     this.text_title = this.route.snapshot.paramMap.get('text_title');
-    /*
-    this.ga.startTrackerWithId('UA-130013750-1')
-      .then(() => {
-        let name = "Text Detail: " + this.text_title
-        console.log('Google analytics is ready now');
-        this.ga.trackView(name);
-
-      })
-      .catch(e => console.log('Error starting GoogleAnalytics', e));
-    */
-    this.initialize(this.text_id)
+    this.initialize(this.text_id);
   }
 
   async initialize(text_id) {
@@ -82,16 +72,8 @@ export class TextDetailPage implements OnInit {
   }
 
   async addEvent(event, title) {
-    //this.initialize(this.text_id);
-    //this.ga.startTrackerWithId('UA-130013750-1')
     try {
-      //await this.ga.startTrackerWithId('UA-148652262-1');
-      await this.ga.addCustomDimension(1, '1999');
-      await this.ga.addCustomDimension(2, 'MG');
-      await this.ga.addCustomDimension(3, title);
-      await this.ga.trackEvent('artigo', 'visualizacao', title, 1);
-      //await this.ga.trackMetric(1, 1);
-      alert('sucesso')
+      await this.ga.trackEvent(title, 'visualizacao_artigo');
     }
     catch (e) {
       alert(e);
