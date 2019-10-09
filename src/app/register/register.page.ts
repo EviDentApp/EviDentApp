@@ -87,16 +87,16 @@ export class RegisterPage implements OnInit {
       "grade_state": this.grade_state,
     }
 
-    alert(JSON.stringify(obj))
-
     this.requisition.dentistCreate(obj).subscribe(
       data => {
         const response = (data as any);
         const returned_object = JSON.parse(response._body);
         if (returned_object._id) {
-          this.storage.set('user', JSON.stringify(returned_object));
-          this.storage.set('isLoggedIn', true);
-          this.router.navigateByUrl('/home');
+          this.storage.set('user', JSON.stringify(returned_object)).then(() => {
+            this.storage.set('isLoggedIn', true).then(() => {
+              this.router.navigateByUrl('/');
+            });
+          });
         }
       },
       error => {

@@ -31,9 +31,11 @@ export class LoginPage implements OnInit {
               const response = (data as any);
               const returned_object = JSON.parse(response._body);
               if(returned_object.error == undefined) {
-                this.storage.set('user', JSON.stringify(returned_object));
-                this.storage.set('isLoggedIn', true);
-                this.router.navigateByUrl('/home');
+                this.storage.set('user', JSON.stringify(returned_object)).then(() => {
+                  this.storage.set('isLoggedIn', true).then(() => {
+                    this.router.navigateByUrl('/');
+                  });
+                });
               }
               else {
                 this.getFacebookDetail(res.authResponse.userID).then(user => {

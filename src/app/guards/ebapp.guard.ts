@@ -16,9 +16,11 @@ export class EbappGuard implements CanActivate {
       if (!isComplete) {
         this.router.navigateByUrl('/intro')
       }
-      const isLoggedin = await this.storage.get('isLoggedIn')
-      if (!isLoggedin) {
-        this.router.navigateByUrl('/login')
+      else {
+        const isLoggedin = await this.storage.get('isLoggedIn')
+        if (!isLoggedin) {
+          this.router.navigateByUrl('/login')
+        }
       }
       return isComplete;
   }
