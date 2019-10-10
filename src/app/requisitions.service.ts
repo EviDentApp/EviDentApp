@@ -8,7 +8,7 @@ import { UtilService } from './util.service';
 export class RequisitionsService {
   public key = this.utilFunctions.apiKey
   //public endpoint = "http://evident.tk" 
-  public endpoint = "http://192.168.0.100:5000" 
+  public endpoint = "http://192.168.42.84:5000" 
   public bodyThemesList = { "key": this.key }
   public bodyTextList = {
                           "key": this.key,
@@ -41,6 +41,12 @@ export class RequisitionsService {
     "grade_year": 0,
     "gender": "",
     "grade_state": "",
+  }
+
+  public bodyLogin = {
+    "key": this.key,
+    "email": "",
+    "email_password": "",
   }
 
   constructor(public http: Http,
@@ -96,6 +102,12 @@ export class RequisitionsService {
     this.bodyDentistDetail.grade_state = dentist_obj.grade_state;
     var res = this.http.post(this.endpoint + "/dentists/create", this.bodyDentistDetail);
     return res
+  }
+
+  dentistLogin(email, email_password) {
+    this.bodyLogin.email = email;
+    this.bodyLogin.email_password;
+    var res = this.http.post(this.endpoint + "/dentists/login_email", this.bodyLogin);
   }
 
 }

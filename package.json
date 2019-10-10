@@ -34,14 +34,14 @@
     "@types/mongoose": "^5.2.19",
     "cordova-android": "^7.0.0",
     "cordova-browser": "5.0.4",
-    "cordova-plugin-device": "^2.0.2",
-    "cordova-plugin-facebook4": "6.0.0",
+    "cordova-plugin-device": "^2.0.3",
+    "cordova-plugin-facebook4": "^6.0.0",
     "cordova-plugin-google-analytics": "^1.8.6",
-    "cordova-plugin-ionic-keyboard": "^2.1.3",
-    "cordova-plugin-ionic-webview": "^2.2.5",
-    "cordova-plugin-splashscreen": "^5.0.2",
-    "cordova-plugin-statusbar": "^2.4.2",
-    "cordova-plugin-whitelist": "^1.3.3",
+    "cordova-plugin-ionic-keyboard": "^2.2.0",
+    "cordova-plugin-ionic-webview": "^2.5.2",
+    "cordova-plugin-splashscreen": "^5.0.3",
+    "cordova-plugin-statusbar": "^2.4.3",
+    "cordova-plugin-whitelist": "^1.3.4",
     "core-js": "^2.5.3",
     "ngx-quill": "^7.3.1",
     "node-sass": "^4.12.0",
@@ -92,7 +92,9 @@
       },
       "cordova-plugin-facebook4": {
         "APP_ID": "1454207991409162",
-        "APP_NAME": "Evident"
+        "APP_NAME": "Evident",
+        "FACEBOOK_HYBRID_APP_EVENTS": "false",
+        "FACEBOOK_ANDROID_SDK_VERSION": "5.2.0"
       }
     },
     "platforms": [

@@ -12,6 +12,9 @@ import { UtilService } from '../util.service';
 })
 export class LoginPage implements OnInit {
 
+  private email;
+  private email_password;
+
   constructor(private storage: Storage,
               private router: Router,
               private requisition: RequisitionsService,
@@ -75,8 +78,26 @@ export class LoginPage implements OnInit {
   }
 
   login(form) {
-
-
+    this.requisition.dentistLogin(email, email_password).subscribe(
+      data => {
+        const response = (data as any);
+        const returned_object = JSON.parse(response._body);
+        if(returned_object.error == undefined) {
+          this.storage.set('user', JSON.stringify(returned_object)).then(() => {
+            this.storage.set('isLoggedIn', true).then(() => {
+              this.router.navigateByUrl('/');
+            });
+          });
+        }
+        else {
+          this.utilFunctions.presentAlert(returned_object.error);
+        }
+      },
+      error => {
+        this.utilFunctions.presentAlert(error);
+      }
+    )
+      
   }
 
   async register() {
