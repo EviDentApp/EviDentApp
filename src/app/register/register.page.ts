@@ -68,6 +68,23 @@ export class RegisterPage implements OnInit {
         this.name = user.name;
         this.email = user.email;
         this.facebook_id = user.id;
+        if(user.gender) {
+          if(user.gender == 'male') {
+            this.gender = 'M'
+          }
+          else if(user.gender == 'female') {
+            this.gender = 'F'
+          }
+        }
+        if(user.birthday) {
+          var birth_date = user.birthday.split('/')
+          if(birth_date.length == 1) {
+            this.birth_year = birth_date[0]
+          }
+          else if (birth_date.length == 3) {
+            this.birth_year = birth_date[2]
+          }
+        }
         this.show_password = false;
         this.storage.remove('facebookData');
       }

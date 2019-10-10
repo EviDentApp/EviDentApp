@@ -23,7 +23,7 @@ export class LoginPage implements OnInit {
 
 
   login_facebook() {
-    this.fb.login(['public_profile', 'user_friends', 'email'])
+    this.fb.login(['public_profile', 'user_birthday', 'user_gender', 'email'])
       .then(res => {
         if(res.status === "connected") {
           this.requisition.dentistGetByFacebook(res.authResponse.userID).subscribe(
