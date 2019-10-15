@@ -87,5 +87,4 @@
     </plugin>
     <allow-navigation href="http://172.25.3.143:8100" sessionid="36ac8599" />
     <engine name="browser" spec="5.0.4" />
-    <engine name="android" spec="^7.0.0" />
 </widget>

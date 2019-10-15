@@ -8,7 +8,7 @@ import { UtilService } from './util.service';
 export class RequisitionsService {
   public key = this.utilFunctions.apiKey
   //public endpoint = "http://evident.tk" 
-  public endpoint = "http://192.168.42.84:5000" 
+  public endpoint = "http://192.168.42.148:5000" 
   public bodyThemesList = { "key": this.key }
   public bodyTextList = {
                           "key": this.key,
@@ -54,8 +54,6 @@ export class RequisitionsService {
   }
 
   themesGetList () {
-    //eturn this.httpNative.post(this.endpoint + "/themes/list", this.bodyThemesList, {})
-    console.log("Requisitei")
     return this.http.post(this.endpoint + "/themes/list", this.bodyThemesList);
   }
 
@@ -90,6 +88,11 @@ export class RequisitionsService {
     return res
   }
 
+  dentistGetByGoogle(google_id) {
+    var res = this.http.get(this.endpoint + "/dentists/?google_id="+ google_id)
+    return res
+  }
+
   dentistCreate(dentist_obj) {
     this.bodyDentistDetail.name = dentist_obj.name;
     this.bodyDentistDetail.facebook_id = dentist_obj.facebook_id;
@@ -108,6 +111,7 @@ export class RequisitionsService {
     this.bodyLogin.email = email;
     this.bodyLogin.email_password;
     var res = this.http.post(this.endpoint + "/dentists/login_email", this.bodyLogin);
+    return res;
   }
 
 }

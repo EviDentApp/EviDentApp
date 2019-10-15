@@ -62,33 +62,50 @@ export class RegisterPage implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.storage.get('facebookData').then(user => {
-      if (user) {
-        user = JSON.parse(user);
-        this.name = user.name;
-        this.email = user.email;
-        this.facebook_id = user.id;
-        if(user.gender) {
-          if(user.gender == 'male') {
-            this.gender = 'M'
-          }
-          else if(user.gender == 'female') {
-            this.gender = 'F'
-          }
-        }
-        if(user.birthday) {
-          var birth_date = user.birthday.split('/')
-          if(birth_date.length == 1) {
-            this.birth_year = birth_date[0]
-          }
-          else if (birth_date.length == 3) {
-            this.birth_year = birth_date[2]
-          }
-        }
-        this.show_password = false;
+    this.storage.get('facebookData')
+      .then(user => {
+        this.loadFacebookData(user);
         this.storage.remove('facebookData');
+      })
+      .catch(err => {
+        this.storage.get('googleData').then(user => {
+          this.loadGoogleData(user);
+          this.storage.remove('googleData');
+        });
+      });
+  }
+
+  loadFacebookData(user) {
+    user = JSON.parse(user);
+    this.name = user.name;
+    this.email = user.email;
+    this.facebook_id = user.id;
+    if(user.gender) {
+      if(user.gender == 'male') {
+        this.gender = 'M'
       }
-    });
+      else if(user.gender == 'female') {
+        this.gender = 'F'
+      }
+    }
+    if(user.birthday) {
+      var birth_date = user.birthday.split('/')
+      if(birth_date.length == 1) {
+        this.birth_year = birth_date[0]
+      }
+      else if (birth_date.length == 3) {
+        this.birth_year = birth_date[2]
+      }
+    }
+    this.show_password = false;
+  }
+
+  loadGoogleData(user) {
+    user = JSON.parse(user);
+    this.google_id = user.userId;
+    this.name = user.displayName;
+    this.email = user.email;
+    this.show_password = false;
   }
 
   async register() {

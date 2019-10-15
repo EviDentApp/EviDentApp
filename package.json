@@ -25,6 +25,7 @@
     "@ionic-native/core": "^5.0.0-beta.21",
     "@ionic-native/facebook": "^5.14.0",
     "@ionic-native/google-analytics": "^5.0.0-beta.21",
+    "@ionic-native/google-plus": "^5.15.0",
     "@ionic-native/http": "^5.0.0-beta.21",
     "@ionic-native/splash-screen": "5.0.0-beta.15",
     "@ionic-native/status-bar": "5.0.0-beta.15",
@@ -32,11 +33,12 @@
     "@ionic/core": "^4.0.0-beta.16",
     "@ionic/storage": "^2.2.0",
     "@types/mongoose": "^5.2.19",
-    "cordova-android": "^7.0.0",
+    "cordova-android": "^8.1.0",
     "cordova-browser": "5.0.4",
     "cordova-plugin-device": "^2.0.3",
     "cordova-plugin-facebook4": "^6.0.0",
     "cordova-plugin-google-analytics": "^1.8.6",
+    "cordova-plugin-googleplus": "^8.1.2",
     "cordova-plugin-ionic-keyboard": "^2.2.0",
     "cordova-plugin-ionic-webview": "^2.5.2",
     "cordova-plugin-splashscreen": "^5.0.3",
@@ -95,6 +97,10 @@
         "APP_NAME": "Evident",
         "FACEBOOK_HYBRID_APP_EVENTS": "false",
         "FACEBOOK_ANDROID_SDK_VERSION": "5.2.0"
+      },
+      "cordova-plugin-googleplus": {
+        "REVERSED_CLIENT_ID": "com.googleusercontent.apps.95409007975-qael37k1taod881m8ill87uf6p4r0gep",
+        "WEB_APPLICATION_CLIENT_ID": "95409007975-sl1crtki7dibkacrib44vrb195mp9eq0.apps.googleusercontent.com"
       }
     },
     "platforms": [

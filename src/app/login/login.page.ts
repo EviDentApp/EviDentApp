@@ -4,6 +4,7 @@ import { Storage } from '@ionic/storage';
 import { Facebook } from '@ionic-native/facebook/ngx';
 import { RequisitionsService } from '../requisitions.service';
 import { UtilService } from '../util.service';
+import { GooglePlus } from '@ionic-native/google-plus/ngx';
 
 @Component({
   selector: 'app-login',
@@ -15,11 +16,14 @@ export class LoginPage implements OnInit {
   private email;
   private email_password;
 
-  constructor(private storage: Storage,
-              private router: Router,
-              private requisition: RequisitionsService,
-              private utilFunctions: UtilService,
-              private fb: Facebook) {}
+  constructor(
+    private storage: Storage,
+    private router: Router,
+    private requisition: RequisitionsService,
+    private utilFunctions: UtilService,
+    private fb: Facebook,
+    private gplus: GooglePlus,
+  ) {}
 
   ngOnInit() {
   }
@@ -69,7 +73,37 @@ export class LoginPage implements OnInit {
       throw response.error;  
     else
       return response;
-      
+  }
+
+  login_google() {
+    this.gplus.login({}).then(gplusUser => {
+      this.requisition.dentistGetByGoogle(gplusUser.userId).subscribe(
+        data => {
+          const response = (data as any);
+          const returned_object = JSON.parse(response._body);
+          if(returned_object.error == undefined) {
+            this.storage.set('user', JSON.stringify(returned_object)).then(() => {
+              this.storage.set('isLoggedIn', true).then(() => {
+                this.router.navigateByUrl('/');
+              });
+            });
+          }
+          else {
+            this.storage.set('googleData', JSON.stringify(gplusUser)).then(() => {
+              this.router.navigateByUrl('/register');
+            });
+          }
+        },
+        error => {
+          console.log(error);
+          this.utilFunctions.presentAlert(error);
+        }
+      );
+    })
+    .catch(error => {
+      console.log(error);
+      this.utilFunctions.presentAlert(error);
+    });
   }
 
   logout_facebook() {
@@ -78,7 +112,7 @@ export class LoginPage implements OnInit {
   }
 
   login(form) {
-    this.requisition.dentistLogin(email, email_password).subscribe(
+    this.requisition.dentistLogin(this.email, this.email_password).subscribe(
       data => {
         const response = (data as any);
         const returned_object = JSON.parse(response._body);
@@ -97,7 +131,6 @@ export class LoginPage implements OnInit {
         this.utilFunctions.presentAlert(error);
       }
     )
-      
   }
 
   async register() {
