@@ -116,7 +116,6 @@ export class LoginPage implements OnInit {
       data => {
         const response = (data as any);
         const returned_object = JSON.parse(response._body);
-        alert("Fiz uma requisição getLogin"+ response._body)
         if(returned_object.error == undefined) {
           this.storage.set('user', JSON.stringify(returned_object)).then(() => {
             this.storage.set('isLoggedIn', true).then(() => {

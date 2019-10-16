@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, RequestOptions, Headers } from '@angular/http'
+import { Http, Headers } from '@angular/http'
 import { UtilService } from './util.service';
 
 @Injectable({
@@ -8,7 +8,7 @@ import { UtilService } from './util.service';
 export class RequisitionsService {
   public key = this.utilFunctions.apiKey
   //public endpoint = "http://evident.tk" 
-  public endpoint = "http://192.168.42.182:5000" 
+  public endpoint = "http://192.168.42.148:5000" 
   public bodyThemesList = { "key": this.key }
   public bodyTextList = {
                           "key": this.key,
@@ -49,12 +49,6 @@ export class RequisitionsService {
     "grade_year": 0,
     "gender": "",
     "grade_state": "",
-  }
-
-  public bodyLogin = {
-    "key": this.key,
-    "email": "",
-    "email_password": "",
   }
 
   constructor(public http: Http,
@@ -118,10 +112,12 @@ export class RequisitionsService {
   }
 
   dentistLogin(email, email_password) {
-    this.bodyLogin.email = email;
-    this.bodyLogin.email_password = email_password;
-    var res = this.http.post(this.endpoint + "/dentists/login_email", JSON.stringify(this.bodyLogin),
-    {'headers': new Headers({'Content-Type':'application/json'})});
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/x-www-form-urlencoded');
+    let params = 'key=' + this.key + 
+                 '&email=' + encodeURIComponent(email) + 
+                 '&email_password=' + encodeURIComponent(email_password);
+    var res = this.http.post(this.endpoint + "/dentists/login_email", params, {headers: headers});
     return res
   }
  
