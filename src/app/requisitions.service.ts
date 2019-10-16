@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http'
+import { Http, RequestOptions, Headers } from '@angular/http'
 import { UtilService } from './util.service';
 
 @Injectable({
@@ -8,7 +8,7 @@ import { UtilService } from './util.service';
 export class RequisitionsService {
   public key = this.utilFunctions.apiKey
   //public endpoint = "http://evident.tk" 
-  public endpoint = "http://192.168.42.148:5000" 
+  public endpoint = "http://192.168.42.182:5000" 
   public bodyThemesList = { "key": this.key }
   public bodyTextList = {
                           "key": this.key,
@@ -28,6 +28,14 @@ export class RequisitionsService {
 
   public bodyMethodologyArray = {"key": this.key,
                                  methodologies_list: []
+  }
+
+  public bodyFacebookId = {"key": this.key,
+                           "facebook_id": ''
+  }
+
+  public bodyGoogleId = {"key": this.key,
+                         "google_id": ''
   }
 
   public bodyDentistDetail = {
@@ -84,12 +92,14 @@ export class RequisitionsService {
   }
 
   dentistGetByFacebook(facebook_id) {
-    var res = this.http.get(this.endpoint + "/dentists/?facebook_id="+ facebook_id)
+    this.bodyFacebookId.facebook_id = facebook_id
+    var res = this.http.post(this.endpoint + "/dentists/", this.bodyFacebookId)
     return res
   }
 
   dentistGetByGoogle(google_id) {
-    var res = this.http.get(this.endpoint + "/dentists/?google_id="+ google_id)
+    this.bodyGoogleId.google_id = google_id
+    var res = this.http.post(this.endpoint + "/dentists/", this.bodyGoogleId)
     return res
   }
 
@@ -109,9 +119,10 @@ export class RequisitionsService {
 
   dentistLogin(email, email_password) {
     this.bodyLogin.email = email;
-    this.bodyLogin.email_password;
-    var res = this.http.post(this.endpoint + "/dentists/login_email", this.bodyLogin);
-    return res;
+    this.bodyLogin.email_password = email_password;
+    var res = this.http.post(this.endpoint + "/dentists/login_email", JSON.stringify(this.bodyLogin),
+    {'headers': new Headers({'Content-Type':'application/json'})});
+    return res
   }
-
+ 
 }

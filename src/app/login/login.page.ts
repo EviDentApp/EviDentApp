@@ -111,11 +111,12 @@ export class LoginPage implements OnInit {
       .catch(e => console.log('Error logout from Facebook', e));
   }
 
-  login(form) {
+  login() {
     this.requisition.dentistLogin(this.email, this.email_password).subscribe(
       data => {
         const response = (data as any);
         const returned_object = JSON.parse(response._body);
+        alert("Fiz uma requisição getLogin"+ response._body)
         if(returned_object.error == undefined) {
           this.storage.set('user', JSON.stringify(returned_object)).then(() => {
             this.storage.set('isLoggedIn', true).then(() => {
@@ -128,6 +129,7 @@ export class LoginPage implements OnInit {
         }
       },
       error => {
+        alert("Erro na requisição")
         this.utilFunctions.presentAlert(error);
       }
     )
