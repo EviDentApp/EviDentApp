@@ -23,6 +23,7 @@ export class RegisterPage implements OnInit {
   private grade_state;
 
   private show_password = true;
+  private erro = false;
 
   private states = [
     { id: 'AC', name: 'Acre' },
@@ -131,6 +132,9 @@ export class RegisterPage implements OnInit {
               this.router.navigateByUrl('/');
             });
           });
+        }
+        else {
+          this.erro = returned_object.erro
         }
       },
       error => {
