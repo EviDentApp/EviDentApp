@@ -70,6 +70,7 @@ export class RegisterPage implements OnInit {
       })
       .catch(err => {
         this.storage.get('googleData').then(user => {
+          alert(user)
           this.loadGoogleData(user);
           this.storage.remove('googleData');
         });

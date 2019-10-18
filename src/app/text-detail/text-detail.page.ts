@@ -1,4 +1,4 @@
-import { Component, OnInit, APP_INITIALIZER } from '@angular/core';
+import { Component, OnInit, APP_INITIALIZER, ElementRef, Renderer } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RequisitionsService } from '../requisitions.service';
 import { LoadingController } from '@ionic/angular';
@@ -24,7 +24,15 @@ export class TextDetailPage implements OnInit {
     private router: Router,
     private loadCtrl: LoadingController,
     private ga: AnalyticsService,
-  ) { }
+    elementRef: ElementRef,
+    renderer: Renderer
+  ) {
+    renderer.listen(elementRef.nativeElement, 'click', (event)=> {
+      if (event.target.nodeName == 'A') {
+        alert('clicou' + event.target.href)
+      }
+    })
+  }
 
   ngOnInit() {
     this.text_id = this.route.snapshot.paramMap.get('text_id');

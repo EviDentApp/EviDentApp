@@ -44,17 +44,17 @@ export class AnalyticsService {
     if (!this.user_id) {
       await this.getData();
     }
-    await this.ga.addCustomDimension(1, this.age);
-    await this.ga.addCustomDimension(2, this.gender);
-    await this.ga.addCustomDimension(3, this.grade_year);
-    await this.ga.addCustomDimension(4, this.grade_state);
+    await this.ga.addCustomDimension(DIM_AGE, this.age);
+    await this.ga.addCustomDimension(DIM_GENDER, this.gender);
+    await this.ga.addCustomDimension(DIM_GRADE_YEAR, this.grade_year);
+    await this.ga.addCustomDimension(DIM_GRADE_STATE, this.grade_state);
     await this.ga.setUserId(this.user_id);
   }
 
   public async trackPaperVisualization(title: string) {
     await this.setUserDimensions();
-    await this.ga.addCustomDimension(6, title);
-    await this.ga.trackMetric(1, 1);
+    await this.ga.addCustomDimension(DIM_VIEWED_PAPER, title);
+    await this.ga.trackMetric(METRIC_PAPER_VIEWS, 1);
   }
 
 }
