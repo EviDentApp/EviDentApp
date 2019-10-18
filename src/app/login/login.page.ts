@@ -136,7 +136,6 @@ export class LoginPage implements OnInit {
 
   async register() {
     this.router.navigateByUrl('/register');
-  
   }
 
 }
