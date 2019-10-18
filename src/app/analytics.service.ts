@@ -2,6 +2,18 @@ import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
 import { GoogleAnalytics } from '@ionic-native/google-analytics/ngx';
 
+
+const DIM_AGE = 1;
+const DIM_GENDER = 2;
+const DIM_GRADE_YEAR = 3;
+const DIM_GRADE_STATE = 4;
+const DIM_CLICKED_LINK = 5;
+const DIM_VIEWED_PAPER = 6;
+
+const METRIC_PAPER_VIEWS = 1;
+const METRIC_LINK_CLICKS = 2;
+
+
 @Injectable({
   providedIn: 'root'
 })
@@ -28,7 +40,7 @@ export class AnalyticsService {
     this.grade_state = user.grade_state;
   }
 
-  async trackEvent(category, action) {
+  private async setUserDimensions() {
     if (!this.user_id) {
       await this.getData();
     }
@@ -37,7 +49,11 @@ export class AnalyticsService {
     await this.ga.addCustomDimension(3, this.grade_year);
     await this.ga.addCustomDimension(4, this.grade_state);
     await this.ga.setUserId(this.user_id);
-    await this.ga.trackEvent(category, action, '', 1);
+  }
+
+  public async trackPaperVisualization(title: string) {
+    await this.setUserDimensions();
+    await this.ga.addCustomDimension(6, title);
     await this.ga.trackMetric(1, 1);
   }
 

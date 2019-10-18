@@ -73,7 +73,7 @@ export class TextDetailPage implements OnInit {
 
   async addEvent(event, title) {
     try {
-      await this.ga.trackEvent(title, 'visualizacao_artigo');
+      await this.ga.trackPaperVisualization(title);
     }
     catch (e) {
       alert(e);
