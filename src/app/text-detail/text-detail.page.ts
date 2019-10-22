@@ -2,6 +2,7 @@ import { Component, OnInit, APP_INITIALIZER, ElementRef, Renderer } from '@angul
 import { ActivatedRoute, Router } from '@angular/router';
 import { RequisitionsService } from '../requisitions.service';
 import { LoadingController } from '@ionic/angular';
+import { Storage } from '@ionic/storage';
 import { UtilService } from '../util.service';
 import { AnalyticsService } from '../analytics.service';
 
@@ -23,16 +24,9 @@ export class TextDetailPage implements OnInit {
     private requisition: RequisitionsService,
     private router: Router,
     private loadCtrl: LoadingController,
-    private ga: AnalyticsService,
-    elementRef: ElementRef,
-    renderer: Renderer
-  ) {
-    renderer.listen(elementRef.nativeElement, 'click', (event)=> {
-      if (event.target.nodeName == 'A') {
-        alert('clicou' + event.target.href)
-      }
-    })
-  }
+    private analytics: AnalyticsService,
+    private storage: Storage,
+  ) { }
 
   ngOnInit() {
     this.text_id = this.route.snapshot.paramMap.get('text_id');
@@ -75,13 +69,14 @@ export class TextDetailPage implements OnInit {
     });
   }
 
-  goToMethodology(event, methodologies_id) {
+  async goToMethodology(event, methodologies_id) {
+    await this.storage.set('text_title', this.text_title)
     this.router.navigate(['methodologyDetail', { metho_id: methodologies_id }]);
   }
 
   async addEvent(event, title) {
     try {
-      await this.ga.trackPaperVisualization(title);
+      await this.analytics.trackPaperVisualization(title);
     }
     catch (e) {
       alert(e);

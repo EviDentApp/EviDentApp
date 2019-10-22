@@ -11,16 +11,20 @@ import { UtilService } from '../util.service';
   styleUrls: ['./register.page.scss'],
 })
 export class RegisterPage implements OnInit {
-
-  private facebook_id;
-  private google_id;
-  private name;
-  private email;
-  private email_password;
-  private birth_year;
-  private gender;
-  private grade_year;
-  private grade_state;
+  private user = {
+    facebook_id: '',
+    google_id: '',
+    name: '',
+    email: '',
+    email_password: '',
+    birth_year: '',
+    gender: '',
+    grade_year: '',
+    grade_state: '',
+    occupation: '',
+    work_state: '',
+    app_ad: ''
+  }
 
   private show_password = true;
   private erro = false;
@@ -34,7 +38,7 @@ export class RegisterPage implements OnInit {
     { id: 'CE', name: 'Ceará' },
     { id: 'DF', name: 'Distrito Federal' },
     { id: 'ES', name: 'Espírito Santo' },
-    { id: 'GO', name: 'Goías' },
+    { id: 'GO', name: 'Goiás' },
     { id: 'MA', name: 'Maranhão' },
     { id: 'MT', name: 'Mato Grosso' },
     { id: 'MS', name: 'Mato Grosso do Sul' },
@@ -53,6 +57,19 @@ export class RegisterPage implements OnInit {
     { id: 'SP', name: 'São Paulo' },
     { id: 'SE', name: 'Sergipe' },
     { id: 'TO', name: 'Tocantins' },
+  ];
+
+  private occupations = [
+    {id: 'ESTUDANTE', name: 'Estudante'},
+    {id: 'DENTISTA', name: 'Dentista'},
+    {id: 'OUTRO', name: 'Outro'},
+  ];
+
+  private app_ad_options = [
+    {id: 'RECOMENDACAO_COLEGA', name: 'Recomendação de colega'},
+    {id: 'EQUIPE_DO_EVIDENT', name: 'Equipe do Evident'},
+    {id: 'ABOPED', name: 'Através da ABOPED'},
+    {id: 'OUTRO', name: 'Outro'},
   ];
 
   constructor(
@@ -78,24 +95,24 @@ export class RegisterPage implements OnInit {
 
   loadFacebookData(user) {
     user = JSON.parse(user);
-    this.name = user.name;
-    this.email = user.email;
-    this.facebook_id = user.id;
+    this.user.name = user.name;
+    this.user.email = user.email;
+    this.user.facebook_id = user.id;
     if(user.gender) {
       if(user.gender == 'male') {
-        this.gender = 'M'
+        this.user.gender = 'M'
       }
       else if(user.gender == 'female') {
-        this.gender = 'F'
+        this.user.gender = 'F'
       }
     }
     if(user.birthday) {
       var birth_date = user.birthday.split('/')
       if(birth_date.length == 1) {
-        this.birth_year = birth_date[0]
+        this.user.birth_year = birth_date[0]
       }
       else if (birth_date.length == 3) {
-        this.birth_year = birth_date[2]
+        this.user.birth_year = birth_date[2]
       }
     }
     this.show_password = false;
@@ -103,26 +120,14 @@ export class RegisterPage implements OnInit {
 
   loadGoogleData(user) {
     user = JSON.parse(user);
-    this.google_id = user.userId;
-    this.name = user.displayName;
-    this.email = user.email;
+    this.user.google_id = user.userId;
+    this.user.name = user.displayName;
+    this.user.email = user.email;
     this.show_password = false;
   }
 
   async register() {
-    let obj = {
-      "name": this.name,
-      "facebook_id": this.facebook_id,
-      "google_id": this.google_id,
-      "email": this.email,
-      "email_password": this.email_password,
-      "birth_year": this.birth_year,
-      "grade_year": this.grade_year,
-      "gender": this.gender,
-      "grade_state": this.grade_state,
-    }
-
-    this.requisition.dentistCreate(obj).subscribe(
+    this.requisition.dentistCreate(this.user).subscribe(
       data => {
         const response = (data as any);
         const returned_object = JSON.parse(response._body);

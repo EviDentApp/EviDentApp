@@ -3,9 +3,9 @@ import { Component } from '@angular/core';
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
-import { GoogleAnalytics } from '@ionic-native/google-analytics/ngx';
 
 import { Router, NavigationEnd } from '@angular/router';
+import { AnalyticsService } from './analytics.service';
 
 
 @Component({
@@ -27,8 +27,8 @@ export class AppComponent {
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
-    private ga: GoogleAnalytics,
-    private router: Router
+    private router: Router,
+    private analytics: AnalyticsService
   ) {
     this.initializeApp();
     this.router.events.subscribe(event =>{
@@ -56,7 +56,7 @@ export class AppComponent {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
-      this.ga.startTrackerWithId('UA-148652262-1');
+      this.analytics.startTracking();
     });
   }
 }

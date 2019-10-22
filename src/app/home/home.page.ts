@@ -3,7 +3,6 @@ import { RequisitionsService } from '../requisitions.service';
 import { Router } from '@angular/router';
 import { LoadingController, AlertController } from '@ionic/angular';
 import { UtilService } from '../util.service';
-import { GoogleAnalytics } from '@ionic-native/google-analytics/ngx';
 import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({

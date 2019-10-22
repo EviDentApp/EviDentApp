@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Storage } from '@ionic/storage';
-import { GoogleAnalytics } from '@ionic-native/google-analytics/ngx';
 
 import { RequisitionsService } from '../requisitions.service';
 import { UtilService } from '../util.service';
@@ -21,7 +20,7 @@ export class IntroPage implements OnInit {
               private router: Router,
               private requisition: RequisitionsService,
               private utilFunctions: UtilService,
-              private ga: GoogleAnalytics) {}
+              ) {}
               
 
   ngOnInit() {

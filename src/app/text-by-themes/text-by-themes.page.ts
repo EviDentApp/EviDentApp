@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { RequisitionsService } from '../requisitions.service';
 import { LoadingController } from '@ionic/angular';
 import { UtilService } from '../util.service';
-import { GoogleAnalytics } from '@ionic-native/google-analytics/ngx';
+import { AnalyticsService } from '../analytics.service';
 
 @Component({
   selector: 'app-text-by-themes',
@@ -23,7 +23,8 @@ export class TextByThemesPage implements OnInit {
     private route: ActivatedRoute,
     private requisition: RequisitionsService,
     private router: Router,
-    private loadCtrl: LoadingController
+    private loadCtrl: LoadingController,
+    private analytics: AnalyticsService,
   ) {}
 
   ngOnInit() {
@@ -68,6 +69,7 @@ export class TextByThemesPage implements OnInit {
   }
 
   goToDetail(event, text) {
+    this.analytics.trackTextDetailVisualization(text.title);
     this.router.navigate(['textDetail', { text_id: text['_id']['$oid'], text_title: text.title }]);
   }
 

@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, LoadChildren, Router } from '@angular/router';
+import { Storage } from '@ionic/storage';
 import { RequisitionsService } from '../requisitions.service';
 import { LoadingController } from '@ionic/angular';
 import { UtilService } from '../util.service';
-import { GoogleAnalytics } from '@ionic-native/google-analytics/ngx';
+import { AnalyticsService } from '../analytics.service';
 
 @Component({
   selector: 'app-methodology-detail',
@@ -15,28 +16,29 @@ export class MethodologyDetailPage implements OnInit {
   public metho_id;
   public methodologies: any;
 
+  private text_title;
+
   constructor(
     private utilFunctions: UtilService,
     private route: ActivatedRoute,
     private requisition: RequisitionsService,
     private loadCtrl: LoadingController,
     private router: Router,
-    private ga: GoogleAnalytics,
+    private storage: Storage,
+    private analytics: AnalyticsService,
     ) {
-    this.ga.startTrackerWithId('UA-130013750-1')
-      .then(() => {
-        this.ga.trackView('Methodology Detail');
-      })
-      .catch(e => console.log('Error starting GoogleAnalytics', e));
   }
 
   ngOnInit() {
     this.metho_id = this.route.snapshot.paramMap.get('metho_id');
     this.initialize(this.metho_id);
+    this.storage.get('text_title').then(title => {
+      this.text_title = title;
+      this.storage.remove('text_title');
+    });
   }
 
   async initialize(metho_id) {
-    
     var methoArray = metho_id.split(",");
     const loading = await this.loadCtrl.create({
       message: "Loading"
@@ -58,6 +60,7 @@ export class MethodologyDetailPage implements OnInit {
 
   }
   goToMethodologyText(event, methoName, methoText, methoThermometer){
+    this.analytics.trackMetodologyVisualization(methoName, this.text_title);
     this.router.navigate(['methodologyText', { methoName: methoName, methoText: methoText, methoThermometer: methoThermometer}]);
   }
 }
