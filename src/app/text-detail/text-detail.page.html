@@ -11,9 +11,8 @@
   <ion-grid>
     <ion-img [src]="detail.url_image"></ion-img>
     <h2>{{ detail.title }}</h2>
-    <div [ngStyle]="{'background-color': relevance_color}">
-      <span>{{relevance}}</span>
-    </div>
+    <ion-img [src]="thermometer"></ion-img>
+    <ion-img [src]="podium"></ion-img>
     <br>
     <quill-view-html [content]="detail.abstract_intro" theme="snow"></quill-view-html>
     <ion-slides pager="true">
@@ -32,12 +31,14 @@
   <ion-row>
       <ion-col>
           <ion-button class="list-button-footer" expand="full" size="round" href="{{detail.paper_link}}" (click)="addEvent($event, detail.title);">
-              <span class="list-button-footer-text">Artigo</span>
+              <span class="list-button-footer-text">Acesse aqui o artigo original</span>
           </ion-button>
       </ion-col>
+  </ion-row>
+  <ion-row>
       <ion-col>
           <ion-button class="list-button-footer"  expand="full" shape="round"  (click)="goToMethodology($event, detail.methodologies)"> 
-            <span class="list-button-footer-text">Metodologias</span>
+            <span class="list-button-footer-text">Por que devo confiar nessa evidência?</span>
           </ion-button>
         </ion-col>
   </ion-row>

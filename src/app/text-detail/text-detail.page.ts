@@ -15,8 +15,9 @@ export class TextDetailPage implements OnInit {
   public detail: any;
   public text_id: string;
   public text_title: string;
-  public relevance: string;
-  public relevance_color: string;
+  public thermometer: string;
+  public podium: string;
+  public image_link = "/assets/img/";
 
   constructor(
     private utilFunctions: UtilService,
@@ -44,8 +45,8 @@ export class TextDetailPage implements OnInit {
           const response = (data as any);
           const returned_object = JSON.parse(response._body);
           this.detail = returned_object.text;
-        
-          this.mapRelevance(this.detail.study_relevance)
+          //this.mapThermometer(...........)
+          this.mapEvidenceLevel(this.detail.study_relevance)
           this.requisition.slideGetList(text_id).subscribe(
             data => {
               const response = (data as any);
@@ -83,26 +84,13 @@ export class TextDetailPage implements OnInit {
     }
   }
 
-  mapRelevance(id) {
-    console.log("entrei")
-    console.log(typeof id)
-    console.log(id)
-    switch (id) {
-      case '1': {
-        this.relevance = 'Melhor evidência disponível e possível';
-        this.relevance_color = '#D1EDCE';
-        break;
-      }
-      case '2': {
-        this.relevance = 'Melhor evidência disponível mas não possível';
-        this.relevance_color = '#edecce';
-        break;
-      }
-      case '3': {
-        this.relevance = 'Existem evidências de maior nível disponíveis';
-        this.relevance_color = '#edcece';
-        break;
-      }
-    }
+  // TODO vai mostar um ou mais termômetros?
+  mapThermometer(temperature) {
+    this.thermometer = this.image_link + "termometro" + temperature + ".png";
   }
+  
+  mapEvidenceLevel(evidence) {
+    this.podium = this.image_link + "evidencia" + evidence + ".png";
+  }
+
 }

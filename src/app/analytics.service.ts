@@ -56,20 +56,22 @@ export class AnalyticsService {
   public async trackPaperVisualization(title: string) {
     await this.setUserDimensions();
     await this.ga.addCustomDimension(DIM_VIEWED_PAPER, title);
-    await this.ga.trackMetric(METRIC_PAPER_VIEWS, 1);
+    this.ga.trackMetric(METRIC_PAPER_VIEWS, 1).catch ( erro => alert(erro));
+    
+
   }
 
   public async trackTextDetailVisualization(title: string) {
     await this.setUserDimensions();
     await this.ga.addCustomDimension(DIM_VIEWED_TEXT_DETAIL, title);
-    await this.ga.trackMetric(METRIC_TEXT_DETAIL_VIEWS, 1);
+    this.ga.trackMetric(METRIC_TEXT_DETAIL_VIEWS, 1).catch ( erro => alert(erro));
   }
 
   public async trackMetodologyVisualization(metodology_title: string, text_title: string) {
     await this.setUserDimensions();
     await this.ga.addCustomDimension(DIM_VIEWED_METODOLOGY, metodology_title);
     await this.ga.addCustomDimension(DIM_VIEWED_TEXT_DETAIL, text_title);
-    await this.ga.trackMetric(METRIC_METODOLOGY_VIEWS, 1);
+    this.ga.trackMetric(METRIC_METODOLOGY_VIEWS, 1).catch ( erro => alert(erro));
   }
  
 }
