@@ -20,6 +20,8 @@ export class AppComponent {
       icon: 'home'
     }
   ];
+
+  public backPressed = false;
   
   private navLinksArray = [];
 
@@ -33,10 +35,11 @@ export class AppComponent {
     this.initializeApp();
     this.router.events.subscribe(event =>{
       const url = this.router.url;
-      if (event instanceof NavigationEnd) {
+      if (event instanceof NavigationEnd && !this.backPressed) {
         const isCurrentUrlSaved = this.navLinksArray.find((item) => item === url);
         if (!isCurrentUrlSaved) this.navLinksArray.push(url);
       }
+      this.backPressed = false
     });
     this.hardwareBackButton();
   }
@@ -47,7 +50,8 @@ export class AppComponent {
         this.navLinksArray.pop();
         const index = this.navLinksArray.length - 1;
         const url = this.navLinksArray[index];
-        this.router.navigate([url]);
+        this.backPressed = true
+        this.router.navigateByUrl(url).catch(e => alert(e));
       }
     });
   }

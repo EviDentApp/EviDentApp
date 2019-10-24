@@ -11,8 +11,8 @@
   <ion-grid>
     <ion-img [src]="detail.url_image"></ion-img>
     <h2>{{ detail.title }}</h2>
-    <ion-img [src]="thermometer"></ion-img>
-    <ion-img [src]="podium"></ion-img>
+    <img [src]="thermometer" height="60px" (click)="describeThermometer()">
+    <img [src]="podium" height="60px" (click)="describePodium()">
     <br>
     <quill-view-html [content]="detail.abstract_intro" theme="snow"></quill-view-html>
     <ion-slides pager="true">

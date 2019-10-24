@@ -46,6 +46,7 @@ export class TextDetailPage implements OnInit {
           const returned_object = JSON.parse(response._body);
           this.detail = returned_object.text;
           //this.mapThermometer(...........)
+          this.thermometer = this.image_link + "termometro1.jpg";
           this.mapEvidenceLevel(this.detail.study_relevance)
           this.requisition.slideGetList(text_id).subscribe(
             data => {
@@ -75,6 +76,27 @@ export class TextDetailPage implements OnInit {
     this.router.navigate(['methodologyDetail', { metho_id: methodologies_id }]);
   }
 
+  describeThermometer() {
+    this.utilFunctions.presentAlert('qual termometro vai aqui?')
+  }
+
+  describePodium() {
+    switch (this.detail.study_relevance) {
+      case '1': {
+        this.utilFunctions.presentAlert('Melhor evidência disponível e possível');
+        break;
+      }
+      case '2': {
+        this.utilFunctions.presentAlert('Melhor evidência disponível mas não possível');
+        break;
+      }
+      case '3': {
+        this.utilFunctions.presentAlert('Existem evidências de maior nível disponíveis');
+        break;
+      }
+    }
+  }
+
   async addEvent(event, title) {
     try {
       await this.analytics.trackPaperVisualization(title);
@@ -86,11 +108,11 @@ export class TextDetailPage implements OnInit {
 
   // TODO vai mostar um ou mais termômetros?
   mapThermometer(temperature) {
-    this.thermometer = this.image_link + "termometro" + temperature + ".png";
+    this.thermometer = this.image_link + "termometro" + temperature + ".jpg";
   }
   
   mapEvidenceLevel(evidence) {
-    this.podium = this.image_link + "evidencia" + evidence + ".png";
+    this.podium = this.image_link + "evidencia" + evidence + ".jpg";
   }
 
 }
