@@ -57,14 +57,14 @@ export class AnalyticsService {
     await this.setUserDimensions();
     await this.ga.addCustomDimension(DIM_VIEWED_PAPER, title);
     this.ga.trackMetric(METRIC_PAPER_VIEWS, 1).catch ( erro => alert(erro));
-    
-
+    this.ga.trackEvent(title, 'vizualização do paper')
   }
 
   public async trackTextDetailVisualization(title: string) {
     await this.setUserDimensions();
     await this.ga.addCustomDimension(DIM_VIEWED_TEXT_DETAIL, title);
     this.ga.trackMetric(METRIC_TEXT_DETAIL_VIEWS, 1).catch ( erro => alert(erro));
+    this.ga.trackEvent(title, 'vizualização do texto')
   }
 
   public async trackMetodologyVisualization(metodology_title: string, text_title: string) {
@@ -72,6 +72,7 @@ export class AnalyticsService {
     await this.ga.addCustomDimension(DIM_VIEWED_METODOLOGY, metodology_title);
     await this.ga.addCustomDimension(DIM_VIEWED_TEXT_DETAIL, text_title);
     this.ga.trackMetric(METRIC_METODOLOGY_VIEWS, 1).catch ( erro => alert(erro));
+    this.ga.trackEvent(metodology_title, 'vizualização da metodologia')
   }
  
 }
