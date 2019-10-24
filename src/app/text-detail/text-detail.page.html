@@ -11,8 +11,18 @@
   <ion-grid>
     <ion-img [src]="detail.url_image"></ion-img>
     <h2>{{ detail.title }}</h2>
-    <img [src]="thermometer" height="60px" (click)="describeThermometer()">
-    <img [src]="podium" height="60px" (click)="describePodium()">
+    <ion-row>
+        <ion-col>
+            <img [src]="thermometer" height="60px" (click)="describeThermometer()">
+            <img [src]="podium" height="60px" (click)="describePodium()">
+        </ion-col>
+        <ion-col class = "likeButtons">
+            <img src="/assets/img/like_inactive.png" height="64px" (click)="toogleLike()" *ngIf="!like" >
+            <img src="/assets/img/like.png" height="64px" (click)="toogleLike()" *ngIf="like">
+            <img src="/assets/img/dislike_inactive.png" height="64px" (click)="toogleDislike()" *ngIf = "!dislike">
+            <img src="/assets/img/dislike.png" height="64px" (click)="toogleDislike()" *ngIf = "dislike">
+        </ion-col>
+    </ion-row>
     <br>
     <quill-view-html [content]="detail.abstract_intro" theme="snow"></quill-view-html>
     <ion-slides pager="true">
@@ -28,6 +38,7 @@
   </ion-grid>
 </ion-content>
 <ion-footer *ngIf="detail">
+    
   <ion-row>
       <ion-col>
           <ion-button class="list-button-footer" expand="full" size="round" href="{{detail.paper_link}}" (click)="addEvent($event, detail.title);">

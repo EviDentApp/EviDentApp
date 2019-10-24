@@ -18,6 +18,8 @@ export class TextDetailPage implements OnInit {
   public thermometer: string;
   public podium: string;
   public image_link = "/assets/img/";
+  public like :boolean = false;
+  public dislike :boolean = false;
 
   constructor(
     private utilFunctions: UtilService,
@@ -95,6 +97,17 @@ export class TextDetailPage implements OnInit {
         break;
       }
     }
+  }
+
+  toogleLike()
+  {
+    this.like = !this.like
+    this.dislike = false;
+  }
+  toogleDislike()
+  {
+    this.dislike = !this.dislike;
+    this.like = false;
   }
 
   async addEvent(event, title) {
