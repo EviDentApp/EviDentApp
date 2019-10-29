@@ -47,9 +47,8 @@ export class TextDetailPage implements OnInit {
           const response = (data as any);
           const returned_object = JSON.parse(response._body);
           this.detail = returned_object.text;
-          //this.mapThermometer(...........)
-          this.thermometer = this.image_link + "termometro1.jpg";
-          this.mapEvidenceLevel(this.detail.study_relevance)
+          this.mapThermometer()
+          this.mapEvidenceLevel()
           this.requisition.slideGetList(text_id).subscribe(
             data => {
               const response = (data as any);
@@ -79,7 +78,8 @@ export class TextDetailPage implements OnInit {
   }
 
   describeThermometer() {
-    this.utilFunctions.presentAlert('qual termometro vai aqui?')
+    this.utilFunctions.presentAlert('Confiabilidade da metodologia (1 a 5): ' + 
+                                    this.detail.thermometer)
   }
 
   describePodium() {
@@ -119,13 +119,12 @@ export class TextDetailPage implements OnInit {
     }
   }
 
-  // TODO vai mostar um ou mais termômetros?
-  mapThermometer(temperature) {
-    this.thermometer = this.image_link + "termometro" + temperature + ".jpg";
+  mapThermometer() {
+    this.thermometer = this.image_link + "termometro" + this.detail.thermometer + ".jpg";
   }
   
-  mapEvidenceLevel(evidence) {
-    this.podium = this.image_link + "evidencia" + evidence + ".jpg";
+  mapEvidenceLevel() {
+    this.podium = this.image_link + "evidencia" + this.detail.study_relevance + ".jpg";
   }
 
 }

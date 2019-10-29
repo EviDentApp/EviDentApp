@@ -13,6 +13,7 @@ const DIM_VIEWED_METODOLOGY = 7;
 const DIM_OCCUPATION = 8;
 const DIM_WORK_STATE = 9;
 const DIM_APP_AD = 10;
+const DIM_USER_ID = 11;
 
 const METRIC_PAPER_VIEWS = 1;
 const METRIC_TEXT_DETAIL_VIEWS = 2;
@@ -43,11 +44,12 @@ export class AnalyticsService {
     if (!this.user) {
       await this.getData();
     }
+    await this.ga.setUserId(this.user._id);
+    await this.ga.addCustomDimension(DIM_USER_ID, this.user._id);
     await this.ga.addCustomDimension(DIM_AGE, this.user.age);
     await this.ga.addCustomDimension(DIM_GENDER, this.user.gender);
     await this.ga.addCustomDimension(DIM_GRADE_YEAR, this.user.grade_year);
     await this.ga.addCustomDimension(DIM_GRADE_STATE, this.user.grade_state);
-    await this.ga.setUserId(this.user._id);
     await this.ga.addCustomDimension(DIM_OCCUPATION, this.user.occupation ? this.user.occupation : 'NAO_DEFINIDO')
     await this.ga.addCustomDimension(DIM_WORK_STATE, this.user.work_state ? this.user.work_state : 'NAO_DEFINIDO')
     await this.ga.addCustomDimension(DIM_APP_AD, this.user.app_ad ? this.user.app_ad : 'NAO_DEFINIDO')

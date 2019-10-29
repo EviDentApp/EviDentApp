@@ -13,17 +13,16 @@
     <h2>{{ detail.title }}</h2>
     <ion-row>
         <ion-col>
-            <img [src]="thermometer" height="60px" (click)="describeThermometer()">
-            <img [src]="podium" height="60px" (click)="describePodium()">
+            <img [src]="thermometer" height="50px" (click)="describeThermometer()">
+            <img [src]="podium" height="50px" (click)="describePodium()">
         </ion-col>
         <ion-col class = "likeButtons">
-            <img src="/assets/img/like_inactive.png" height="64px" (click)="toogleLike()" *ngIf="!like" >
-            <img src="/assets/img/like.png" height="64px" (click)="toogleLike()" *ngIf="like">
-            <img src="/assets/img/dislike_inactive.png" height="64px" (click)="toogleDislike()" *ngIf = "!dislike">
-            <img src="/assets/img/dislike.png" height="64px" (click)="toogleDislike()" *ngIf = "dislike">
+            <img src="/assets/img/like_inactive.png" height="50px" (click)="toogleLike()" *ngIf="!like" >
+            <img src="/assets/img/like.png" height="50px" (click)="toogleLike()" *ngIf="like">
+            <img src="/assets/img/dislike_inactive.png" height="50px" (click)="toogleDislike()" *ngIf = "!dislike">
+            <img src="/assets/img/dislike.png" height="50px" (click)="toogleDislike()" *ngIf = "dislike">
         </ion-col>
     </ion-row>
-    <br>
     <quill-view-html [content]="detail.abstract_intro" theme="snow"></quill-view-html>
     <ion-slides pager="true">
       <ion-slide *ngFor = "let slide of detail.slideshow">
