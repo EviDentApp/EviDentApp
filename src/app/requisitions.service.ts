@@ -8,7 +8,7 @@ import { UtilService } from './util.service';
 export class RequisitionsService {
   public key = this.utilFunctions.apiKey
   //public endpoint = "http://evident.tk" 
-  public endpoint = "http://192.168.42.148:5000" 
+  public endpoint = "http://192.168.42.102:5000" 
   public bodyThemesList = { "key": this.key }
   public bodyTextList = {
                           "key": this.key,
@@ -46,6 +46,13 @@ export class RequisitionsService {
     "key": this.key,
     "email": "",
     "email_password": ""
+  }
+
+  public bodyToogleLike = {
+    "key": this.key,
+    "state": '',
+    "text_id": '',
+    "dentist_id":''
   }
 
   constructor(public http: Http,
@@ -109,4 +116,12 @@ export class RequisitionsService {
    return res
   }
  
+  toogleLike(state, text_id, dentist_id) {
+    this.bodyToogleLike.state = state;
+    this.bodyToogleLike.text_id = text_id;
+    this.bodyToogleLike.dentist_id = dentist_id
+    var res = this.http.post(this.endpoint + "/text/like", this.bodyToogleLike);
+    return res
+   }
+
 }

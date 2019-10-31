@@ -18,8 +18,7 @@ export class TextDetailPage implements OnInit {
   public thermometer: string;
   public podium: string;
   public image_link = "/assets/img/";
-  public like :boolean = false;
-  public dislike :boolean = false;
+  public like :string = null;
 
   constructor(
     private utilFunctions: UtilService,
@@ -35,6 +34,8 @@ export class TextDetailPage implements OnInit {
     this.text_id = this.route.snapshot.paramMap.get('text_id');
     this.text_title = this.route.snapshot.paramMap.get('text_title');
     this.initialize(this.text_id);
+
+    // TODO - TRAZER A SITUACAO ATUAL DE LIKE/DISLIKE DO TEXTO
   }
 
   async initialize(text_id) {
@@ -99,17 +100,32 @@ export class TextDetailPage implements OnInit {
     }
   }
 
-  toogleLike()
-  {
-    this.like = !this.like
-    this.dislike = false;
-  }
-  toogleDislike()
-  {
-    this.dislike = !this.dislike;
-    this.like = false;
-  }
+  
 
+  async toogleLike(state:string)
+  {
+    let user = JSON.parse(await this.storage.get('user'));
+     
+    this.requisition.toogleLike(state, this.text_id, user._id).subscribe(
+      data => {
+        const response = (data as any);
+        let res = JSON.parse(response._body);
+
+        if (res.status) {
+          this.like = res.status;
+        }
+
+        else
+          alert(res.error);
+      },
+      error => {
+        console.log(error);
+        this.utilFunctions.presentAlert(error);
+      }
+    );
+
+  }
+  
   async addEvent(event, title) {
     try {
       await this.analytics.trackPaperVisualization(title);
