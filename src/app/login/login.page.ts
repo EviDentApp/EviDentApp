@@ -112,6 +112,9 @@ export class LoginPage implements OnInit {
   }
 
   login() {
+
+    console.log('oi')
+
     this.requisition.dentistLogin(this.email, this.email_password).subscribe(
       data => {
         const response = (data as any);

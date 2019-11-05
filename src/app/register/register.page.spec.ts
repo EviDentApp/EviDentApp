@@ -15,7 +15,7 @@ describe('RegisterPage', () => {
 
   beforeEach(async(() => {
     mockStorage = jasmine.createSpyObj('Storage', ['get', 'set', 'remove'])
-    mockStorage.get.and.returnValue(Promise.resolve(null))
+    mockStorage.get.and.returnValue(Promise.resolve('{"userId": 1}'))
     mockUtilService = jasmine.createSpyObj('UtilService', ['presentAlert']);
     TestBed.configureTestingModule({
       declarations: [ RegisterPage ],
@@ -38,4 +38,5 @@ describe('RegisterPage', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
 });
