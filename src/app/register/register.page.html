@@ -11,7 +11,7 @@
     <div *ngIf="erro">
       {{ erro }}
     </div>
-    <form #form="ngForm" (ngSubmit)="register()">
+    <form (ngSubmit)="register()">
       <ion-item>
         <ion-label position="floating">Nome</ion-label>
         <ion-input [(ngModel)]="user.name" type="text" name="name"></ion-input>
