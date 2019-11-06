@@ -19,6 +19,8 @@ export class TextDetailPage implements OnInit {
   public podium: string;
   public image_link = "/assets/img/";
   public like :string = null;
+  public likes :number = 0;
+  public dislikes :number = 0;
 
   constructor(
     private utilFunctions: UtilService,

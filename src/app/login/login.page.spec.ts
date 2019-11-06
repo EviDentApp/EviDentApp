@@ -33,9 +33,7 @@ describe('LoginPage', () => {
         const navigateSpy = spyOn(mockRouter, 'navigateByUrl')
         navigateSpy.and.callFake(() => {
           fixture.detectChanges();
-          console.log('Vou testar o storage')
           expect(mockStorage.set.calls.count()).toBe(2);
-          console.log('Vou testar o router')
           expect(navigateSpy).toHaveBeenCalledWith('/');
         })
         mockStorage.set.and.returnValue(Promise.resolve());

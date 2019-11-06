@@ -19,9 +19,11 @@
         <ion-col class = "likeButtons">
             <img src="/assets/img/like_inactive.png" height="50px" (click)="toogleLike('like')" *ngIf="like != 'like'"  >
             <img src="/assets/img/like.png" height="50px" (click)="toogleLike('remove')" *ngIf="like == 'like'">
+            <span id="likes">0</span>
             <img src="/assets/img/dislike_inactive.png" height="50px" (click)="toogleLike('dislike')" *ngIf = "like != 'dislike'">
             <img src="/assets/img/dislike.png" height="50px" (click)="toogleLike('remove')" *ngIf = "like == 'dislike'">
-        </ion-col>
+            <span id="dislikes">0</span>
+          </ion-col>
     </ion-row>
     <quill-view-html [content]="detail.abstract_intro" theme="snow"></quill-view-html>
     <ion-slides pager="true">
