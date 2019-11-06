@@ -5,7 +5,7 @@
 </ion-header>
 <ion-content padding>
   <h1>Login</h1>
-  <form (ngSubmit)="login()">
+  <form>
     <ion-item>
       <ion-label position="floating">E-mail</ion-label>
       <ion-input [(ngModel)]="email" type="email" 
@@ -18,7 +18,7 @@
                  name="email_password" id="email_password"></ion-input>
     </ion-item>
   
-    <ion-button type="submit" expand="full" color="primary">Login</ion-button>
+    <ion-button (click)="login()" expand="full" color="primary">Login</ion-button>
 
   </form>
   <ion-button color="light" icon-right (click)="login_facebook()">

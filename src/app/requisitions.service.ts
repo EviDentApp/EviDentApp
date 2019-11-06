@@ -6,7 +6,7 @@ import { UtilService } from './util.service';
   providedIn: 'root'
 })
 export class RequisitionsService {
-  public key = this.utilFunctions.apiKey
+  public key = 'cd48e1c22de0961d5d1bfb14f8a66e006cfb1cfbf3f0c0f3'
   //public endpoint = "http://evident.tk" 
   public endpoint = "http://192.168.42.102:5000" 
   public bodyThemesList = { "key": this.key }
@@ -55,9 +55,9 @@ export class RequisitionsService {
     "dentist_id":''
   }
 
-  constructor(public http: Http,
-              public utilFunctions: UtilService) {
-  }
+  constructor(
+    public http: Http,
+  ) { }
 
   themesGetList () {
     return this.http.post(this.endpoint + "/themes/list", this.bodyThemesList);

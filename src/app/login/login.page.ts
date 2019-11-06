@@ -55,7 +55,6 @@ export class LoginPage implements OnInit {
               }              
             },
             error => {
-              console.log(error);
               this.utilFunctions.presentAlert(error);
             }
           );
@@ -112,9 +111,6 @@ export class LoginPage implements OnInit {
   }
 
   login() {
-
-    console.log('oi')
-
     this.requisition.dentistLogin(this.email, this.email_password).subscribe(
       data => {
         const response = (data as any);
@@ -131,7 +127,6 @@ export class LoginPage implements OnInit {
         }
       },
       error => {
-        alert("Erro na requisição")
         this.utilFunctions.presentAlert(error);
       }
     )
