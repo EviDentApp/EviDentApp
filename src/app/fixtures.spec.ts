@@ -9,6 +9,7 @@ import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { GoogleAnalytics } from '@ionic-native/google-analytics/ngx';
 
 import { UtilService } from './util.service';
 import { RequisitionsService } from './requisitions.service';
@@ -18,13 +19,15 @@ import { Router } from '@angular/router';
 export let fixture: ComponentFixture<any>;
 export let component
 export let reqService: RequisitionsService;
-export let mockStorage, mockUtilService, mockFb, mockGoogle, mockRouter
+export let mockStorage, mockUtilService, mockFb, mockGoogle, mockRouter, mockGoogleAnalytics
 
 export async function createTestBed(pageClass) {
     mockStorage = jasmine.createSpyObj('Storage', ['set']);
     mockUtilService = jasmine.createSpyObj('UtilService', ['presentAlert']);
     mockFb = jasmine.createSpyObj('Facebook', ['login'])
     mockGoogle = jasmine.createSpyObj('GooglePlus', ['login'])
+    mockGoogleAnalytics = jasmine.createSpyObj('GoogleAnalytics', ['startTrackerWithId',
+     'setUserId',  'addCustomDimension', 'trackMetric', 'trackEvent'])
     await TestBed.configureTestingModule({
       declarations: [ pageClass ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -32,7 +35,8 @@ export async function createTestBed(pageClass) {
         { provide: Storage, useValue: mockStorage},
         { provide: UtilService, useValue: mockUtilService},
         { provide: Facebook, useValue: mockFb},
-        { provide: GooglePlus, useValue: mockGoogle},
+        { provide: GooglePlus, useValue: mockGoogle}, 
+        {provide: GoogleAnalytics, useValue: mockGoogleAnalytics}
       ],
       imports: [ 
         FormsModule,
