@@ -116,9 +116,7 @@ export class LoginPage implements OnInit {
         const response = (data as any);
         const returned_object = JSON.parse(response._body);
         if(returned_object.error == undefined) {
-          console.log('vou pro primeiro storage set')
           this.storage.set('user', JSON.stringify(returned_object)).then(() => {
-            console.log('vou pro segundo storage set')
             this.storage.set('isLoggedIn', true).then(() => {
               this.router.navigateByUrl('/');
             });

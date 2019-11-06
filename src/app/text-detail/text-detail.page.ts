@@ -36,7 +36,6 @@ export class TextDetailPage implements OnInit {
     this.text_id = this.route.snapshot.paramMap.get('text_id');
     this.text_title = this.route.snapshot.paramMap.get('text_title');
     this.initialize(this.text_id);
-
     // TODO - TRAZER A SITUACAO ATUAL DE LIKE/DISLIKE DO TEXTO
   }
 
@@ -56,8 +55,6 @@ export class TextDetailPage implements OnInit {
             data => {
               const response = (data as any);
               this.detail.slideshow = JSON.parse(response._body).slides;
-
-              console.info(this.detail.slideshow);
             },
             error => {
               console.log(error);

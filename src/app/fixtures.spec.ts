@@ -1,4 +1,3 @@
-import { RouterTestingModule } from '@angular/router/testing';
 import { HttpModule } from '@angular/http';
 import { Storage } from '@ionic/storage';
 import { Facebook } from '@ionic-native/facebook/ngx';
@@ -10,51 +9,83 @@ import { IonicModule } from '@ionic/angular';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { GoogleAnalytics } from '@ionic-native/google-analytics/ngx';
+import { Router, ActivatedRoute } from '@angular/router';
+import { LoadingController } from '@ionic/angular';
+import { RouterTestingModule } from '@angular/router/testing';
 
 import { UtilService } from './util.service';
 import { RequisitionsService } from './requisitions.service';
-import { Router } from '@angular/router';
 
 
 export let fixture: ComponentFixture<any>;
 export let component
 export let reqService: RequisitionsService;
-export let mockStorage, mockUtilService, mockFb, mockGoogle, mockRouter, mockGoogleAnalytics
+export let mockStorage, mockUtilService, mockFb, mockGoogle, mockRouter, mockGoogleAnalytics,
+           mockActivatedRoute, mockLoadingController
 
-export async function createTestBed(pageClass) {
-    mockStorage = jasmine.createSpyObj('Storage', ['set']);
-    mockUtilService = jasmine.createSpyObj('UtilService', ['presentAlert']);
-    mockFb = jasmine.createSpyObj('Facebook', ['login'])
-    mockGoogle = jasmine.createSpyObj('GooglePlus', ['login'])
-    mockGoogleAnalytics = jasmine.createSpyObj('GoogleAnalytics', ['startTrackerWithId',
-     'setUserId',  'addCustomDimension', 'trackMetric', 'trackEvent'])
-    await TestBed.configureTestingModule({
-      declarations: [ pageClass ],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA],
-      providers: [
-        { provide: Storage, useValue: mockStorage},
-        { provide: UtilService, useValue: mockUtilService},
-        { provide: Facebook, useValue: mockFb},
-        { provide: GooglePlus, useValue: mockGoogle}, 
-        {provide: GoogleAnalytics, useValue: mockGoogleAnalytics}
-      ],
-      imports: [ 
-        FormsModule,
-        CommonModule,
-        BrowserModule,
-        IonicModule.forRoot(),
-        RouterTestingModule.withRoutes([]), 
-        HttpModule,
-      ],
-    }).compileComponents()
-    fixture = TestBed.createComponent(pageClass);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-    await fixture.whenRenderingDone();
-    await fixture.whenStable();
-    reqService = TestBed.get(RequisitionsService);
-    reqService.endpoint = "http://localhost:5000";
-    mockRouter = TestBed.get(Router)
+let activatedRoute
+
+export async function createTestBed(pageClass, defaults: any = {}) {
+  createMocks(defaults);
+  await TestBed.configureTestingModule({
+    declarations: [ pageClass ],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA],
+    providers: [
+      { provide: Storage, useValue: mockStorage},
+      { provide: UtilService, useValue: mockUtilService},
+      { provide: Facebook, useValue: mockFb},
+      { provide: GooglePlus, useValue: mockGoogle}, 
+      { provide: GoogleAnalytics, useValue: mockGoogleAnalytics },
+      { provide: Router, useValue: mockRouter },
+      { provide: ActivatedRoute, useValue: activatedRoute },
+      LoadingController,
+    ],
+    imports: [ 
+      FormsModule,
+      CommonModule,
+      BrowserModule,
+      IonicModule.forRoot(),
+      HttpModule,
+      RouterTestingModule.withRoutes([]),
+    ],
+  }).compileComponents()
+  reqService = TestBed.get(RequisitionsService);
+  reqService.endpoint = "http://localhost:5000";
+  fixture = TestBed.createComponent(pageClass);
+  component = fixture.componentInstance;
+  fixture.detectChanges();
+  await fixture.whenRenderingDone();
+  await fixture.whenStable();
+}
+
+function createMocks(defaults) {
+  mockStorage = defaults.mockStorage ? defaults.mockStorage :
+      jasmine.createSpyObj('Storage', ['set']);
+
+  mockUtilService = defaults.mockUtilService ? defaults.mockUtilService :
+      jasmine.createSpyObj('UtilService', ['presentAlert']);
+
+  mockFb = defaults.mockFb ? defaults.mockFb :
+      jasmine.createSpyObj('Facebook', ['login'])
+
+  mockGoogle = defaults.mockGoogle ? defaults.mockGoogle :
+      jasmine.createSpyObj('GooglePlus', ['login'])
+
+  mockGoogleAnalytics = defaults.mockGoogleAnalytics ? defaults.mockGoogleAnalytics :
+      jasmine.createSpyObj('GoogleAnalytics', ['startTrackerWithId',
+                       'setUserId',  'addCustomDimension', 'trackMetric', 'trackEvent'])
+
+  mockRouter = defaults.mockRouter ? defaults.mockRouter :
+      jasmine.createSpyObj('Router', ['navigateByUrl']);
+
+  mockActivatedRoute = defaults.mockActivatedRoute ? defaults.mockActivatedRoute :
+      jasmine.createSpyObj('ActivatedRoute', ['get']);
+
+  activatedRoute = {
+    snapshot: {
+      paramMap: mockActivatedRoute
+    }
+  };
 }
 
 export function sendInput(inputElement: HTMLInputElement,text: string) {

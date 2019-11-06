@@ -30,11 +30,10 @@ describe('LoginPage', () => {
   it('should accept valid user data', async (() => {
     sendInput(email, 'a@b.c').then(() => {
       sendInput(password, '123').then(() => {
-        const navigateSpy = spyOn(mockRouter, 'navigateByUrl')
-        navigateSpy.and.callFake(() => {
+        mockRouter.navigateByUrl.and.callFake(() => {
           fixture.detectChanges();
           expect(mockStorage.set.calls.count()).toBe(2);
-          expect(navigateSpy).toHaveBeenCalledWith('/');
+          expect(mockRouter.navigateByUrl).toHaveBeenCalledWith('/');
         })
         mockStorage.set.and.returnValue(Promise.resolve());
         loginButton.click();
