@@ -1,6 +1,7 @@
 import { LoginPage } from './login.page';
 
-import { createTestBed, component, sendInput, fixture, mockStorage } from '../fixtures.spec';
+import { createTestBed, component, sendInput, fixture, mockStorage, mockRouter } from '../fixtures.spec';
+import { async } from '@angular/core/testing';
 
 describe('LoginPage', () => {
   let email, password, loginButton
@@ -26,14 +27,21 @@ describe('LoginPage', () => {
     expect(loginButton instanceof HTMLElement).toBeTruthy();
   });
 
-  it('should accept valid user data', () => {
-    sendInput(email, 'oi kkk').then(() => {
-      sendInput(password, 'rsrsrsrs').then(() => {
+  it('should accept valid user data', async (() => {
+    sendInput(email, 'a@b.c').then(() => {
+      sendInput(password, '123').then(() => {
+        const navigateSpy = spyOn(mockRouter, 'navigateByUrl')
+        navigateSpy.and.callFake(() => {
+          fixture.detectChanges();
+          console.log('Vou testar o storage')
+          expect(mockStorage.set.calls.count()).toBe(2);
+          console.log('Vou testar o router')
+          expect(navigateSpy).toHaveBeenCalledWith('/');
+        })
+        mockStorage.set.and.returnValue(Promise.resolve());
         loginButton.click();
-        fixture.detectChanges();
-        expect(mockStorage.set.calls.count()).toBe(1);
       });
     });
-  });
+  }));
 
 });
