@@ -12,12 +12,13 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 import { UtilService } from './util.service';
 import { RequisitionsService } from './requisitions.service';
+import { Router } from '@angular/router';
 
 
 export let fixture: ComponentFixture<any>;
 export let component
 export let reqService: RequisitionsService;
-export let mockStorage, mockUtilService, mockFb, mockGoogle
+export let mockStorage, mockUtilService, mockFb, mockGoogle, mockRouter
 
 export async function createTestBed(pageClass) {
     mockStorage = jasmine.createSpyObj('Storage', ['set']);
@@ -49,6 +50,7 @@ export async function createTestBed(pageClass) {
     await fixture.whenStable();
     reqService = TestBed.get(RequisitionsService);
     reqService.endpoint = "http://localhost:5000";
+    mockRouter = TestBed.get(Router)
 }
 
 export function sendInput(inputElement: HTMLInputElement,text: string) {
