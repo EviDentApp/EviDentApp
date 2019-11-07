@@ -18,7 +18,8 @@ export class RequisitionsService {
 
   public bodyTextDetail = {
                           "key": this.key,
-                          "_id": 0
+                          "_id": 0,
+                          "dentist_id": 0
                         }
 
   public bodyMethodologyDetail = {
@@ -69,8 +70,9 @@ export class RequisitionsService {
     return this.http.post(this.endpoint + "/text/search", this.bodyTextList);
   }
 
-  textGetDetail(text_id) {
+  textGetDetail(text_id, user_id) {
     this.bodyTextDetail._id = text_id;
+    this.bodyTextDetail.dentist_id = user_id;
     return this.http.post(this.endpoint + "/text/detail", this.bodyTextDetail);
   }
 

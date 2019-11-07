@@ -12,6 +12,7 @@ import { AnalyticsService } from '../analytics.service';
   styleUrls: ['./text-detail.page.scss'],
 })
 export class TextDetailPage implements OnInit {
+  public user: any;
   public detail: any;
   public text_id: string;
   public text_title: string;
@@ -32,11 +33,11 @@ export class TextDetailPage implements OnInit {
     private storage: Storage,
   ) { }
 
-  ngOnInit() {
+  async ngOnInit() {
+    this.user = JSON.parse(await this.storage.get('user'));
     this.text_id = this.route.snapshot.paramMap.get('text_id');
     this.text_title = this.route.snapshot.paramMap.get('text_title');
     this.initialize(this.text_id);
-    // TODO - TRAZER A SITUACAO ATUAL DE LIKE/DISLIKE DO TEXTO
   }
 
   async initialize(text_id) {
@@ -44,11 +45,12 @@ export class TextDetailPage implements OnInit {
       message: "Loading"
     });
     loading.present().then(() => {
-      this.requisition.textGetDetail(text_id).subscribe(
+      this.requisition.textGetDetail(text_id, this.user._id).subscribe(
         data => {
           const response = (data as any);
           const returned_object = JSON.parse(response._body);
           this.detail = returned_object.text;
+          this.like = this.detail.likestatus;
           this.mapThermometer()
           this.mapEvidenceLevel()
           this.requisition.slideGetList(text_id).subscribe(
@@ -103,9 +105,7 @@ export class TextDetailPage implements OnInit {
 
   async toogleLike(state:string)
   {
-    let user = JSON.parse(await this.storage.get('user'));
-     
-    this.requisition.toogleLike(state, this.text_id, user._id).subscribe(
+    this.requisition.toogleLike(state, this.text_id, this.user._id).subscribe(
       data => {
         const response = (data as any);
         let res = JSON.parse(response._body);

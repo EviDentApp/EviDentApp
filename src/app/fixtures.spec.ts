@@ -58,16 +58,11 @@ export function createTestBed(pageClass, defaults: any = {}) {
 
 export function waitForCondition(conditionFunction) {
   return new Promise((resolve, reject) => {
-
-    console.log('waiting...')
-
     let waitFunction = () => {
       if (conditionFunction()) {
-        console.log('condition satisfied!!')
         resolve();
       }
       else {
-        console.log('not yet...')
         setTimeout(waitFunction, 300);
       }
     };
@@ -77,7 +72,7 @@ export function waitForCondition(conditionFunction) {
 
 function createMocks(defaults) {
   mockStorage = defaults.mockStorage ? defaults.mockStorage :
-      jasmine.createSpyObj('Storage', ['set']);
+      jasmine.createSpyObj('Storage', ['get', 'set']);
 
   mockUtilService = defaults.mockUtilService ? defaults.mockUtilService :
       jasmine.createSpyObj('UtilService', ['presentAlert']);

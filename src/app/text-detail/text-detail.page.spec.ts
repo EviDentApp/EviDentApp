@@ -3,18 +3,24 @@ import { createTestBed, component, fixture, waitForCondition } from '../fixtures
 import { TextDetailPage } from './text-detail.page';
 
 describe('TextDetailPage', () => {
-  let likes, dislikes;
+  let likes, dislikes, likeButton, likeButtonInactive, dislikeButton, dislikeButtonInactive;
 
   beforeEach(async(() => {
     let mockActivatedRoute = jasmine.createSpyObj('ActivatedRoute', ['get']);
     mockActivatedRoute.get.and.returnValue('5db87816f81c26070c785b05');
-    createTestBed(TextDetailPage, { mockActivatedRoute: mockActivatedRoute });
+    let mockStorage = jasmine.createSpyObj('Storage', ['get']);
+    mockStorage.get.and.returnValue('{"_id": "5db879fef81c26070c785b06"}');
+    createTestBed(TextDetailPage, { mockActivatedRoute: mockActivatedRoute,
+        mockStorage: mockStorage });
     waitForCondition(() => component.detail != null).then(() => {
-      console.log(component.detail.title);
       fixture.detectChanges();
       let dom = fixture.nativeElement;
       likes = dom.querySelector('span#likes');
       dislikes = dom.querySelector('span#dislikes');
+      likeButton = dom.querySelector('#likeButton')
+      likeButtonInactive = dom.querySelector('#likeButtonInactive')
+      dislikeButton = dom.querySelector('#dislikeButton')
+      dislikeButtonInactive = dom.querySelector('#dislikeButtonInactive')
     });
   }));
 
@@ -22,13 +28,26 @@ describe('TextDetailPage', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should get UI components', () => {
-    console.log(dislikes)
-    expect(likes.textContent).toBe('0')
+  it('should get likes and dislikes on load', () => {
+    fixture.detectChanges();
+    expect(likes.textContent).toBe('1')
     expect(dislikes.textContent).toBe('0')
-    expect(likes instanceof HTMLElement).toBeTruthy();
-    expect(dislikes instanceof HTMLElement).toBeTruthy();
-    console.log('testei');
+    expect(likeButton).toBeTruthy();
+    expect(likeButtonInactive).toBeNull();
+    expect(dislikeButton).toBeNull();
+    expect(dislikeButtonInactive).toBeTruthy();
+  });
+
+
+  it('should update likes and dislikes count', () => {
+    fixture.detectChanges();
+    console.log(likeButton)
+    console.log(likeButtonInactive)
+    console.log(dislikeButton)
+    console.log(dislikeButtonInactive)
+
+    expect(likes.textContent).toBe('1')
+    expect(dislikes.textContent).toBe('0')
   });
 
 });
