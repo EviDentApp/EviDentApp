@@ -1,6 +1,6 @@
 import { LoginPage } from './login.page';
 
-import { createTestBed, createFixture, component, sendInput, fixture, mockStorage, 
+import { createTestBed, component, sendInput, fixture, mockStorage, 
          mockRouter } from '../fixtures.spec';
 import { async } from '@angular/core/testing';
 
@@ -9,15 +9,11 @@ describe('LoginPage', () => {
 
   beforeEach(async(() => {
     createTestBed(LoginPage);
-  }));
-
-  beforeEach(() => {
-    createFixture(LoginPage);
     let dom = fixture.nativeElement;
     email = dom.querySelector('#email');
     password = dom.querySelector('#email_password');
     loginButton = dom.querySelector('form ion-button');
-  });
+  }));
 
   it('should create', () => {
     expect(component).toBeTruthy();

@@ -1,5 +1,5 @@
 import { async } from '@angular/core/testing';
-import { createTestBed, createFixture, component, fixture, waitForCondition } from '../fixtures.spec';
+import { createTestBed, component, fixture, waitForCondition } from '../fixtures.spec';
 import { TextDetailPage } from './text-detail.page';
 
 describe('TextDetailPage', () => {
@@ -9,12 +9,8 @@ describe('TextDetailPage', () => {
     let mockActivatedRoute = jasmine.createSpyObj('ActivatedRoute', ['get']);
     mockActivatedRoute.get.and.returnValue('5db87816f81c26070c785b05');
     createTestBed(TextDetailPage, { mockActivatedRoute: mockActivatedRoute });
-  }));
-
-  beforeEach(async(() => {
-    createFixture(TextDetailPage);
     waitForCondition(() => component.detail != null).then(() => {
-      console.log(component.detail);
+      console.log(component.detail.title);
       fixture.detectChanges();
       let dom = fixture.nativeElement;
       likes = dom.querySelector('span#likes');

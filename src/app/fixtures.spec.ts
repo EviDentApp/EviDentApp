@@ -51,9 +51,6 @@ export function createTestBed(pageClass, defaults: any = {}) {
   }).compileComponents();
   reqService = TestBed.get(RequisitionsService);
   reqService.endpoint = "http://localhost:5000";
-}
-
-export function createFixture(pageClass) {
   fixture = TestBed.createComponent(pageClass);
   component = fixture.componentInstance;
   fixture.detectChanges();
