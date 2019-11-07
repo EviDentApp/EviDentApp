@@ -1,5 +1,5 @@
 import { async } from '@angular/core/testing';
-import { createTestBed, createFixture, component, fixture } from '../fixtures.spec';
+import { createTestBed, createFixture, component, fixture, waitForCondition } from '../fixtures.spec';
 import { TextDetailPage } from './text-detail.page';
 
 describe('TextDetailPage', () => {
@@ -11,12 +11,16 @@ describe('TextDetailPage', () => {
     createTestBed(TextDetailPage, { mockActivatedRoute: mockActivatedRoute });
   }));
 
-  beforeEach(() => {
+  beforeEach(async(() => {
     createFixture(TextDetailPage);
-    let dom = fixture.nativeElement;
-    likes = dom.querySelector('span#likes');
-    dislikes = dom.querySelector('span#dislikes');
-  });
+    waitForCondition(() => component.detail != null).then(() => {
+      console.log(component.detail);
+      fixture.detectChanges();
+      let dom = fixture.nativeElement;
+      likes = dom.querySelector('span#likes');
+      dislikes = dom.querySelector('span#dislikes');
+    });
+  }));
 
   it('should create', () => {
     expect(component).toBeTruthy();

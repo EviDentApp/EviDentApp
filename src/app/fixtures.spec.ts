@@ -59,6 +59,25 @@ export function createFixture(pageClass) {
   fixture.detectChanges();
 }
 
+export function waitForCondition(conditionFunction) {
+  return new Promise((resolve, reject) => {
+
+    console.log('waiting...')
+
+    let waitFunction = () => {
+      if (conditionFunction()) {
+        console.log('condition satisfied!!')
+        resolve();
+      }
+      else {
+        console.log('not yet...')
+        setTimeout(waitFunction, 300);
+      }
+    };
+    setTimeout(waitFunction, 300);
+  });
+}
+
 function createMocks(defaults) {
   mockStorage = defaults.mockStorage ? defaults.mockStorage :
       jasmine.createSpyObj('Storage', ['set']);
