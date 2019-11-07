@@ -4,6 +4,17 @@ import { TextDetailPage } from './text-detail.page';
 
 describe('TextDetailPage', () => {
   let likes, dislikes, likeButton, likeButtonInactive, dislikeButton, dislikeButtonInactive;
+  let dom
+
+  function updateButtons() {
+    fixture.detectChanges();
+    likes = dom.querySelector('span#likes');
+    dislikes = dom.querySelector('span#dislikes');
+    likeButton = dom.querySelector('#likeButton')
+    likeButtonInactive = dom.querySelector('#likeButtonInactive')
+    dislikeButton = dom.querySelector('#dislikeButton')
+    dislikeButtonInactive = dom.querySelector('#dislikeButtonInactive')
+  }
 
   beforeEach(async(() => {
     let mockActivatedRoute = jasmine.createSpyObj('ActivatedRoute', ['get']);
@@ -14,40 +25,72 @@ describe('TextDetailPage', () => {
         mockStorage: mockStorage });
     waitForCondition(() => component.detail != null).then(() => {
       fixture.detectChanges();
-      let dom = fixture.nativeElement;
-      likes = dom.querySelector('span#likes');
-      dislikes = dom.querySelector('span#dislikes');
-      likeButton = dom.querySelector('#likeButton')
-      likeButtonInactive = dom.querySelector('#likeButtonInactive')
-      dislikeButton = dom.querySelector('#dislikeButton')
-      dislikeButtonInactive = dom.querySelector('#dislikeButtonInactive')
+      dom = fixture.nativeElement;
+      updateButtons();
     });
   }));
+
+  afterEach(() => {
+    if (dislikeButton) {
+      dislikeButton.click();
+    }
+    else if (likeButton) {
+      likeButton.click();
+    }
+  })
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
 
   it('should get likes and dislikes on load', () => {
-    fixture.detectChanges();
-    expect(likes.textContent).toBe('1')
+    expect(likes.textContent).toBe('0')
     expect(dislikes.textContent).toBe('0')
-    expect(likeButton).toBeTruthy();
-    expect(likeButtonInactive).toBeNull();
-    expect(dislikeButton).toBeNull();
-    expect(dislikeButtonInactive).toBeTruthy();
   });
 
+  it('should give like', (done) => {
+    likeButtonInactive.click();
+    waitForCondition(() => component.like == 'like').then(() => {
+      updateButtons();
+      expect(likes.textContent).toBe('1')
+      expect(dislikes.textContent).toBe('0')
+      expect(likeButton).toBeTruthy();
+      expect(likeButtonInactive).toBeNull();
+      expect(dislikeButton).toBeNull();
+      expect(dislikeButtonInactive).toBeTruthy();
+      done();
+    });
+  });
 
-  it('should update likes and dislikes count', () => {
-    fixture.detectChanges();
-    console.log(likeButton)
-    console.log(likeButtonInactive)
-    console.log(dislikeButton)
-    console.log(dislikeButtonInactive)
+  it('should give dislike', (done) => {
+    dislikeButtonInactive.click();
+    waitForCondition(() => component.like == 'dislike').then(() => {
+      updateButtons();
+      expect(likes.textContent).toBe('0')
+      expect(dislikes.textContent).toBe('1')
+      expect(likeButton).toBeNull();
+      expect(likeButtonInactive).toBeTruthy();
+      expect(dislikeButton).toBeTruthy();
+      expect(dislikeButtonInactive).toBeNull();
+      done();
+    });
+  });
 
-    expect(likes.textContent).toBe('1')
-    expect(dislikes.textContent).toBe('0')
+  it('should change like to dislike', (done) => {
+    likeButtonInactive.click();
+    waitForCondition(() => component.like == 'like').then(() => {
+      dislikeButtonInactive.click();
+      waitForCondition(() => component.like == 'dislike').then(() => {
+        updateButtons();
+        expect(likes.textContent).toBe('0')
+        expect(dislikes.textContent).toBe('1')
+        expect(likeButton).toBeNull();
+        expect(likeButtonInactive).toBeTruthy();
+        expect(dislikeButton).toBeTruthy();
+        expect(dislikeButtonInactive).toBeNull();
+        done();
+      });
+    });
   });
 
 });

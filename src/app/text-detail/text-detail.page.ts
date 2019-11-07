@@ -112,6 +112,8 @@ export class TextDetailPage implements OnInit {
 
         if (res.status) {
           this.like = res.status;
+          this.detail.likes = res.likes;
+          this.detail.dislikes = res.dislikes;
         }
 
         else
