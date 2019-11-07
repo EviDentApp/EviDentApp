@@ -1,13 +1,18 @@
 import { LoginPage } from './login.page';
 
-import { createTestBed, component, sendInput, fixture, mockStorage, mockRouter } from '../fixtures.spec';
+import { createTestBed, createFixture, component, sendInput, fixture, mockStorage, 
+         mockRouter } from '../fixtures.spec';
 import { async } from '@angular/core/testing';
 
 describe('LoginPage', () => {
   let email, password, loginButton
 
-  beforeEach(async () => {
-    await createTestBed(LoginPage);
+  beforeEach(async(() => {
+    createTestBed(LoginPage);
+  }));
+
+  beforeEach(() => {
+    createFixture(LoginPage);
     let dom = fixture.nativeElement;
     email = dom.querySelector('#email');
     password = dom.querySelector('#email_password');

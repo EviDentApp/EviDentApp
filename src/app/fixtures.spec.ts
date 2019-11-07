@@ -25,9 +25,9 @@ export let mockStorage, mockUtilService, mockFb, mockGoogle, mockRouter, mockGoo
 
 let activatedRoute
 
-export async function createTestBed(pageClass, defaults: any = {}) {
+export function createTestBed(pageClass, defaults: any = {}) {
   createMocks(defaults);
-  await TestBed.configureTestingModule({
+  TestBed.configureTestingModule({
     declarations: [ pageClass ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
     providers: [
@@ -48,14 +48,15 @@ export async function createTestBed(pageClass, defaults: any = {}) {
       HttpModule,
       RouterTestingModule.withRoutes([]),
     ],
-  }).compileComponents()
+  }).compileComponents();
   reqService = TestBed.get(RequisitionsService);
   reqService.endpoint = "http://localhost:5000";
+}
+
+export function createFixture(pageClass) {
   fixture = TestBed.createComponent(pageClass);
   component = fixture.componentInstance;
   fixture.detectChanges();
-  await fixture.whenRenderingDone();
-  await fixture.whenStable();
 }
 
 function createMocks(defaults) {
