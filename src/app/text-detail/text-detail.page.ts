@@ -5,6 +5,7 @@ import { LoadingController } from '@ionic/angular';
 import { Storage } from '@ionic/storage';
 import { UtilService } from '../util.service';
 import { AnalyticsService } from '../analytics.service';
+import { SavedTextsService } from '../saved-texts.service';
 
 @Component({
   selector: 'app-text-detail',
@@ -31,6 +32,7 @@ export class TextDetailPage implements OnInit {
     private loadCtrl: LoadingController,
     private analytics: AnalyticsService,
     private storage: Storage,
+    private savedTexts: SavedTextsService,
   ) { }
 
   async ngOnInit() {
@@ -148,6 +150,15 @@ export class TextDetailPage implements OnInit {
   
   mapEvidenceLevel() {
     this.podium = this.image_link + "evidencia" + this.detail.study_relevance + ".jpg";
+  }
+
+  async save() {
+    let img = await this.requisition.getImage(this.detail.url_image);
+    await this.savedTexts.saveText(this.detail, img);
+    for (let slide of this.detail.slideshow) {
+      let slide_img = await this.requisition.getImage(slide.url_image);
+      await this.savedTexts.saveSlide(this.text_id, slide, slide_img);
+    }
   }
 
 }

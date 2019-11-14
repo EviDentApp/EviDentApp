@@ -126,4 +126,9 @@ export class RequisitionsService {
     return res
    }
 
+   getImage(url) {
+    var res = this.http.get(url, {responseType: 3});
+    return res
+   }
+
 }
