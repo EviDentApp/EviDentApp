@@ -18,6 +18,8 @@ const DIM_USER_ID = 11;
 const METRIC_PAPER_VIEWS = 1;
 const METRIC_TEXT_DETAIL_VIEWS = 2;
 const METRIC_METODOLOGY_VIEWS = 3;
+const METRIC_LIKE_QTY = 4;
+const METRIC_DISLIKE_QTY = 5;
 
 
 @Injectable({
@@ -75,6 +77,18 @@ export class AnalyticsService {
     await this.ga.addCustomDimension(DIM_VIEWED_TEXT_DETAIL, text_title);
     this.ga.trackMetric(METRIC_METODOLOGY_VIEWS, 1).catch ( erro => alert(erro));
     this.ga.trackEvent(metodology_title, 'vizualização da metodologia')
+  }
+
+  public async trackLike(title: string, like_event: string, qty: number) {
+    await this.setUserDimensions();
+    await this.ga.addCustomDimension(DIM_VIEWED_TEXT_DETAIL, title);
+    if (like_event == 'like') {
+      this.ga.trackMetric(METRIC_LIKE_QTY, qty);
+    }
+    else {
+      this.ga.trackMetric(METRIC_DISLIKE_QTY, qty);
+    }
+    this.ga.trackEvent(title, like_event);
   }
  
 }

@@ -8,7 +8,7 @@ import { UtilService } from './util.service';
 export class RequisitionsService {
   public key = 'cd48e1c22de0961d5d1bfb14f8a66e006cfb1cfbf3f0c0f3'
   //public endpoint = "http://evident.tk" 
-  public endpoint = "http://192.168.42.148:5000" 
+  public endpoint = "http://192.168.0.105:5000" 
   public bodyThemesList = { "key": this.key }
   public bodyTextList = {
                           "key": this.key,

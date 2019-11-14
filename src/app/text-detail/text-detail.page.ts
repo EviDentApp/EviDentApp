@@ -105,6 +105,12 @@ export class TextDetailPage implements OnInit {
 
   async toogleLike(state:string)
   {
+    if (state == 'like' || state == 'dislike') {
+      this.analytics.trackLike(this.detail.title, state, 1);
+    }
+    else {
+      this.analytics.trackLike(this.detail.title, this.like, -1);
+    }
     this.requisition.toogleLike(state, this.text_id, this.user._id).subscribe(
       data => {
         const response = (data as any);
