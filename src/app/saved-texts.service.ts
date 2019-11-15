@@ -35,12 +35,12 @@ export class SavedTextsService {
   }
 
   async saveText(detail, img) {
-
-    alert('vou salvar artigo')
-
     let reader = new FileReader();
     let db = this.database;
     reader.onload = function() {
+  
+      alert('vou salvar artigo')
+  
       db.executeSql('INSERT INTO texts VALUES (?, ?, ?, ?, ?)', [
         detail._id,
         detail.title,
@@ -53,16 +53,23 @@ export class SavedTextsService {
       })
       .catch(e => alert(e));
     }
-    reader.readAsDataURL(img);
+
+
+    try {
+      reader.readAsDataURL(img);
+    }
+    catch (e) {
+      alert(e);
+    }
   }
 
   async saveSlide(text_id, slide, slide_img) {
-
-    alert('vou salvar slide')
-
     let reader = new FileReader();
     let db = this.database;
     reader.onload = function() {
+      
+      alert('vou salvar slide')
+      
       db.executeSql('INSERT INTO slides VALUES (?, ?, ?, ?)', [
         text_id,
         slide.order_no,
@@ -74,7 +81,13 @@ export class SavedTextsService {
       })
       .catch(e => alert(e));
     }
-    reader.readAsDataURL(slide_img);
+    
+    try {
+      reader.readAsDataURL(slide_img);
+    }
+    catch (e) {
+      alert(e);
+    }
   }
 
 }
