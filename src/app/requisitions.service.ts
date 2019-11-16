@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers } from '@angular/http'
-import { UtilService } from './util.service';
+import { Http, ResponseContentType } from '@angular/http'
 
 @Injectable({
   providedIn: 'root'
@@ -127,7 +126,7 @@ export class RequisitionsService {
    }
 
    getImage(url) {
-    var res = this.http.get(url, {responseType: 3});
+    var res = this.http.post(url, {}, { responseType: ResponseContentType.Blob });
     return res
    }
 

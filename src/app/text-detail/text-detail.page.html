@@ -16,9 +16,6 @@
             <img [src]="thermometer" height="50px" (click)="describeThermometer()">
             <img [src]="podium" height="50px" (click)="describePodium()">
         </ion-col>
-        <ion-col>
-          <ion-button (click)="save()">Salvar</ion-button>
-        </ion-col>
         <ion-col class = "likeButtons">
           <img id="likeButtonInactive" src="/assets/img/like_inactive.png" height="50px" (click)="toogleLike('like')" *ngIf="like != 'like'"  >
           <img id="likeButton" src="/assets/img/like.png" height="50px" (click)="toogleLike('remove')" *ngIf="like == 'like'">
@@ -29,6 +26,7 @@
         </ion-col>
     </ion-row>
     <quill-view-html [content]="detail.abstract_intro" theme="snow"></quill-view-html>
+    <ion-button (click)="save()">Salvar</ion-button>
     <ion-slides pager="true">
       <ion-slide *ngFor = "let slide of detail.slideshow">
         <div>

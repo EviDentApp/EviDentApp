@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { Platform } from '@ionic/angular';
 import { SQLite, SQLiteObject } from '@ionic-native/sqlite/ngx';
 
+import { RequisitionsService } from './requisitions.service';
+
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +15,7 @@ export class SavedTextsService {
   constructor(
     private plt: Platform, 
     private sqlite: SQLite,
+    private req: RequisitionsService,
   ) { 
 
     alert('vou criar')
@@ -34,59 +37,68 @@ export class SavedTextsService {
     });
   }
 
-  async saveText(detail, img) {
-    let reader = new FileReader();
-    let db = this.database;
-    reader.onload = function() {
-  
-      alert('vou salvar artigo')
-  
-      db.executeSql('INSERT INTO texts VALUES (?, ?, ?, ?, ?)', [
-        detail._id,
-        detail.title,
-        reader.result,
-        detail.abstract_intro,
-        detail.abstract
-      ])
-      .then(() => {
-        alert('salvou artigo')
-      })
-      .catch(e => alert(e));
-    }
-
-
+  async saveText(detail) {
     try {
-      reader.readAsDataURL(img);
+
+      alert('vou salvar artigo')
+      
+      let data_img = await this.req.getImage(detail.url_image).toPromise();
+      alert(data_img);
+      let reader = new FileReader();
+      let _this = this;
+      reader.onload = async function() {
+        try {
+          alert(reader.result.toString());
+          await _this.database.executeSql('INSERT INTO texts VALUES (?, ?, ?, ?, ?)', [
+            detail._id,
+            detail.title,
+            reader.result.toString(),
+            detail.abstract_intro,
+            detail.abstract
+          ]);
+          
+          alert('salvou artigo')
+        }
+        catch(e) {
+          alert('Erro ao salvar:' + e);
+        }
+      };
+      reader.readAsDataURL(data_img.blob());
     }
-    catch (e) {
-      alert(e);
+    catch(e) {
+      alert('Erro ao baixar:' + e);
     }
   }
 
-  async saveSlide(text_id, slide, slide_img) {
-    let reader = new FileReader();
-    let db = this.database;
-    reader.onload = function() {
-      
+  async saveSlide(text_id, slide) {
+    try {
+
       alert('vou salvar slide')
       
-      db.executeSql('INSERT INTO slides VALUES (?, ?, ?, ?)', [
-        text_id,
-        slide.order_no,
-        reader.result,
-        slide.description
-      ])
-      .then(() => {
-        alert('salvou slide')
-      })
-      .catch(e => alert(e));
+      let data_img = await this.req.getImage(slide.url_image).toPromise();
+      alert(data_img);
+      let reader = new FileReader();
+      let _this = this;
+      reader.onload = async function() {
+        try {
+          alert(reader.result.toString());
+          await _this.database.executeSql('INSERT INTO slides VALUES (?, ?, ?, ?)', [
+            text_id,
+            slide.order_no,
+            reader.result.toString(),
+            slide.description
+          ]);
+          
+          alert('salvou slide')
+        }
+        catch(e) {
+          alert('Erro ao salvar:' + e);
+        }
+      };
+      reader.readAsDataURL(data_img.blob());
     }
-    
-    try {
-      reader.readAsDataURL(slide_img);
-    }
-    catch (e) {
-      alert(e);
+    catch(e) {
+      alert('Erro ao baixar:' + e);
     }
   }
 

@@ -44,7 +44,7 @@ export class TextDetailPage implements OnInit {
 
   async initialize(text_id) {
     const loading = await this.loadCtrl.create({
-      message: "Loading"
+      message: "Carregando"
     });
     loading.present().then(() => {
       this.requisition.textGetDetail(text_id, this.user._id).subscribe(
@@ -153,11 +153,9 @@ export class TextDetailPage implements OnInit {
   }
 
   async save() {
-    let img = await this.requisition.getImage(this.detail.url_image);
-    await this.savedTexts.saveText(this.detail, img);
+    await this.savedTexts.saveText(this.detail);
     for (let slide of this.detail.slideshow) {
-      let slide_img = await this.requisition.getImage(slide.url_image);
-      await this.savedTexts.saveSlide(this.text_id, slide, slide_img);
+      await this.savedTexts.saveSlide(this.text_id, slide);
     }
   }
 
