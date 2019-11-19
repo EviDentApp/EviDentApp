@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons>
+          <ion-back-button></ion-back-button>
+          <ion-title class="toolbar-title">Meus Textos Salvos</ion-title>
+        </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-card *ngFor="let text of texts" (click)="goToDetail(text.id)">
+    <ion-img class="card-image" [src]="text.img"></ion-img>
+    <ion-item>
+      <ion-grid class="container">
+        <ion-row>
+          <ion-col>
+            <span class="card-text">{{text.title}}</span>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+  </ion-card>
+</ion-content>

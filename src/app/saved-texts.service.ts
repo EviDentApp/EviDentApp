@@ -10,16 +10,13 @@ import { RequisitionsService } from './requisitions.service';
 })
 export class SavedTextsService {
 
-  private database: SQLiteObject;
+  public database: SQLiteObject;
 
   constructor(
     private plt: Platform, 
     private sqlite: SQLite,
     private req: RequisitionsService,
   ) { 
-
-    alert('vou criar')
-
     this.plt.ready().then(() => {
       this.sqlite.create({ name: 'evident.db', location: 'default'})
         .then((db: SQLiteObject) => {
@@ -27,37 +24,27 @@ export class SavedTextsService {
           db.executeSql('CREATE TABLE IF NOT EXISTS texts (id varchar(50), title text, img blob, abstract_intro text, abstract text)', [])
             .then(() => {
               db.executeSql('CREATE TABLE IF NOT EXISTS slides (text_id varchar(50), order_no int, img blob, description text)', [])
-              .then(() => {
-                alert('criou')
-              })
-              .catch(e => alert(e));
+                .catch(e => alert(e));
             })
             .catch(e => alert(e));
         }).catch(e => alert(e));
     });
   }
 
-  async saveText(detail) {
+  async saveText(text_id, detail) {
     try {
-
-      alert('vou salvar artigo')
-      
       let data_img = await this.req.getImage(detail.url_image).toPromise();
-      alert(data_img);
       let reader = new FileReader();
       let _this = this;
       reader.onload = async function() {
         try {
-          alert(reader.result.toString());
           await _this.database.executeSql('INSERT INTO texts VALUES (?, ?, ?, ?, ?)', [
-            detail._id,
+            text_id,
             detail.title,
             reader.result.toString(),
             detail.abstract_intro,
             detail.abstract
           ]);
-          
-          alert('salvou artigo')
         }
         catch(e) {
           alert('Erro ao salvar:' + e);
@@ -72,24 +59,17 @@ export class SavedTextsService {
 
   async saveSlide(text_id, slide) {
     try {
-
-      alert('vou salvar slide')
-      
       let data_img = await this.req.getImage(slide.url_image).toPromise();
-      alert(data_img);
       let reader = new FileReader();
       let _this = this;
       reader.onload = async function() {
         try {
-          alert(reader.result.toString());
           await _this.database.executeSql('INSERT INTO slides VALUES (?, ?, ?, ?)', [
             text_id,
             slide.order_no,
             reader.result.toString(),
             slide.description
           ]);
-          
-          alert('salvou slide')
         }
         catch(e) {
           alert('Erro ao salvar:' + e);
@@ -100,6 +80,53 @@ export class SavedTextsService {
     catch(e) {
       alert('Erro ao baixar:' + e);
     }
+  }
+
+  all() {
+    let _this = this;
+    return new Promise((resolve, reject) => {
+      _this.database.executeSql('SELECT id, title, img FROM texts ORDER BY title',[])
+        .then(data => {
+          let texts = [];
+          for (let i = 0; i < data.rows.length; i++) {
+            texts.push(data.rows.item(i));
+          }
+          resolve(texts);
+        })
+        .catch(e => {
+          reject(e);
+        });
+    });
+  }
+
+  detail(text_id) {
+    let _this = this;
+    return new Promise((resolve, reject) => {
+      _this.database.executeSql('SELECT * FROM texts where id = ?',[text_id])
+        .then(data => {
+          resolve(data.rows.item(0));
+        })
+        .catch(e => {
+          reject(e);
+        });
+    });
+  }
+
+  slides(text_id) {
+    let _this = this;
+    return new Promise((resolve, reject) => {
+      _this.database.executeSql('SELECT * FROM slides where text_id = ? ORDER BY order_no',[text_id])
+        .then(data => {
+          let slides = [];
+          for (let i = 0; i < data.rows.length; i++) {
+            slides.push(data.rows.item(i));
+          }
+          resolve(slides);
+        })
+        .catch(e => {
+          reject(e);
+        });
+    });
   }
 
 }

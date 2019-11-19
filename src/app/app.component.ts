@@ -6,6 +6,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { Router, NavigationEnd } from '@angular/router';
 import { AnalyticsService } from './analytics.service';
+import { SavedTextsService } from './saved-texts.service';
 
 
 @Component({
@@ -30,14 +31,17 @@ export class AppComponent {
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
     private router: Router,
-    private analytics: AnalyticsService
+    private analytics: AnalyticsService,
+    private savedTexts:SavedTextsService  // Preload
   ) {
     this.initializeApp();
     this.router.events.subscribe(event =>{
       const url = this.router.url;
       if (event instanceof NavigationEnd && !this.backPressed) {
         const isCurrentUrlSaved = this.navLinksArray.find((item) => item === url);
-        if (!isCurrentUrlSaved) this.navLinksArray.push(url);
+        if (!isCurrentUrlSaved) {
+          this.navLinksArray.push(url);
+        }
       }
       this.backPressed = false
     });

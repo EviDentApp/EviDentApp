@@ -79,10 +79,16 @@ export class HomePage {
   async dismissLoading() {
     return await this.loading.dismiss();
   }
+
   doRefresh(event) {
     this.initialize();
     setTimeout(() => {
       event.target.complete();
     }, 750);
   }
+
+  savedTexts() {
+    this.router.navigate(['my-saved-texts']);
+  }
+
 }

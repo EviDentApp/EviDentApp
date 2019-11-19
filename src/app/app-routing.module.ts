@@ -14,7 +14,9 @@ const routes: Routes = [
   { path: 'intro', loadChildren: './intro/intro.module#IntroPageModule' },
   { path: 'methodologyText', loadChildren: './methodology-text/methodology-text.module#MethodologyTextPageModule' },
   { path: 'login', loadChildren: './login/login.module#LoginPageModule' },
-  { path: 'register', loadChildren: './register/register.module#RegisterPageModule' }
+  { path: 'register', loadChildren: './register/register.module#RegisterPageModule' },
+  { path: 'my-saved-texts', loadChildren: './my-saved-texts/my-saved-texts.module#MySavedTextsPageModule' },
+  { path: 'saved-text', loadChildren: './saved-text/saved-text.module#SavedTextPageModule' },
   
 ];
 

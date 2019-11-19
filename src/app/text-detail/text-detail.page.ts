@@ -1,4 +1,4 @@
-import { Component, OnInit, APP_INITIALIZER, ElementRef, Renderer } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RequisitionsService } from '../requisitions.service';
 import { LoadingController } from '@ionic/angular';
@@ -153,10 +153,11 @@ export class TextDetailPage implements OnInit {
   }
 
   async save() {
-    await this.savedTexts.saveText(this.detail);
+    await this.savedTexts.saveText(this.text_id, this.detail);
     for (let slide of this.detail.slideshow) {
       await this.savedTexts.saveSlide(this.text_id, slide);
     }
+    this.utilFunctions.presentAlert('Salvo com sucesso!');
   }
 
 }
