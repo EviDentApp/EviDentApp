@@ -95,10 +95,8 @@
         "GMS_VERSION": "11.0.1"
       },
       "cordova-plugin-facebook4": {
-        "APP_ID": "1454207991409162",
-        "APP_NAME": "Evident",
-        "FACEBOOK_HYBRID_APP_EVENTS": "false",
-        "FACEBOOK_ANDROID_SDK_VERSION": "5.2.0"
+        "APP_ID": "400974260590496",
+        "APP_NAME": "Evident App"
       },
       "cordova-plugin-googleplus": {
         "REVERSED_CLIENT_ID": "com.googleusercontent.apps.95409007975-qael37k1taod881m8ill87uf6p4r0gep",
