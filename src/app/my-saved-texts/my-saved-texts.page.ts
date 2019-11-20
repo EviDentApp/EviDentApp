@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { SavedTextsService } from '../saved-texts.service';
 import { Router } from '@angular/router';
 
@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
   templateUrl: './my-saved-texts.page.html',
   styleUrls: ['./my-saved-texts.page.scss'],
 })
-export class MySavedTextsPage implements OnInit {
+export class MySavedTextsPage {
 
   private texts;
 
@@ -16,7 +16,7 @@ export class MySavedTextsPage implements OnInit {
     private router: Router
   ) { }
 
-  ngOnInit() {
+  ionViewDidEnter() {
     this.savedTexts.all().then(texts => {
       this.texts = texts;
     }).catch(e=>alert(JSON.stringify(e)))
