@@ -49,15 +49,17 @@ export class AppComponent {
   }
 
   hardwareBackButton() {
-    this.platform.backButton.subscribe(() => {
-      if (this.navLinksArray.length > 1) {
-        this.navLinksArray.pop();
-        const index = this.navLinksArray.length - 1;
-        const url = this.navLinksArray[index];
-        this.backPressed = true
-        this.router.navigateByUrl(url).catch(e => alert(e));
-      }
-    });
+    this.platform.backButton.subscribe(() => this.backToPrevious());
+  }
+  
+  backToPrevious() {
+    if (this.navLinksArray.length > 1) {
+      this.navLinksArray.pop();
+      const index = this.navLinksArray.length - 1;
+      const url = this.navLinksArray[index];
+      this.backPressed = true
+      this.router.navigateByUrl(url).catch(e => alert(e));
+    }
   }
 
   initializeApp() {

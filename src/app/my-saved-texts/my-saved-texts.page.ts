@@ -20,12 +20,11 @@ export class MySavedTextsPage implements OnInit {
     this.savedTexts.all().then(texts => {
       this.texts = texts;
     }).catch(e=>alert(JSON.stringify(e)))
-
   }
 
   goToDetail(text_id) {
     this.router.navigate(['saved-text', {text_id: text_id}])
-               .catch(e => alert(JSON.stringify(e)))
+               .catch(e => alert(JSON.stringify(e)));
   }
 
 }

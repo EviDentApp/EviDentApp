@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,700');
+
+.toolbar-title {
+    text-align: left;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 30px;
+}
+
+.card {
+    position: relative;
+}
+
+.card-text {
+    font-size: 20px;
+    font-family: 'IBM Plex Sans', sans-serif;
+}
+
+ion-item {
+    background-color: #e8e8e8;
+}
+
+.container {
+    position: relative;
+}

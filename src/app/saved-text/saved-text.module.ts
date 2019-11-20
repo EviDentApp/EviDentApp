@@ -2,8 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
-
 import { IonicModule } from '@ionic/angular';
+import { QuillModule } from 'ngx-quill';
 
 import { SavedTextPage } from './saved-text.page';
 
@@ -19,7 +19,8 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
-    RouterModule.forChild(routes)
+    QuillModule.forRoot(),
+    RouterModule.forChild(routes),
   ],
   declarations: [SavedTextPage]
 })

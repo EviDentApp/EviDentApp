@@ -1,23 +1,36 @@
 <ion-header>
-  <ion-toolbar>
-      <ion-back-button></ion-back-button>
-    <ion-title>Texto Salvo</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content padding *ngIf="detail">
-  <ion-grid>
-    <ion-img [src]="detail.img"></ion-img>
-    <h2>{{ detail.title }}</h2>
-    <quill-view-html [content]="detail.abstract_intro" theme="snow"></quill-view-html>
-    <ion-slide *ngFor="let slide of detail.slideshow">
-        <div>
-          <ion-img [src]="slide.img"></ion-img>
-          <div class="desc_slide">{{slide.description}}</div>
-          <br>
-        </div>
-       </ion-slide>     
-    </ion-slides>
-    <quill-view-html [content]="detail.abstract" theme="snow"></quill-view-html>
-  </ion-grid>
-</ion-content>
+    <ion-toolbar>
+        <ion-buttons>
+            <ion-back-button></ion-back-button>
+            <ion-title class="toolbar-title">Texto Salvo</ion-title>
+          </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content padding *ngIf="detail">
+    <ion-grid>
+      <ion-img [src]="detail.img"></ion-img>
+      <h2>{{ detail.title }}</h2>
+      <quill-view-html [content]="detail.abstract_intro" theme="snow"></quill-view-html>
+      <ion-slides pager="true">
+        <ion-slide *ngFor = "let slide of slideshow">
+          <div>
+            <ion-img [src]="slide.img"></ion-img>
+            <div class="desc_slide">{{slide.description}}</div>
+            <br>
+          </div>
+         </ion-slide>     
+      </ion-slides>
+      <quill-view-html [content]="detail.abstract" theme="snow"></quill-view-html>
+    </ion-grid>
+  </ion-content>
+  <ion-footer *ngIf="detail">
+    <ion-row>
+        <ion-col>
+            <ion-button class="list-button-footer" expand="full" size="round" (click)="delete();">
+                <span class="list-button-footer-text">Deletar</span>
+            </ion-button>
+        </ion-col>
+    </ion-row>
+  </ion-footer>
+  

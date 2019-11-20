@@ -153,6 +153,8 @@ export class TextDetailPage implements OnInit {
   }
 
   async save() {
+    await this.savedTexts.deleteText(this.text_id);
+    await this.savedTexts.deleteSlides(this.text_id);
     await this.savedTexts.saveText(this.text_id, this.detail);
     for (let slide of this.detail.slideshow) {
       await this.savedTexts.saveSlide(this.text_id, slide);

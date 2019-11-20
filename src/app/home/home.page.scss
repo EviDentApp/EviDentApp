@@ -74,3 +74,21 @@ ion-grid {
 ion-footer {
     background-color: #f9f9f9;
 }
+
+.list-button-footer {
+    --background: #e5e5e5;
+    --box-shadow: 5px;
+    font-size: 20px;
+    text-transform: none;
+    flex-direction: column; 
+    font-family: 'IBM Plex Sans', sans-serif;
+}
+
+.list-button-footer-text {
+    color: black;
+    font-size: 80%;
+}
+
+ion-footer {
+    background-color: #f9f9f9;
+}

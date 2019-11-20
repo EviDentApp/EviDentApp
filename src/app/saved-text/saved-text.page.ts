@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { SavedTextsService } from '../saved-texts.service';
 import { LoadingController } from '@ionic/angular';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { AppComponent } from '../app.component';
 
 @Component({
   selector: 'app-saved-text',
@@ -10,44 +11,41 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class SavedTextPage implements OnInit {
 
+  public text_id;
   public detail: any;
+  public slideshow: any = [];
 
   constructor(
     private savedTexts: SavedTextsService,
     private loadCtrl: LoadingController,
     private route: ActivatedRoute,
+    private app: AppComponent,
   ) { }
 
   ngOnInit() {
-
-    alert('cheguei!')
-
-    let text_id = this.route.snapshot.paramMap.get('text_id');
-    this.initialize(text_id);
+    this.text_id = this.route.snapshot.paramMap.get('text_id');
+    this.initialize(this.text_id);
   }
 
   async initialize(text_id) {
     try {
-      alert('carregando ' + text_id)
-  
       const loading = await this.loadCtrl.create({
         message: "Carregando"
       });
       await loading.present();
       this.detail = await this.savedTexts.detail(text_id);
-  
-      alert('carregado texto ' + this.detail.title)
-  
-  
-      this.detail.slideshow = await this.savedTexts.slides(text_id);
-  
-      alert('carregado slide ' + this.detail.slideshow.description)
-  
+      this.slideshow = await this.savedTexts.slides(text_id);
       loading.dismiss();
     }
     catch(e) {
       alert('Erro ao carregar: ' + JSON.stringify(e))
     }
+  }
+
+  async delete() {
+    await this.savedTexts.deleteText(this.text_id);
+    await this.savedTexts.deleteSlides(this.text_id);
+    this.app.backToPrevious();
   }
 
 }

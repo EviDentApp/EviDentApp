@@ -31,6 +31,24 @@ export class SavedTextsService {
     });
   }
 
+  async deleteText(text_id) {
+    try {
+      await this.database.executeSql('DELETE FROM texts WHERE id = ?', [text_id]);
+    }
+    catch(e) {
+      alert('Erro ao deletar texto:' + JSON.stringify(e));
+    }
+  }
+
+  async deleteSlides(text_id) {
+    try {
+      await this.database.executeSql('DELETE FROM slides WHERE text_id = ?', [text_id]);
+    }
+    catch(e) {
+      alert('Erro ao deletar slides:' + JSON.stringify(e));
+    }
+  }
+
   async saveText(text_id, detail) {
     try {
       let data_img = await this.req.getImage(detail.url_image).toPromise();
@@ -47,13 +65,13 @@ export class SavedTextsService {
           ]);
         }
         catch(e) {
-          alert('Erro ao salvar:' + e);
+          alert('Erro ao salvar texto:' + JSON.stringify(e));
         }
       };
       reader.readAsDataURL(data_img.blob());
     }
     catch(e) {
-      alert('Erro ao baixar:' + e);
+      alert('Erro ao baixar:' + JSON.stringify(e));
     }
   }
 
@@ -72,13 +90,13 @@ export class SavedTextsService {
           ]);
         }
         catch(e) {
-          alert('Erro ao salvar:' + e);
+          alert('Erro ao salvar slide:' + JSON.stringify(e));
         }
       };
       reader.readAsDataURL(data_img.blob());
     }
     catch(e) {
-      alert('Erro ao baixar:' + e);
+      alert('Erro ao baixar:' + JSON.stringify(e));
     }
   }
 
@@ -115,8 +133,10 @@ export class SavedTextsService {
   slides(text_id) {
     let _this = this;
     return new Promise((resolve, reject) => {
-      _this.database.executeSql('SELECT * FROM slides where text_id = ? ORDER BY order_no',[text_id])
-        .then(data => {
+      _this.database.executeSql(
+          'SELECT * FROM slides WHERE text_id = ? ORDER BY order_no', 
+          [text_id]
+      ).then(data => {
           let slides = [];
           for (let i = 0; i < data.rows.length; i++) {
             slides.push(data.rows.item(i));
