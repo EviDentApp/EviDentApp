@@ -60,35 +60,35 @@ export class AnalyticsService {
   public async trackPaperVisualization(title: string) {
     await this.setUserDimensions();
     await this.ga.addCustomDimension(DIM_VIEWED_PAPER, title);
-    this.ga.trackMetric(METRIC_PAPER_VIEWS, 1).catch ( erro => alert(erro));
-    this.ga.trackEvent(title, 'vizualização do paper')
+    await this.ga.trackMetric(METRIC_PAPER_VIEWS, 1).catch ( erro => alert(erro));
+    await this.ga.trackEvent(title, 'vizualização do paper')
   }
 
   public async trackTextDetailVisualization(title: string) {
     await this.setUserDimensions();
     await this.ga.addCustomDimension(DIM_VIEWED_TEXT_DETAIL, title);
-    this.ga.trackMetric(METRIC_TEXT_DETAIL_VIEWS, 1).catch ( erro => alert(erro));
-    this.ga.trackEvent(title, 'vizualização do texto')
+    await this.ga.trackMetric(METRIC_TEXT_DETAIL_VIEWS, 1).catch ( erro => alert(erro));
+    await this.ga.trackEvent(title, 'vizualização do texto')
   }
 
   public async trackMetodologyVisualization(metodology_title: string, text_title: string) {
     await this.setUserDimensions();
     await this.ga.addCustomDimension(DIM_VIEWED_METODOLOGY, metodology_title);
     await this.ga.addCustomDimension(DIM_VIEWED_TEXT_DETAIL, text_title);
-    this.ga.trackMetric(METRIC_METODOLOGY_VIEWS, 1).catch ( erro => alert(erro));
-    this.ga.trackEvent(metodology_title, 'vizualização da metodologia')
+    await this.ga.trackMetric(METRIC_METODOLOGY_VIEWS, 1).catch ( erro => alert(erro));
+    await this.ga.trackEvent(metodology_title, 'vizualização da metodologia')
   }
 
   public async trackLike(title: string, like_event: string, qty: number) {
     await this.setUserDimensions();
     await this.ga.addCustomDimension(DIM_VIEWED_TEXT_DETAIL, title);
     if (like_event == 'like') {
-      this.ga.trackMetric(METRIC_LIKE_QTY, qty);
+      await this.ga.trackMetric(METRIC_LIKE_QTY, qty);
     }
     else {
-      this.ga.trackMetric(METRIC_DISLIKE_QTY, qty);
+      await this.ga.trackMetric(METRIC_DISLIKE_QTY, qty);
     }
-    this.ga.trackEvent(title, like_event);
+    await this.ga.trackEvent(title, like_event);
   }
  
 }
