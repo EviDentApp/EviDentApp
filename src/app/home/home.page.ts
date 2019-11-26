@@ -31,7 +31,7 @@ export class HomePage {
 
   async initialize() {
     const loading = await this.loadingCtrl.create({
-      message: "Loading"
+      message: "Carregando"
     });
     loading.present().then(() => {
       this.requisition.themesGetList().subscribe(
