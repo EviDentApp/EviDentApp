@@ -3,6 +3,9 @@ import { SavedTextsService } from '../saved-texts.service';
 import { LoadingController } from '@ionic/angular';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AppComponent } from '../app.component';
+import { SwiperComponent, SwiperDirective, SwiperConfigInterface,
+  SwiperScrollbarInterface, SwiperPaginationInterface } from 'ngx-swiper-wrapper';
+
 
 @Component({
   selector: 'app-saved-text',
@@ -14,6 +17,14 @@ export class SavedTextPage implements OnInit {
   public text_id;
   public detail: any;
   public slideshow: any = [];
+
+  public config: SwiperConfigInterface = {
+    direction: 'horizontal',
+    slidesPerView: 1,
+    scrollbar: false,
+    navigation: false,
+    pagination: true
+  };
 
   constructor(
     private savedTexts: SavedTextsService,

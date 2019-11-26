@@ -13,8 +13,8 @@
       <h2>{{ detail.title }}</h2>
       <quill-view-html [content]="detail.abstract_intro" theme="snow"></quill-view-html>
 
-      <swiper [useSwiperClass]="true">
-        <div *ngFor = "let slide of slideshow">
+      <swiper [config]="config">
+        <div *ngFor = "let slide of slideshow" class="slide">
           <ion-img [src]="slide.img"></ion-img>
           <div class="desc_slide">{{slide.description}}</div>
           <br>
