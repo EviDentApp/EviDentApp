@@ -53,6 +53,10 @@ Run the following commands in the Linux terminal, replacing PROJECT-DIRECTORY wi
 
 > ionic serve
 
+## Run tests
+
+> npm test
+
 We strongly recommend using the Google Chrome web browser for running an Ionic app. Google Chrome can be downloaded from this website:
 > https://www.google.com/chrome/
 
