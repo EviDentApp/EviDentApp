@@ -12,11 +12,15 @@
       <ion-img [src]="detail.img"></ion-img>
       <h2>{{ detail.title }}</h2>
       <quill-view-html [content]="detail.abstract_intro" theme="snow"></quill-view-html>
-          <div *ngFor = "let slide of slideshow">
-            <ion-img [src]="slide.img"></ion-img>
-            <div class="desc_slide">{{slide.description}}</div>
-            <br>
-          </div>
+
+      <swiper [useSwiperClass]="true">
+        <div *ngFor = "let slide of slideshow">
+          <ion-img [src]="slide.img"></ion-img>
+          <div class="desc_slide">{{slide.description}}</div>
+          <br>
+        </div>
+      </swiper>
+
       <quill-view-html [content]="detail.abstract" theme="snow"></quill-view-html>
     </ion-grid>
   </ion-content>

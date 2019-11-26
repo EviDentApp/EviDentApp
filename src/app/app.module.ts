@@ -10,12 +10,20 @@ import { Facebook } from '@ionic-native/facebook/ngx';
 import { IonicStorageModule } from '@ionic/storage'
 import { GooglePlus } from '@ionic-native/google-plus/ngx';
 import { SQLite } from '@ionic-native/sqlite/ngx';
+import { SwiperModule } from 'ngx-swiper-wrapper';
+import { SWIPER_CONFIG } from 'ngx-swiper-wrapper';
+import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { RequisitionsService } from './requisitions.service';
 import { AnalyticsService } from './analytics.service';
 import { SavedTextsService } from './saved-texts.service';
+
+const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
+  direction: 'horizontal',
+  slidesPerView: 'auto'
+};
 
 @NgModule({
   declarations: [AppComponent],
@@ -26,7 +34,8 @@ import { SavedTextsService } from './saved-texts.service';
     AppRoutingModule,
     HttpModule,
     RouterModule.forRoot([]),
-    IonicStorageModule.forRoot()
+    IonicStorageModule.forRoot(),
+    SwiperModule,
   ],
   providers: [
     GooglePlus,
@@ -39,6 +48,7 @@ import { SavedTextsService } from './saved-texts.service';
     AnalyticsService,
     SQLite,
     SavedTextsService,
+    { provide: SWIPER_CONFIG, useValue: DEFAULT_SWIPER_CONFIG },
   ],
   bootstrap: [AppComponent]
 })

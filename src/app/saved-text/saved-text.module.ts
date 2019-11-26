@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 import { QuillModule } from 'ngx-quill';
+import { SwiperModule } from 'ngx-swiper-wrapper';
 
 import { SavedTextPage } from './saved-text.page';
 
@@ -21,6 +22,7 @@ const routes: Routes = [
     IonicModule,
     QuillModule.forRoot(),
     RouterModule.forChild(routes),
+    SwiperModule,
   ],
   declarations: [SavedTextPage]
 })
