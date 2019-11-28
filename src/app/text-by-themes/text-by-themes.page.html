@@ -15,7 +15,7 @@
 </ion-header>
 
 <ng-container *ngIf="myInput;else newTextList">
-  <ion-content padding>
+  <ion-content padding class="page-content">
     <ion-card *ngFor="let text of texts" (click)="goToDetail($event, text)">
       <ion-item>
         <span class="card-text">{{text.title}}</span>
@@ -25,7 +25,7 @@
 </ng-container>
 
 <ng-template #newTextList>
-  <ion-content padding>
+  <ion-content padding class="page-content">
     <ion-refresher (ionRefresh)="doRefresh($event)">
       <ion-refresher-content>
       </ion-refresher-content>

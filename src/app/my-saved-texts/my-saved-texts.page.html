@@ -7,7 +7,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content padding class="page-content">
   <ion-card *ngFor="let text of texts" (click)="goToDetail(text.id)">
     <ion-img class="card-image" [src]="text.img"></ion-img>
     <ion-item>

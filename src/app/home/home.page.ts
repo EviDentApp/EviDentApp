@@ -28,7 +28,6 @@ export class HomePage {
     this.initialize();
   }
 
-
   async initialize() {
     const loading = await this.loadingCtrl.create({
       message: "Carregando"
@@ -42,7 +41,7 @@ export class HomePage {
           console.log(data)
         },
         error => {  
-          this.utilFunctions.presentAlert(error);
+          this.utilFunctions.presentAlert("Você está offline!\nVeja seus textos salvos.");
         }
       );
       loading.dismiss();
