@@ -34,7 +34,11 @@ export class AnalyticsService {
   ) { }
 
   startTracking() {
-    this.ga.startTrackerWithId('UA-148652262-1');
+    // Conta dev (evidentappdevelopers@gmail.com)
+    //this.ga.startTrackerWithId('UA-148652262-1');
+
+    // (evident.fo@usp.br)
+    this.ga.startTrackerWithId('UA-149697854-1');
   }
 
   private async getData() {

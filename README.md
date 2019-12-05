@@ -106,6 +106,10 @@ Run the following the command in the Dockerfile directory to run the image, repl
 
 > sudo docker run -p 8100:8100 -v LOCAL-DIRECTORY:/app ionic
 
+## Pendencies
+
+* `login.page.html`: Facebook login is commented out. Facebook account is evidentappdevelopers@gmail.com. Need to configure account for login.
+
 
 # License
 

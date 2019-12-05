@@ -6,8 +6,7 @@ import { Http, ResponseContentType } from '@angular/http'
 })
 export class RequisitionsService {
   public key = 'cd48e1c22de0961d5d1bfb14f8a66e006cfb1cfbf3f0c0f3'
-  //public endpoint = "http://evident.tk" 
-  public endpoint = "http://192.168.42.25:5000" 
+  public endpoint = "https://200.144.245.2" 
   public bodyThemesList = { "key": this.key }
   public bodyTextList = {
                           "key": this.key,
