@@ -12,16 +12,23 @@ import { GoogleAnalytics } from '@ionic-native/google-analytics/ngx';
 import { Router, ActivatedRoute } from '@angular/router';
 import { LoadingController } from '@ionic/angular';
 import { RouterTestingModule } from '@angular/router/testing';
-
+import { SQLite, SQLiteObject } from '@ionic-native/sqlite/ngx';
 import { UtilService } from './util.service';
 import { RequisitionsService } from './requisitions.service';
+import { Platform } from '@ionic/angular';
+import { SwiperModule } from 'ngx-swiper-wrapper';
+import { QuillModule } from 'ngx-quill';
+
+import { AppComponent } from './app.component';
+import { SavedTextsService } from './saved-texts.service';
 
 
 export let fixture: ComponentFixture<any>;
 export let component
 export let reqService: RequisitionsService;
 export let mockStorage, mockUtilService, mockFb, mockGoogle, mockRouter, mockGoogleAnalytics,
-           mockActivatedRoute, mockLoadingController
+           mockActivatedRoute, mockLoadingController, mockSQLite, mockPlt, mockSavedTexts,
+           mockAppComponent
 
 let activatedRoute
 
@@ -38,6 +45,10 @@ export function createTestBed(pageClass, defaults: any = {}) {
       { provide: GoogleAnalytics, useValue: mockGoogleAnalytics },
       { provide: Router, useValue: mockRouter },
       { provide: ActivatedRoute, useValue: activatedRoute },
+      { provide: SQLite, useValue: mockSQLite },
+      { provide: Platform, useValue: mockPlt },
+      { provide: SavedTextsService, useValue: mockSavedTexts },
+      { provide: AppComponent, useValue: mockAppComponent },
       LoadingController,
     ],
     imports: [ 
@@ -47,6 +58,8 @@ export function createTestBed(pageClass, defaults: any = {}) {
       IonicModule.forRoot(),
       HttpModule,
       RouterTestingModule.withRoutes([]),
+      QuillModule.forRoot(),
+      SwiperModule,
     ],
   }).compileComponents();
   reqService = TestBed.get(RequisitionsService);
@@ -93,6 +106,18 @@ function createMocks(defaults) {
   mockActivatedRoute = defaults.mockActivatedRoute ? defaults.mockActivatedRoute :
       jasmine.createSpyObj('ActivatedRoute', ['get']);
 
+  mockSQLite = defaults.mockSQLite ? defaults.mockSQLite :
+      jasmine.createSpyObj('SQLite', ['create'])
+  
+  mockPlt = defaults.mockPlt ? defaults.mockPlt :
+      jasmine.createSpyObj('Platform', ['ready'])
+
+  mockSavedTexts = defaults.mockSavedTexts ? defaults.mockSavedTexts :
+      jasmine.createSpyObj('SavedTextsService', ['deleteText', 'deleteSlides', 'saveText', 
+                           'saveSlide', 'all', 'detail', 'slides']);
+  
+  mockAppComponent = defaults.mockAppComponent ? defaults.mockAppComponent :
+      jasmine.createSpyObj('AppComponent', ['backToPrevious']);
   activatedRoute = {
     snapshot: {
       paramMap: mockActivatedRoute
