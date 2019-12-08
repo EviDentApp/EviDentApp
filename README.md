@@ -114,10 +114,6 @@ Run `zipalign` tool from Android SDK, thus generating a new .apk file:
 
 Ask project owners or old devs for Google Play account and just publish `EviDent.apk` as a new version!
 
-## Pendencies
-
-* `login.page.html`: Facebook login is commented out. Facebook account is evidentappdevelopers@gmail.com. Need to configure account for login.
-
 
 # License
 
