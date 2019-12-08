@@ -96,15 +96,23 @@ First, run API project on localhost.
 
 > npm test
 
-## Run an Ionic app with docker
+## Deploying a new version
 
-Run the following command in the Dockerfile directory to build the container and image:
+Increment `android-versionCode` attribute in `config.xml` to a higher value.
 
-> sudo docker build -t ionic .
+Generate a release build. The command will output the .apk file location.
 
-Run the following the command in the Dockerfile directory to run the image, replacing LOCAL-DIRECTORY with the complete location of the ionic source files:
+> ionic cordova build android --release
 
-> sudo docker run -p 8100:8100 -v LOCAL-DIRECTORY:/app ionic
+Sign the app with `android.keystore` (ask owners or old devs for password!)
+
+> jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore android.keystore platforms/android/app/build/outputs/apk/release/app-release-unsigned.apk evidente
+
+Run `zipalign` tool from Android SDK, thus generating a new .apk file:
+
+> zipalign -v 4 platforms/android/app/build/outputs/apk/release/app-release-unsigned.apk EviDent.apk
+
+Ask project owners or old devs for Google Play account and just publish `EviDent.apk` as a new version!
 
 ## Pendencies
 
