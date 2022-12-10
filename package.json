@@ -35,7 +35,7 @@
     "@ionic/storage": "^2.2.0",
     "@types/mongoose": "^5.2.19",
     "cordova-android": "^8.1.0",
-    "cordova-browser": "5.0.4",
+    "cordova-browser": "6.0.0",
     "cordova-plugin-device": "^2.0.3",
     "cordova-plugin-facebook4": "^6.0.0",
     "cordova-plugin-google-analytics": "^1.8.6",
